@@ -518,10 +518,18 @@ img {
 }
 
 .skills__js {
-  width: 90%;
+  width: 80%;
 }
 
 .skills__react {
+  width: 80%;
+}
+
+.skills__typescript {
+  width: 80%;
+}
+
+.skills__express {
   width: 80%;
 }
 
@@ -558,7 +566,7 @@ img {
 }
 
 .skills__python {
-  width: 70%;
+  width: 90%;
 }
 
 .skills__close .skills__list {
