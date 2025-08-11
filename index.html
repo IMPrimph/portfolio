@@ -1,157 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta name="description" content="Vishnu Sai Jaswanth - SDE3 Backend Engineer specializing in distributed systems, microservices, and scalable architecture" />
-
-	<!--==================== CSS ====================-->
-	<link rel="stylesheet" href="./assets/css/styles.css" />
-
-	<!--==================== Favicon ====================-->
-	<link rel="icon" href="assets/img/favikis.png" type="image/png">
-
-	<title>Vishnu Sai Jaswanth - Senior Backend Engineer</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vishnu Gajulapalli</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
-
 <body>
-	<div class="main-container">
-		<!-- Left Panel - Primary Info -->
-		<div class="left-panel">
-			<div class="identity">
-				<h1 class="name">Vishnu Sai Jaswanth</h1>
-				<div class="title">Senior Backend Engineer</div>
-				<div class="subtitle">Distributed Systems • Microservices • Cloud Architecture</div>
-			</div>
-			
-			<div class="core-tech">
-				<div class="tech-grid">
-					<span class="tech-item primary">Java</span>
-					<span class="tech-item primary">Python</span>
-					<span class="tech-item primary">Node.js</span>
-					<span class="tech-item">Spring Boot</span>
-					<span class="tech-item">PostgreSQL</span>
-					<span class="tech-item">Redis</span>
-					<span class="tech-item">Kubernetes</span>
-					<span class="tech-item">AWS</span>
-					<span class="tech-item">Docker</span>
-					<span class="tech-item">MongoDB</span>
-				</div>
-			</div>
+    <div class="container">
+        <header class="header">
+            <h1 class="name">Vishnu Gajulapalli</h1>
+            <p class="title">Senior Backend Engineer</p>
+            
+            <nav class="nav">
+                <button class="nav-btn active" data-section="about">About</button>
+                <button class="nav-btn" data-section="projects">Projects</button>
+                <button class="nav-btn" data-section="contact">Contact</button>
+                <button class="nav-btn" data-section="education">Education</button>
+            </nav>
+        </header>
 
-			<div class="experience-summary">
-				<div class="exp-block">
-					<span class="number">5+</span>
-					<span class="label">Years Experience</span>
-				</div>
-				<div class="exp-block">
-					<span class="number">20+</span>
-					<span class="label">Systems Built</span>
-				</div>
-				<div class="exp-block">
-					<span class="number">99.9%</span>
-					<span class="label">Uptime Achieved</span>
-				</div>
-			</div>
+        <main class="main">
+            <section id="about" class="section active">
+                <h2>About</h2>
+                <p>Senior Backend Engineer with 3+ years of experience building scalable distributed systems. Passionate about clean code, system architecture, and integrating AI/ML solutions.</p>
+                
+                <div class="skills">
+                    <h3>Technologies</h3>
+                    <div class="tech-tags">
+                        <span>Java</span>
+                        <span>Python</span>
+                        <span>Node.js</span>
+                        <span>PostgreSQL</span>
+                        <span>Redis</span>
+                        <span>AWS</span>
+                        <span>Docker</span>
+                        <span>Kubernetes</span>
+                    </div>
+                </div>
+            </section>
 
-			<div class="contact-info">
-				<a href="mailto:vishnugajulapalli123@gmail.com" class="contact-link primary-btn">
-					<span class="icon">✉</span>
-					Get In Touch
-				</a>
-				<a href="assets/pdf/resume.pdf" target="_blank" class="contact-link secondary-btn">
-					<span class="icon">↗</span>
-					Resume
-				</a>
-				<div class="social-minimal">
-					<a href="https://github.com/IMPrimph" target="_blank" class="social-link">GitHub</a>
-					<a href="https://www.linkedin.com/in/vishnu-sai-jaswanth-gajulapalli-0670811a7/" target="_blank" class="social-link">LinkedIn</a>
-				</div>
-			</div>
-		</div>
+            <section id="projects" class="section">
+                <h2>Projects</h2>
+                
+                <div class="project">
+                    <h3>Distributed Chat System</h3>
+                    <p>Real-time messaging platform handling 10K+ concurrent connections with Node.js and Redis clustering.</p>
+                    <a href="https://fathomless-spire-87223.herokuapp.com/" target="_blank" class="project-link">View Project →</a>
+                </div>
 
-		<!-- Right Panel - Projects & Details -->
-		<div class="right-panel">
-			<div class="section">
-				<h2 class="section-title">Key Projects</h2>
-				
-				<div class="project-list">
-					<div class="project-item">
-						<div class="project-header">
-							<h3>Distributed Chat System</h3>
-							<span class="project-type">Backend Architecture</span>
-						</div>
-						<p class="project-desc">Built real-time messaging platform handling 10K+ concurrent connections using Node.js, Redis, and WebSocket clustering.</p>
-						<div class="tech-tags">
-							<span>Node.js</span>
-							<span>Redis</span>
-							<span>Socket.io</span>
-							<span>Clustering</span>
-						</div>
-					</div>
+                <div class="project">
+                    <h3>Microservices Platform</h3>
+                    <p>Scalable camping platform with JWT authentication, geospatial search, and real-time reviews.</p>
+                    <a href="https://tranquil-beach-92340.herokuapp.com/" target="_blank" class="project-link">View Project →</a>
+                </div>
 
-					<div class="project-item">
-						<div class="project-header">
-							<h3>Microservices Platform</h3>
-							<span class="project-type">System Design</span>
-						</div>
-						<p class="project-desc">Designed scalable camping platform with user auth, reviews, and geospatial search using microservices architecture.</p>
-						<div class="tech-tags">
-							<span>Express.js</span>
-							<span>MongoDB</span>
-							<span>JWT</span>
-							<span>GeoSpatial</span>
-						</div>
-					</div>
+                <div class="project">
+                    <h3>High-Performance Color API</h3>
+                    <p>Ultra-fast API serving color palettes with intelligent caching, handling 1M+ requests daily.</p>
+                    <a href="https://react-coolor-picker.netlify.app/" target="_blank" class="project-link">View Project →</a>
+                </div>
+            </section>
 
-					<div class="project-item">
-						<div class="project-header">
-							<h3>Color Palette API</h3>
-							<span class="project-type">REST Services</span>
-						</div>
-						<p class="project-desc">High-performance API serving color palettes with caching, rate limiting, and sub-50ms response times.</p>
-						<div class="tech-tags">
-							<span>Python</span>
-							<span>FastAPI</span>
-							<span>Redis Cache</span>
-							<span>PostgreSQL</span>
-						</div>
-					</div>
-				</div>
-			</div>
+            <section id="contact" class="section">
+                <h2>Contact</h2>
+                <div class="contact-links">
+                    <a href="mailto:vishnugajulapalli123@gmail.com" class="contact-link">Email</a>
+                    <a href="https://www.linkedin.com/in/vishnu-sai-jaswanth-gajulapalli-0670811a7/" target="_blank" class="contact-link">LinkedIn</a>
+                    <a href="https://github.com/IMPrimph" target="_blank" class="contact-link">GitHub</a>
+                    <a href="assets/Vishnu_Resume.pdf" target="_blank" class="contact-link">Resume</a>
+                </div>
+                <p class="location">Based in Hyderabad, India</p>
+            </section>
 
-			<div class="section">
-				<h2 class="section-title">Experience</h2>
-				<div class="timeline">
-					<div class="timeline-item">
-						<div class="company">HP R&D</div>
-						<div class="role">Backend Engineering Intern</div>
-						<div class="duration">2020</div>
-						<div class="achievement">Built data processing pipelines • Optimized database queries</div>
-					</div>
-					<div class="timeline-item">
-						<div class="company">TechnoSprint</div>
-						<div class="role">Software Engineering Intern</div>
-						<div class="duration">2020</div>
-						<div class="achievement">Developed REST APIs • Implemented caching strategies</div>
-					</div>
-				</div>
-			</div>
+            <section id="education" class="section">
+                <h2>Education</h2>
+                <div class="education">
+                    <h3>Bachelor of Technology in Computer Science</h3>
+                    <p class="institution">Jawaharlal Nehru Technological University</p>
+                    <p class="year">2018 - 2022</p>
+                </div>
+            </section>
+        </main>
+    </div>
 
-			<div class="section">
-				<h2 class="section-title">Education</h2>
-				<div class="education-item">
-					<div class="degree">B.Tech Computer Science</div>
-					<div class="institution">Pondicherry Technological University</div>
-					<div class="year">2018-2022</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	
-	<!-- JavaScript -->
-	<script src="assets/js/main.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
-
 </html>
