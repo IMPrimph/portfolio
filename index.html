@@ -4,14 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="page-title">Loading...</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cstyle%3E.v%7Bfill:%23d2691e;font:bold 60px Inter,sans-serif%7D%3C/style%3E%3Ccircle cx='50' cy='50' r='45' fill='%23fefcf3' stroke='%23d2691e' stroke-width='6'/%3E%3Ctext x='50' y='70' text-anchor='middle' class='v'%3EV%3C/text%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cstyle%3E.v%7Bfill:%23d2691e;font:bold 60px Inter,sans-serif%7D%3C/style%3E%3Ccircle cx='50' cy='50' r='45' fill='%23fefcf3' stroke='%23d2691e' stroke-width='6'/%3E%3Ctext x='50' y='70' text-anchor='middle' class='v'%3EV%3C/text%3E%3C/svg%3E">
+    
     <link rel="stylesheet" href="assets/css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <header class="header">
+            <div class="theme-toggle" id="theme-toggle">
+                <button class="theme-btn" data-theme="light" title="Light Mode">☀️</button>
+                <button class="theme-btn active" data-theme="warm" title="Warm Mode">🌅</button>
+                <button class="theme-btn" data-theme="dark" title="Dark Mode">🌙</button>
+            </div>
+            
             <h1 class="name" id="name">Loading...</h1>
             <p class="title" id="title">Loading...</p>
+            <div class="experience-badge" id="experience-badge">2+ Years Experience</div>
             
             <nav class="nav">
                 <button class="nav-btn active" data-section="about">About</button>

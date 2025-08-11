@@ -119,12 +119,22 @@ function renderContact() {
 
     contactContainer.innerHTML = '';
     
+    // Resume (Primary CTA)
+    if (portfolioData.contact.resume) {
+        const resumeLink = document.createElement('a');
+        resumeLink.href = portfolioData.contact.resume;
+        resumeLink.className = 'contact-link primary';
+        resumeLink.target = '_blank';
+        resumeLink.textContent = '📄 Resume';
+        contactContainer.appendChild(resumeLink);
+    }
+
     // Email
     if (portfolioData.contact.email) {
         const emailLink = document.createElement('a');
         emailLink.href = `mailto:${portfolioData.contact.email}`;
         emailLink.className = 'contact-link';
-        emailLink.textContent = 'Email';
+        emailLink.textContent = '✉️ Email';
         contactContainer.appendChild(emailLink);
     }
 
@@ -134,7 +144,7 @@ function renderContact() {
         linkedinLink.href = portfolioData.contact.linkedin;
         linkedinLink.className = 'contact-link';
         linkedinLink.target = '_blank';
-        linkedinLink.textContent = 'LinkedIn';
+        linkedinLink.textContent = '💼 LinkedIn';
         contactContainer.appendChild(linkedinLink);
     }
 
@@ -144,18 +154,8 @@ function renderContact() {
         githubLink.href = portfolioData.contact.github;
         githubLink.className = 'contact-link';
         githubLink.target = '_blank';
-        githubLink.textContent = 'GitHub';
+        githubLink.textContent = '💻 GitHub';
         contactContainer.appendChild(githubLink);
-    }
-
-    // Resume
-    if (portfolioData.contact.resume) {
-        const resumeLink = document.createElement('a');
-        resumeLink.href = portfolioData.contact.resume;
-        resumeLink.className = 'contact-link';
-        resumeLink.target = '_blank';
-        resumeLink.textContent = 'Resume';
-        contactContainer.appendChild(resumeLink);
     }
 }
 
@@ -198,8 +198,42 @@ function initNavigation() {
     });
 }
 
+// Theme functionality
+function initTheme() {
+    const themeButtons = document.querySelectorAll('.theme-btn');
+    const body = document.body;
+    
+    // Load saved theme or default to warm
+    const savedTheme = localStorage.getItem('portfolio-theme') || 'warm';
+    setTheme(savedTheme);
+    
+    themeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const theme = button.getAttribute('data-theme');
+            setTheme(theme);
+            localStorage.setItem('portfolio-theme', theme);
+        });
+    });
+}
+
+function setTheme(theme) {
+    const body = document.body;
+    const themeButtons = document.querySelectorAll('.theme-btn');
+    
+    // Remove existing theme classes
+    body.classList.remove('theme-light', 'theme-dark', 'theme-warm');
+    
+    // Add new theme class
+    body.classList.add(`theme-${theme}`);
+    
+    // Update active button
+    themeButtons.forEach(btn => btn.classList.remove('active'));
+    document.querySelector(`[data-theme="${theme}"]`).classList.add('active');
+}
+
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     loadContent();
     initNavigation();
+    initTheme();
 });
