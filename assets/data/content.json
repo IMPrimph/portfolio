@@ -84,6 +84,7 @@
       "link": "https://fathomless-spire-87223.herokuapp.com/",
       "image": "assets/img/chat-optimized.png",
       "imageAlt": "Screenshot of real-time chat platform interface showing message threads and user list",
+      "aiAssisted": false,
       "featured": true
     },
     {
@@ -94,6 +95,7 @@
       "link": "https://tranquil-beach-92340.herokuapp.com/",
       "image": "assets/img/yelpcamp-optimized.png",
       "imageAlt": "Screenshot of YelpCamp platform showing camping site listings with photos and reviews",
+      "aiAssisted": false,
       "featured": true
     },
     {
@@ -104,6 +106,7 @@
       "link": "https://react-coolor-picker.netlify.app/",
       "image": "assets/img/color-palettes-optimized.png",
       "imageAlt": "Screenshot of color picker application showing generated color palettes and API interface",
+      "aiAssisted": true,
       "featured": true
     }
   ],

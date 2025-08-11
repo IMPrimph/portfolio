@@ -104,9 +104,13 @@ function renderProjects() {
         projectDiv.className = 'project';
         
         const imageHtml = project.image ? `<img src="${project.image}" alt="${project.imageAlt}" width="300" height="200" class="project-image" loading="lazy">` : '';
+        const aiAssistedBadge = project.aiAssisted ? `<span class="ai-badge">🤖 AI-Assisted</span>` : `<span class="independent-badge">👨‍💻 Built Independently</span>`;
         projectDiv.innerHTML = `
             ${imageHtml}
-            <h3>${project.title}</h3>
+            <div class="project-header">
+                <h3>${project.title}</h3>
+                ${aiAssistedBadge}
+            </div>
             <p>${project.description}</p>
             <a href="${project.link}" target="_blank" class="project-link">View Project →</a>
         `;
