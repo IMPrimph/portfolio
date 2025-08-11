@@ -82,6 +82,8 @@
       "description": "Enterprise-grade messaging system serving 10K+ concurrent users with WebSocket clustering, message persistence, and AI-powered moderation. Implemented horizontal scaling with Redis pub/sub and MongoDB sharding.",
       "technologies": ["Node.js", "Socket.io", "Redis Cluster", "MongoDB", "Docker", "AWS ELB"],
       "link": "https://fathomless-spire-87223.herokuapp.com/",
+      "image": "assets/img/chat-optimized.png",
+      "imageAlt": "Screenshot of real-time chat platform interface showing message threads and user list",
       "featured": true
     },
     {
@@ -90,6 +92,8 @@
       "description": "Scalable camping platform with JWT authentication, geospatial search, and real-time reviews.",
       "technologies": ["Express.js", "MongoDB", "JWT", "Geospatial"],
       "link": "https://tranquil-beach-92340.herokuapp.com/",
+      "image": "assets/img/yelpcamp-optimized.png",
+      "imageAlt": "Screenshot of YelpCamp platform showing camping site listings with photos and reviews",
       "featured": true
     },
     {
@@ -98,6 +102,8 @@
       "description": "Ultra-fast API serving color palettes with intelligent caching, handling 1M+ requests daily.",
       "technologies": ["Python", "FastAPI", "Redis", "PostgreSQL"],
       "link": "https://react-coolor-picker.netlify.app/",
+      "image": "assets/img/color-palettes-optimized.png",
+      "imageAlt": "Screenshot of color picker application showing generated color palettes and API interface",
       "featured": true
     }
   ],

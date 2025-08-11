@@ -103,7 +103,9 @@ function renderProjects() {
         const projectDiv = document.createElement('div');
         projectDiv.className = 'project';
         
+        const imageHtml = project.image ? `<img src="${project.image}" alt="${project.imageAlt}" width="300" height="200" class="project-image" loading="lazy">` : '';
         projectDiv.innerHTML = `
+            ${imageHtml}
             <h3>${project.title}</h3>
             <p>${project.description}</p>
             <a href="${project.link}" target="_blank" class="project-link">View Project →</a>

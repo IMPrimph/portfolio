@@ -27,11 +27,11 @@
     /* Warm Theme */
     --warm-bg: #fefcf3;
     --warm-bg-alt: #faf6e8;
-    --warm-text-primary: #1a1100;
-    --warm-text-secondary: #5d2b00;
-    --warm-text-muted: #7a3300;
+    --warm-text-primary: #2d1b00;
+    --warm-text-secondary: #4d2200;
+    --warm-text-muted: #6d3000;
     --warm-border: #e8dcc0;
-    --warm-accent: #b8651c;
+    --warm-accent: #8b4513;
     --warm-accent-hover: #a05518;
     --warm-tag-bg: #faf4e6;
     --warm-tag-border: #e8dcc0;
@@ -369,6 +369,16 @@ body.theme-warm {
 .project:last-child {
     border-bottom: none;
     margin-bottom: 0;
+}
+
+.project-image {
+    width: 100%;
+    max-width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    border: 1px solid var(--border, var(--dark-border));
 }
 
 .project h3 {
