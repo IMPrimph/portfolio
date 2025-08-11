@@ -27,12 +27,12 @@
     /* Warm Theme */
     --warm-bg: #fefcf3;
     --warm-bg-alt: #faf6e8;
-    --warm-text-primary: #2d1b00;
-    --warm-text-secondary: #8b4513;
-    --warm-text-muted: #a0522d;
+    --warm-text-primary: #1a1100;
+    --warm-text-secondary: #5d2b00;
+    --warm-text-muted: #7a3300;
     --warm-border: #e8dcc0;
-    --warm-accent: #d2691e;
-    --warm-accent-hover: #b8651c;
+    --warm-accent: #b8651c;
+    --warm-accent-hover: #a05518;
     --warm-tag-bg: #faf4e6;
     --warm-tag-border: #e8dcc0;
 }
@@ -50,7 +50,7 @@ body {
     color: var(--warm-text-primary);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Theme Classes */
@@ -136,13 +136,14 @@ body.theme-warm {
     border-radius: 16px;
     cursor: pointer;
     font-size: 14px;
-    transition: all 0.2s ease;
+    transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
     opacity: 0.5;
     min-width: 32px;
     height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
+    will-change: transform, opacity;
 }
 
 .theme-btn:hover {
@@ -202,8 +203,9 @@ body.theme-warm {
     font-size: 0.9rem;
     font-weight: 500;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
     font-family: inherit;
+    will-change: transform;
 }
 
 .nav-btn:hover {
@@ -490,5 +492,5 @@ body.theme-warm {
 
 /* Smooth transitions for all interactive elements */
 * {
-    transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
