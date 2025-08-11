@@ -1,152 +1,216 @@
-/*==================== MENU SHOW Y HIDDEN ====================*/
-const navMenu = document.getElementById('nav-menu'),
-    navToggle = document.getElementById('nav-toggle'),
-    navClose = document.getElementById('nav-close')
+/*==================== SDE3 BACKEND ENGINEER PORTFOLIO JS ====================*/
 
-/*===== MENU SHOW =====*/
-/* Validate if constant exists */
-if (navToggle) {
-    navToggle.addEventListener('click', () => {
-        navMenu.classList.add('show-menu')
-    })
-}
-
-/*===== MENU HIDDEN =====*/
-/* Validate if constant exists */
-if (navClose) {
-    navClose.addEventListener('click', () => {
-        navMenu.classList.remove('show-menu')
-    })
-}
-
-/*==================== REMOVE MENU MOBILE ====================*/
-const navLink = document.querySelectorAll('.nav__link')
-
-function linkAction() {
-    navMenu.classList.remove('show-menu')
-}
-navLink.forEach(n => n.addEventListener('click', linkAction))
-
-
-/*==================== ACCORDION SKILLS ====================*/
-const skillsContent = document.getElementsByClassName('skills__content'),
-    skillsHeader = document.querySelectorAll('.skills__header')
-
-function toggleSkills() {
-    let itemClass = this.parentNode.className;
-
-    for (let i = 0; i < skillsContent.length; i++) {
-        skillsContent[i].className = 'skills__content skills__close'
+document.addEventListener('DOMContentLoaded', function() {
+    // Subtle typing effect for the title
+    const titleElement = document.querySelector('.title');
+    if (titleElement) {
+        const originalText = titleElement.textContent;
+        titleElement.textContent = '';
+        
+        let i = 0;
+        const typeWriter = () => {
+            if (i < originalText.length) {
+                titleElement.textContent += originalText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            }
+        };
+        
+        setTimeout(typeWriter, 500);
     }
 
-    if (itemClass === 'skills__content skills__close') {
-        this.parentNode.className = 'skills__content skills__open'
-    }
-}
+    // Tech stack hover effects with performance metrics
+    const techItems = document.querySelectorAll('.tech-item');
+    const performanceData = {
+        'Java': 'Enterprise scale • High performance',
+        'Python': 'ML & Data • Rapid development',
+        'Node.js': 'Real-time • Event-driven',
+        'Spring Boot': 'Microservices • Production ready',
+        'PostgreSQL': 'ACID compliance • Scalable',
+        'Redis': 'Sub-ms latency • Caching',
+        'Kubernetes': 'Container orchestration',
+        'AWS': 'Cloud infrastructure',
+        'Docker': 'Containerization',
+        'MongoDB': 'Document store • NoSQL'
+    };
 
-skillsHeader.forEach((el) => {
-    el.addEventListener('click', toggleSkills)
-})
+    techItems.forEach(item => {
+        const tooltip = document.createElement('div');
+        tooltip.className = 'tech-tooltip';
+        tooltip.textContent = performanceData[item.textContent] || 'Core technology';
+        item.appendChild(tooltip);
 
-/*==================== QUALIFICATION TABS ====================*/
-const tabs = document.querySelectorAll('[data-target]'),
-    tabContents = document.querySelectorAll('[data-content]')
+        item.addEventListener('mouseenter', () => {
+            tooltip.style.opacity = '1';
+            tooltip.style.transform = 'translateY(-5px)';
+        });
 
-tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-        const target = document.querySelector(tab.dataset.target)
+        item.addEventListener('mouseleave', () => {
+            tooltip.style.opacity = '0';
+            tooltip.style.transform = 'translateY(0)';
+        });
+    });
 
-        tabContents.forEach(tabContent => {
-            tabContent.classList.remove('qualification__active')
-        })
-        target.classList.add('qualification__active')
-
-        tabs.forEach(tab => {
-            tab.classList.remove('qualification__active')
-        })
-        tab.classList.add('qualification__active')
-    })
-})
-
-
-
-/*==================== PORTFOLIO SWIPER  ====================*/
-let swiper = new Swiper('.portfolio__container', {
-    cssMode: true,
-    loop: true,
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev'
-    },
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-    },
-    mousewheel: true
-})
-
-/*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
-const sections = document.querySelectorAll('section[id]')
-
-function scrollActive() {
-    const scrollY = window.pageYOffset
-
-    sections.forEach(current => {
-        const sectionHeight = current.offsetHeight
-        const sectionTop = current.offsetTop - 50;
-        sectionId = current.getAttribute('id')
-
-        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-            document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.add('active-link')
-        } else {
-            document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.remove('active-link')
+    // Add tooltip styles dynamically
+    const tooltipStyle = document.createElement('style');
+    tooltipStyle.textContent = `
+        .tech-tooltip {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            padding: 0.5rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            white-space: nowrap;
+            opacity: 0;
+            transition: all 0.3s ease;
+            pointer-events: none;
+            z-index: 10;
+            border: 1px solid var(--border-color);
+            font-family: var(--font-mono);
         }
-    })
-}
-window.addEventListener('scroll', scrollActive)
+        .tech-item {
+            position: relative;
+            overflow: visible;
+        }
+    `;
+    document.head.appendChild(tooltipStyle);
 
-/*==================== CHANGE BACKGROUND HEADER ====================*/
-function scrollHeader() {
-    const nav = document.getElementById('header')
-    // When the scroll is greater than 200 viewport height, add the scroll-header class to the header tag
-    if (this.scrollY >= 80) nav.classList.add('scroll-header'); else nav.classList.remove('scroll-header')
-}
-window.addEventListener('scroll', scrollHeader)
+    // Experience counter animation
+    const counters = document.querySelectorAll('.number');
+    const animateCounter = (counter) => {
+        const target = counter.textContent;
+        const isPercentage = target.includes('%');
+        const isPlus = target.includes('+');
+        const numericValue = parseFloat(target.replace(/[^\d.]/g, ''));
+        
+        let currentValue = 0;
+        const increment = numericValue / 30;
+        
+        const updateCounter = () => {
+            if (currentValue < numericValue) {
+                currentValue += increment;
+                if (isPercentage) {
+                    counter.textContent = Math.floor(currentValue) + '%';
+                } else if (isPlus) {
+                    counter.textContent = Math.floor(currentValue) + '+';
+                } else {
+                    counter.textContent = Math.floor(currentValue);
+                }
+                requestAnimationFrame(updateCounter);
+            } else {
+                counter.textContent = target;
+            }
+        };
+        
+        setTimeout(updateCounter, 1000);
+    };
 
-/*==================== SHOW SCROLL UP ====================*/
-function scrollUp() {
-    const scrollUp = document.getElementById('scroll-up');
-    // When the scroll is higher than 560 viewport height, add the show-scroll class to the a tag with the scroll-top class
-    if (this.scrollY >= 560) scrollUp.classList.add('show-scroll'); else scrollUp.classList.remove('show-scroll')
-}
-window.addEventListener('scroll', scrollUp)
+    // Intersection observer for counter animation
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                counterObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
 
-/*==================== DARK LIGHT THEME ====================*/
-const themeButton = document.getElementById('theme-button')
-const darkTheme = 'dark-theme'
-const iconTheme = 'uil-sun'
+    counters.forEach(counter => {
+        counterObserver.observe(counter);
+    });
 
-// Previously selected topic (if user selected)
-const selectedTheme = localStorage.getItem('selected-theme')
-const selectedIcon = localStorage.getItem('selected-icon')
+    // Smooth reveal animations for sections
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -10% 0px'
+    };
 
-// We obtain the current theme that the interface has by validating the dark-theme class
-const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light'
-const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'uil-moon' : 'uil-sun'
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
 
-// We validate if the user previously chose a topic
-if (selectedTheme) {
-    // If the validation is fulfilled, we ask what the issue was to know if we activated or deactivated the dark
-    document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme)
-    themeButton.classList[selectedIcon === 'uil-moon' ? 'add' : 'remove'](iconTheme)
-}
+    // Observe all animated elements
+    const animatedElements = document.querySelectorAll('.project-item, .timeline-item, .education-item');
+    animatedElements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+        sectionObserver.observe(el);
+    });
 
-// Activate / deactivate the theme manually with the button
-themeButton.addEventListener('click', () => {
-    // Add or remove the dark / icon theme
-    document.body.classList.toggle(darkTheme)
-    themeButton.classList.toggle(iconTheme)
-    // We save the theme and the current icon that the user chose
-    localStorage.setItem('selected-theme', getCurrentTheme())
-    localStorage.setItem('selected-icon', getCurrentIcon())
-})
+    // Add subtle parallax effect to left panel
+    const leftPanel = document.querySelector('.left-panel');
+    let ticking = false;
+
+    const updateParallax = () => {
+        const scrolled = window.pageYOffset;
+        const parallax = scrolled * 0.02;
+        
+        if (leftPanel) {
+            leftPanel.style.transform = `translateY(${parallax}px)`;
+        }
+        
+        ticking = false;
+    };
+
+    const requestTick = () => {
+        if (!ticking) {
+            requestAnimationFrame(updateParallax);
+            ticking = true;
+        }
+    };
+
+    window.addEventListener('scroll', requestTick);
+
+    // Add hover sound effect simulation (visual feedback)
+    const interactiveElements = document.querySelectorAll('.contact-link, .tech-item, .project-item');
+    
+    interactiveElements.forEach(element => {
+        element.addEventListener('mouseenter', () => {
+            element.style.boxShadow = '0 0 20px rgba(0, 255, 136, 0.1)';
+        });
+        
+        element.addEventListener('mouseleave', () => {
+            element.style.boxShadow = '';
+        });
+    });
+
+    // Add focus states for accessibility
+    const focusableElements = document.querySelectorAll('a, button');
+    
+    focusableElements.forEach(element => {
+        element.addEventListener('focus', () => {
+            element.style.outline = '2px solid var(--accent-primary)';
+            element.style.outlineOffset = '2px';
+        });
+        
+        element.addEventListener('blur', () => {
+            element.style.outline = '';
+            element.style.outlineOffset = '';
+        });
+    });
+
+    // Performance optimization: debounce scroll events
+    let scrollTimeout;
+    window.addEventListener('scroll', () => {
+        if (scrollTimeout) {
+            clearTimeout(scrollTimeout);
+        }
+        
+        scrollTimeout = setTimeout(() => {
+            // Additional scroll-based animations can be added here
+            console.log('Scroll optimized');
+        }, 100);
+    });
+
+    console.log('🚀 SDE3 Backend Engineer Portfolio loaded successfully');
+});
