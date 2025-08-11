@@ -108,21 +108,25 @@ body {
 }
 
 /* Skills */
-.skills {
-    margin-top: 40px;
+.skill-category {
+    margin-bottom: 30px;
 }
 
-.skills h3 {
+.skill-category:last-child {
+    margin-bottom: 0;
+}
+
+.skill-category h3 {
     font-size: 1.1rem;
     color: #333;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     font-weight: 500;
 }
 
 .tech-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
 }
 
 .tech-tags span {
@@ -132,6 +136,30 @@ body {
     font-size: 0.85rem;
     color: #666;
     border: 1px solid #e8e8e8;
+}
+
+/* Achievements */
+.achievement {
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.achievement:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.achievement h3 {
+    font-size: 1.1rem;
+    color: #222;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.achievement p {
+    color: #555;
+    line-height: 1.6;
 }
 
 /* Projects */

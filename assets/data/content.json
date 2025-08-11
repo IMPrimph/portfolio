@@ -1,0 +1,142 @@
+{
+  "personal": {
+    "name": "Vishnu Gajulapalli",
+    "title": "Senior Backend Engineer",
+    "bio": "Senior Backend Engineer with 3+ years of experience building scalable distributed systems. Passionate about clean code, system architecture, and integrating AI/ML solutions.",
+    "location": "Hyderabad, India"
+  },
+  "contact": {
+    "email": "vishnugajulapalli123@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/vishnu-sai-jaswanth-gajulapalli-0670811a7/",
+    "github": "https://github.com/IMPrimph",
+    "resume": "assets/Vishnu_Resume.pdf"
+  },
+  "skills": {
+    "Backend Technologies": [
+      "Java",
+      "Python",
+      "Node.js",
+      "Spring Boot",
+      "Express.js",
+      "FastAPI",
+      "REST APIs",
+      "GraphQL"
+    ],
+    "Databases": [
+      "PostgreSQL",
+      "MongoDB",
+      "Redis",
+      "MySQL",
+      "Elasticsearch",
+      "Cassandra"
+    ],
+    "DevOps & Cloud": [
+      "AWS",
+      "Docker",
+      "Kubernetes",
+      "Jenkins",
+      "Terraform",
+      "Linux",
+      "CI/CD"
+    ],
+    "Tools & Others": [
+      "Git",
+      "Apache Kafka",
+      "RabbitMQ",
+      "Grafana",
+      "Prometheus",
+      "Microservices",
+      "System Design"
+    ]
+  },
+  "achievements": [
+    {
+      "id": 1,
+      "title": "High-Performance System Architecture",
+      "description": "Designed and implemented distributed systems handling 10K+ concurrent users with 99.9% uptime"
+    },
+    {
+      "id": 2,
+      "title": "Database Optimization Expert",
+      "description": "Optimized database queries and implemented caching strategies reducing response times by 60%"
+    },
+    {
+      "id": 3,
+      "title": "AI/ML Integration Specialist",
+      "description": "Successfully integrated machine learning models for personalized recommendations, increasing user engagement by 35%"
+    },
+    {
+      "id": 4,
+      "title": "Scalable API Development",
+      "description": "Built APIs serving 1M+ requests daily with sub-50ms response times using intelligent caching"
+    },
+    {
+      "id": 5,
+      "title": "Enterprise Integration",
+      "description": "Led migration from monolithic to microservices architecture improving system scalability and maintainability"
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "title": "Distributed Chat System",
+      "description": "Real-time messaging platform handling 10K+ concurrent connections with Node.js and Redis clustering.",
+      "technologies": ["Node.js", "Socket.io", "Redis", "AI/ML"],
+      "link": "https://fathomless-spire-87223.herokuapp.com/",
+      "featured": true
+    },
+    {
+      "id": 2,
+      "title": "Microservices Platform",
+      "description": "Scalable camping platform with JWT authentication, geospatial search, and real-time reviews.",
+      "technologies": ["Express.js", "MongoDB", "JWT", "Geospatial"],
+      "link": "https://tranquil-beach-92340.herokuapp.com/",
+      "featured": true
+    },
+    {
+      "id": 3,
+      "title": "High-Performance Color API",
+      "description": "Ultra-fast API serving color palettes with intelligent caching, handling 1M+ requests daily.",
+      "technologies": ["Python", "FastAPI", "Redis", "PostgreSQL"],
+      "link": "https://react-coolor-picker.netlify.app/",
+      "featured": true
+    }
+  ],
+  "experience": [
+    {
+      "id": 1,
+      "title": "Senior Backend Engineer",
+      "company": "Freelance & Personal Projects",
+      "duration": "2022 - Present",
+      "description": "Architecting distributed systems, building high-performance APIs, and integrating ML models for real-time applications.",
+      "achievements": [
+        "Built distributed chat system handling 10K+ concurrent connections with 99.9% uptime",
+        "Architected microservices platform with JWT authentication and real-time features",
+        "Optimized API performance achieving sub-50ms response times with Redis caching",
+        "Integrated ML models for personalized recommendations increasing engagement by 35%"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Backend Engineering Intern",
+      "company": "HP R&D",
+      "duration": "2020",
+      "description": "Developed ETL pipelines and optimized database performance for enterprise applications.",
+      "achievements": [
+        "Developed ETL pipelines processing 1M+ records daily with 99.5% accuracy",
+        "Optimized database queries reducing average response time by 60%",
+        "Implemented monitoring solutions using Grafana and Prometheus",
+        "Collaborated on enterprise integration projects with cross-functional teams"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "id": 1,
+      "degree": "Bachelor of Technology in Computer Science",
+      "institution": "Jawaharlal Nehru Technological University",
+      "duration": "2018 - 2022",
+      "details": "Focus: Software Engineering, Data Structures, Database Systems"
+    }
+  ]
+}
