@@ -2,207 +2,83 @@
   "personal": {
     "name": "Vishnu Sai Jaswanth",
     "title": "Senior Software Development Engineer (SDE-3)",
-    "bio": "Senior Backend Engineer with 3+ years of experience architecting scalable distributed systems, AI/ML integrations, and high-performance applications. Proven track record of leading technical initiatives, optimizing system performance by 5x, and delivering solutions that directly impact business metrics. Expertise in system design, microservices architecture, and building fault-tolerant systems at scale.",
-    "location": "Hyderabad, India"
+    "bio": "Senior Software Engineer with experience in backend systems, data infrastructure, and AI integrations. Skilled at building fault-tolerant microservices and scalable platforms; strong in system design, distributed systems, caching, and performance optimization. Looking for impactful backend roles in high-growth, learning-focused environments.",
+    "location": "Bengaluru, India"
   },
   "contact": {
     "email": "vishnugajulapalli123@gmail.com",
     "linkedin": "https://www.linkedin.com/in/vishnu-sai-jaswanth-gajulapalli-0670811a7/",
     "github": "https://github.com/IMPrimph",
-    "resume": "assets/Vishnu_Resume.pdf"
+    "portfolio": "https://jaswanth123.netlify.app/",
+    "resume": "assets/pdf/resume.pdf"
   },
   "skills": {
-    "Programming Languages": [
-      "JavaScript (Node.js, Express.js)",
-      "Python (FastAPI, Django)",
-      "TypeScript (Backend Applications)",
-      "Go (Concurrent Systems)",
-      "Java (Spring Boot, Microservices)"
-    ],
-    "System Architecture & Design": [
-      "Microservices Architecture",
-      "Event-Driven Architecture",
-      "Distributed Systems Design",
-      "API Design (REST, GraphQL)",
-      "Database Schema Design",
-      "Caching Strategies"
-    ],
-    "AI/ML & Data Processing": [
-      "Gemini AI Integration",
-      "Vector Databases (Pinecone, Qdrant)",
-      "Elasticsearch (Search & Analytics)",
-      "Real-time Data Clustering",
-      "ML Pipeline Architecture",
-      "Async Processing Systems"
-    ],
-    "Cloud & DevOps": [
-      "Google Cloud Platform",
-      "Firebase (Real-time Systems)",
-      "Docker & Kubernetes",
-      "CI/CD Pipelines",
-      "Cloud Functions & Triggers",
-      "Infrastructure Automation"
-    ],
-    "Databases & Storage": [
-      "PostgreSQL (Query Optimization)",
-      "MongoDB (Document Design)",
-      "Redis (Caching & Pub/Sub)",
-      "Firestore (Real-time Data)",
-      "Database Performance Tuning"
-    ],
-    "Integration & Platforms": [
-      "Shopify API Integration",
-      "Zendesk API & Webhooks",
-      "Salesforce Integration",
-      "Real-time Chat Systems",
-      "Webhook Architecture",
-      "Third-party API Design"
-    ]
+    "Languages": ["JavaScript", "TypeScript", "Python"],
+    "Backend": ["Node.js", "Express", "REST APIs", "WebSockets", "Microservices", "API Design and Development"],
+    "System/Infra": ["System Design", "Scalability", "Distributed Systems", "Load Balancing", "Caching"],
+    "Data/Search": ["PostgreSQL", "MySQL", "MongoDB", "Redis", "Elasticsearch", "Pinecone", "Qdrant"],
+    "AI/LLM": ["LLM Integration", "Prompt Engineering", "Vector Databases"],
+    "Cloud/DevOps": ["AWS", "GCP Services", "Docker", "Kubernetes", "CI/CD Pipelines"],
+    "Collaboration": ["Git (Version Control)", "Code Review"]
   },
-  "achievements": [
+  "experience": [
     {
       "id": 1,
-      "title": "AI/ML Integration Leadership",
-      "description": "Led end-to-end integration of Gemini AI and O3-mini models into production systems, handling async processing, function calling, and real-time inference pipelines across multiple environments. Built comprehensive testing and monitoring for AI model performance."
+      "title": "Senior Software Development Engineer",
+      "company": "BIK.AI",
+      "duration": "Jan 2025 – Present",
+      "location": "Bengaluru",
+      "achievements": [
+        "Engineered a generic clustering infrastructure using vector embeddings to group unsatisfactory AI responses and customer feedback, improving chatbot accuracy and reducing repeated unresolved queries by 30%",
+        "Revamped in-house release and deployment tools (ReleaseJet/CodeJet) with automated multi-environment rollouts, versioning, rollback, and pod-level blocks, reducing deployment time by 40% and making rollout process smoother",
+        "Designed a unified Sync Service to ingest diverse data (Shopify content and third party CRM content) into vector databases, reducing ingestion complexity and improving sync reliability by 40%",
+        "Implemented a generic CRM integration layer for real-time, bi-directional messaging with Salesforce, Zendesk, and Gorgias, reducing handover latency by 50% and powering live chat for 50+ clients",
+        "Optimized Elasticsearch handling 300M events/month via ILM policies, shard sizing (≤ 50GB), and tiered storage (hot→warm), cutting infra costs by 50%; extended APM to Python pods to improve observability",
+        "Led on-call rotations and proactively monitored error logs"
+      ]
     },
     {
       "id": 2,
-      "title": "Performance Engineering Excellence",
-      "description": "Refactored critical backend services to async patterns, optimized database queries, and implemented efficient caching strategies - achieving 5x improvement in response times and handling 10M+ daily events with sub-second latency."
+      "title": "Software Development Engineer (SDE-1 to SDE-3)",
+      "company": "BLKBOX.AI",
+      "duration": "Aug 2022 – Dec 2024",
+      "location": "Remote",
+      "achievements": [
+        "Progressed from SDE-1 to SDE-3, leading architecture design",
+        "Delivered 20+ APIs and features with strong API design and development practices, contributing to 15% revenue growth",
+        "Integrated AWS Rekognition and ML models for creative intelligence, enabling scene-level video/image analysis and predictive ad performance insights",
+        "Created competitor analytics infrastructure via AppMagic, allowing clients to sync competitor data, track ads, and run performance benchmarks",
+        "Enhanced Postgres analytics queries, improving query latency by 40% and stabilizing platform performance",
+        "Extended observability with Elastic application logging and Sentry monitoring, resolving 50+ production issues and ensuring 90%+ uptime"
+      ]
     },
     {
       "id": 3,
-      "title": "Enterprise Integration Platform",
-      "description": "Architected unified data synchronization service supporting Shopify, Zendesk, and Salesforce with real-time progress tracking, fault-tolerant webhook processing, and automated retry mechanisms. Reduced manual data entry by 90%."
-    },
-    {
-      "id": 4,
-      "title": "Data Infrastructure & Analytics",
-      "description": "Built comprehensive data clustering platform using Elasticsearch, Pinecone, and custom ML algorithms processing millions of customer interactions. Implemented automated insights generation reducing manual analysis time by 80%."
-    },
-    {
-      "id": 5,
-      "title": "DevOps & Release Management",
-      "description": "Implemented CI/CD pipelines with Google Cloud triggers, automated deployment workflows for multiple repositories, and comprehensive monitoring systems - reducing deployment time by 60% and deployment errors by 75%."
-    },
-    {
-      "id": 6,
-      "title": "Recognition & Leadership",
-      "description": "Awarded 'Best Employee of the Quarter' (Q1 2025) at BIK for technical leadership in cross-functional initiatives, system architecture design, and mentoring team members on best practices and system design principles."
+      "title": "Software Engineering Intern",
+      "company": "HP R&D",
+      "duration": "Jan 2022 – Jul 2022",
+      "location": "Pune",
+      "achievements": [
+        "Designed microservices for HP Active Care, improving maintainability and reducing error rates by ~20% through enhanced logging and unit testing"
+      ]
     }
   ],
   "projects": [
     {
       "id": 1,
-      "title": "AI-Powered Customer Analytics Platform",
-      "description": "Enterprise-grade analytics platform processing millions of customer interactions using advanced ML clustering algorithms. Built with Elasticsearch, Pinecone, and custom AI models for real-time insights generation. Handles 10M+ daily events with sub-second latency.",
-      "technologies": ["Python", "Elasticsearch", "Pinecone", "Qdrant", "Machine Learning", "Real-time Processing"],
-      "link": "#",
-      "image": "assets/img/ai-analytics-optimized.png",
-      "imageAlt": "AI-powered analytics dashboard showing customer interaction clustering and insights",
-      "aiAssisted": true,
-      "featured": true
-    },
-    {
-      "id": 2,
-      "title": "Enterprise Integration Hub",
-      "description": "Complete live chat and data synchronization platform supporting Zendesk, Salesforce, and Shopify. Features real-time agent handover, webhook processing with automatic retry mechanisms, and comprehensive progress tracking. Built fault-tolerant architecture handling enterprise-scale operations.",
-      "technologies": ["Node.js", "REST APIs", "Webhooks", "Firebase", "Google Cloud", "Real-time Systems"],
-      "link": "#",
-      "image": "assets/img/integration-hub-optimized.png",
-      "imageAlt": "Enterprise integration dashboard showing real-time data synchronization between platforms",
-      "aiAssisted": false,
-      "featured": true
-    },
-    {
-      "id": 3,
-      "title": "Release Management & DevOps Platform",
-      "description": "Comprehensive release management system with automated deployment pipelines, real-time progress tracking, and monitoring. Features CI/CD automation, cloud triggers, and comprehensive logging - used by internal engineering teams for deployment automation.",
-      "technologies": ["Node.js", "Docker", "Google Cloud Functions", "CI/CD", "Monitoring", "Automation"],
-      "link": "#",
-      "image": "assets/img/devops-platform-optimized.png",
-      "imageAlt": "DevOps dashboard showing deployment pipelines and monitoring metrics",
-      "aiAssisted": false,
-      "featured": true
-    },
-    {
-      "id": 4,
-      "title": "RapidMock API Platform",
-      "description": "Developer-focused API mocking platform accelerating frontend development by 50%. Enables rapid iteration on UI features by simulating various API responses without backend dependencies. Serves 1000+ active developers with 99.9% uptime.",
-      "technologies": ["React.js", "Next.js", "Node.js", "MongoDB", "API Design"],
-      "link": "https://www.rapidmock.com/",
-      "image": "assets/img/rapidmock-optimized.png",
-      "imageAlt": "RapidMock platform interface showing API endpoint management and response simulation",
-      "aiAssisted": true,
-      "featured": true
-    },
-    {
-      "id": 5,
-      "title": "Scalable Camping Platform",
-      "description": "Full-stack camping platform with microservices architecture, JWT authentication, geospatial search, and real-time reviews. Demonstrates scalable system design and modern web development practices.",
-      "technologies": ["Express.js", "MongoDB", "JWT", "Geospatial", "Real-time Features"],
+      "title": "YelpCamp",
+      "description": "Comprehensive platform connecting outdoor enthusiasts with global camping destinations. Implemented interactive maps, user-generated content, and personalized recommendations, resulting in a 20% increase in user interaction and retention.",
+      "technologies": ["Node", "Express", "MongoDB", "Cloudinary"],
       "link": "https://tranquil-beach-92340.herokuapp.com/",
-      "image": "assets/img/yelpcamp-optimized.png",
-      "imageAlt": "YelpCamp platform showing camping site listings with photos and reviews",
-      "aiAssisted": false,
-      "featured": false
-    }
-  ],
-  "experience": [
-    {
-      "id": 1,
-      "title": "Senior Software Development Engineer (SDE-3)",
-      "company": "BIK (Business Intelligence Kit)",
-      "duration": "January 2025 - Present",
-      "description": "Leading backend architecture and AI/ML integration initiatives. Architecting scalable distributed systems, implementing enterprise integrations, and driving technical decisions for cross-functional teams.",
-      "achievements": [
-        "Led end-to-end integration of Gemini AI and O3-mini models with async processing, function calling, and real-time inference pipelines",
-        "Architected comprehensive data clustering platform using Elasticsearch, Pinecone, and ML algorithms processing millions of customer interactions",
-        "Built unified data synchronization service for Shopify, Zendesk, and Salesforce with real-time progress tracking and fault-tolerant architecture",
-        "Implemented CI/CD pipelines with Google Cloud triggers reducing deployment time by 60% and errors by 75%",
-        "Developed complete live chat integration platform with real-time agent handover and automated workflow processing",
-        "Refactored critical backend services to async patterns achieving 5x performance improvement and handling 10M+ daily events",
-        "Awarded 'Best Employee of the Quarter' Q1 2025 for technical leadership and cross-functional initiative leadership"
-      ]
+      "featured": true
     },
     {
       "id": 2,
-      "title": "Software Development Engineer (SDE-2)",
-      "company": "BLKBOX.AI",
-      "duration": "July 2024 - December 2024",
-      "description": "Delivered critical features contributing to 15% revenue increase. Led backend optimizations, mentored junior engineers, and maintained 99%+ system uptime through proactive monitoring and incident response.",
-      "achievements": [
-        "Delivered 5+ critical features contributing to 15% revenue increase by improving core business system functionality",
-        "Identified and resolved 50+ production bugs ensuring 99%+ system uptime through proactive monitoring",
-        "Spearheaded backend API optimizations leading to 5x faster screen loading times and improved user experience",
-        "Mentored junior engineers on system design principles, code quality standards, and best practices"
-      ]
-    },
-    {
-      "id": 3,
-      "title": "Software Development Engineer (SDE-1)",
-      "company": "BLKBOX.AI",
-      "duration": "August 2022 - July 2024",
-      "description": "Built scalable backend systems and APIs. Focused on cost optimization, system reliability, and cross-team collaboration to deliver major product features within tight deadlines.",
-      "achievements": [
-        "Reduced server costs by 30% through optimized API development and efficient database schema design",
-        "Delivered 15+ APIs and proof-of-concept implementations contributing to 3% churn reduction",
-        "Collaborated with frontend teams to successfully ship 5 major products within deadlines",
-        "Established coding standards and best practices that improved overall code quality and team productivity"
-      ]
-    },
-    {
-      "id": 4,
-      "title": "Software Engineering Intern",
-      "company": "HP R&D",
-      "duration": "January 2022 - July 2022",
-      "description": "Designed microservices architecture for HP Active Care project. Implemented comprehensive logging and monitoring solutions for enterprise applications.",
-      "achievements": [
-        "Designed microservices architecture improving system maintainability and enabling independent service scaling",
-        "Implemented comprehensive logging and monitoring solutions reducing error detection time by 70%",
-        "Contributed to core business logic improvements and bug resolution in production systems",
-        "Collaborated with senior engineers on enterprise-scale application development"
-      ]
+      "title": "RapidMock",
+      "description": "API mocking platform that accelerated frontend development workflows by 50%. Enabled developers to simulate diverse API responses without backend dependencies, reducing bottlenecks and decoupling frontend/backend cycles.",
+      "technologies": ["React", "Next.js", "Node", "MongoDB", "Tailwind"],
+      "link": "https://www.rapidmock.com/",
+      "featured": true
     }
   ],
   "education": [
@@ -210,8 +86,15 @@
       "id": 1,
       "degree": "Bachelor of Technology in Computer Science",
       "institution": "Pondicherry Engineering College",
-      "duration": "August 2018 - June 2022",
-      "details": "GPA: 8.5/10 | Focus: Software Engineering, Data Structures, Database Systems, Distributed Computing"
+      "duration": "Aug 2018 – Jun 2022",
+      "details": "GPA: 8.67/10"
+    }
+  ],
+  "achievements": [
+    {
+      "id": 1,
+      "title": "Best Employee of the Quarter",
+      "description": "Awarded Best Employee of the Quarter (Apr 2025) at BIK.AI for technical leadership, backend system design, and cross-functional impact."
     }
   ]
 }
