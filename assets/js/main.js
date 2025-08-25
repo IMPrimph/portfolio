@@ -1,19 +1,26 @@
 let portfolioData = null;
 
+// Initialize theme immediately to prevent flash
+(function initThemeEarly() {
+    const savedTheme = localStorage.getItem('portfolio-theme') || 'warm';
+    document.body.classList.add(`theme-${savedTheme}`);
+})();
+
 // Load content from JSON file
 async function loadContent() {
     try {
         const response = await fetch('assets/data/content.json');
-        
+
         if (!response.ok) {
             throw new Error(`HTTP ${response.status}: ${response.statusText}`);
         }
-        
+
         portfolioData = await response.json();
         renderContent();
+        return Promise.resolve();
     } catch (error) {
         console.error('Error loading content:', error);
-        
+
         // Fallback content in case JSON fails to load
         portfolioData = {
             personal: {
@@ -24,6 +31,7 @@ async function loadContent() {
             }
         };
         renderContent();
+        return Promise.resolve();
     }
 }
 
@@ -59,7 +67,7 @@ function renderContent() {
 
         // Render education
         renderEducation();
-        
+
         // Hide any remaining loading states
         hideLoadingStates();
     } catch (error) {
@@ -234,7 +242,7 @@ function renderProjects() {
         // Project description with collapse functionality
         const description = document.createElement('div');
         description.className = 'project-description collapsed';
-        
+
         // Add description text
         const descText = document.createElement('p');
         descText.textContent = project.description;
@@ -244,14 +252,14 @@ function renderProjects() {
         if (project.technologies && project.technologies.length > 0) {
             const techContainer = document.createElement('div');
             techContainer.className = 'project-technologies';
-            
+
             project.technologies.forEach(tech => {
                 const techTag = document.createElement('span');
                 techTag.className = 'tech-tag';
                 techTag.textContent = tech;
                 techContainer.appendChild(techTag);
             });
-            
+
             description.appendChild(techContainer);
         }
 
@@ -272,7 +280,7 @@ function renderProjects() {
             const isCollapsed = description.classList.contains('collapsed');
             description.classList.toggle('collapsed');
             expandBtn.textContent = isCollapsed ? 'Read less' : 'Read more';
-            
+
             // Force layout recalculation to prevent other cards from being affected
             projectDiv.style.height = 'auto';
         });
@@ -545,7 +553,7 @@ function createPizzaParty() {
 
 function createAnimeSparkleBurst() {
     const sparkles = ['✨', '⭐', '💫', '🌟', '💥'];
-    
+
     for (let i = 0; i < 8; i++) {
         setTimeout(() => {
             const sparkle = document.createElement('div');
@@ -560,9 +568,9 @@ function createAnimeSparkleBurst() {
                 animation: sparkleBurst 2s ease-out forwards;
                 transform: translate(-50%, -50%) rotate(${Math.random() * 360}deg) translateY(-${Math.random() * 100 + 50}px);
             `;
-            
+
             document.body.appendChild(sparkle);
-            
+
             setTimeout(() => {
                 sparkle.remove();
             }, 2000);
@@ -575,6 +583,27 @@ function hideLoadingStates() {
     // Ensure body is visible and all content is loaded
     document.body.style.opacity = '1';
     document.body.classList.add('loaded');
+
+    // Hide the loading screen
+    const loadingScreen = document.getElementById('loading-screen');
+    if (loadingScreen) {
+        loadingScreen.classList.add('hidden');
+        // Remove from DOM after transition
+        setTimeout(() => {
+            loadingScreen.remove();
+        }, 500);
+    }
+}
+
+// Show loading screen immediately if content takes too long
+function ensureLoadingTimeout() {
+    // If content isn't loaded within 3 seconds, hide loading anyway
+    setTimeout(() => {
+        if (!document.body.classList.contains('loaded')) {
+            console.warn('Content loading timeout - showing page anyway');
+            hideLoadingStates();
+        }
+    }, 3000);
 }
 
 function addEasterEggStyles() {
@@ -628,10 +657,30 @@ function addEasterEggStyles() {
 
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', function () {
-    loadContent();
-    initNavigation();
-    initTheme();
-    initCyclingProgress();
-    initEasterEggs();
-    addEasterEggStyles();
+    // Start loading timeout protection
+    ensureLoadingTimeout();
+
+    // Wait for fonts and critical resources to load
+    Promise.all([
+        // Wait for fonts to load
+        document.fonts.ready,
+        // Wait for content to load
+        loadContent(),
+        // Small delay to ensure smooth transition
+        new Promise(resolve => setTimeout(resolve, 300))
+    ]).then(() => {
+        // Initialize all components
+        initNavigation();
+        initTheme();
+        initCyclingProgress();
+        initEasterEggs();
+        addEasterEggStyles();
+
+        // Hide loading screen
+        hideLoadingStates();
+    }).catch(error => {
+        console.error('Error during initialization:', error);
+        // Still hide loading screen even if there's an error
+        hideLoadingStates();
+    });
 });

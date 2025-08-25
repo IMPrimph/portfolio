@@ -567,7 +567,7 @@ body.theme-warm {
 .nav {
     display: flex;
     justify-content: center;
-    gap: 8px;
+    gap: 12px;
     flex-wrap: wrap;
 }
 
@@ -580,26 +580,28 @@ body.theme-warm {
     font-size: 0.9rem;
     font-weight: 500;
     cursor: pointer;
-    transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
     font-family: inherit;
-    will-change: transform;
+    position: relative;
 }
 
 .nav-btn:hover {
     border-color: var(--accent, var(--dark-accent));
     color: var(--accent, var(--dark-accent));
-    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .nav-btn:hover::after {
     content: '🍿';
     position: absolute;
-    top: -25px;
+    top: -30px;
     left: 50%;
     transform: translateX(-50%);
     font-size: 12px;
     opacity: 0.6;
     animation: popUp 0.3s ease-out;
+    pointer-events: none;
+    z-index: 10;
 }
 
 .nav-btn.active {

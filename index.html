@@ -6,40 +6,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
         content="Vishnu Sai Jaswanth - Senior Software Development Engineer with 3+ years building scalable backend systems, AI integrations, and distributed architectures. Expert in microservices, cloud platforms, and performance optimization.">
-    <meta name="keywords" content="Senior Software Engineer, Backend Developer, Full Stack Developer, System Design, Distributed Systems, Microservices, AI Integration, Cloud Architecture, Node.js, TypeScript, Python">
+    <meta name="keywords"
+        content="Senior Software Engineer, Backend Developer, Full Stack Developer, System Design, Distributed Systems, Microservices, AI Integration, Cloud Architecture, Node.js, TypeScript, Python">
     <meta name="author" content="Vishnu Sai Jaswanth">
     <meta property="og:title" content="Vishnu Sai Jaswanth - Senior Software Development Engineer">
-    <meta property="og:description" content="Senior Software Development Engineer with 3+ years building scalable backend systems, AI integrations, and distributed architectures.">
+    <meta property="og:description"
+        content="Senior Software Development Engineer with 3+ years building scalable backend systems, AI integrations, and distributed architectures.">
     <meta property="og:url" content="https://jaswanth123.netlify.app">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Vishnu Sai Jaswanth - Senior Software Development Engineer">
-    <meta name="twitter:description" content="Senior Software Development Engineer with 3+ years building scalable backend systems, AI integrations, and distributed architectures.">
+    <meta name="twitter:description"
+        content="Senior Software Development Engineer with 3+ years building scalable backend systems, AI integrations, and distributed architectures.">
     <title id="page-title">Vishnu Sai Jaswanth - Portfolio</title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml"
-        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cstyle%3E.v%7Bfill:%23d2691e;font:bold 60px Inter,sans-serif%7D%3C/style%3E%3Ccircle cx='50' cy='50' r='45' fill='%23fefcf3' stroke='%23d2691e' stroke-width='6'/%3E%3Ctext x='50' y='70' text-anchor='middle' class='v'%3EV%3C/text%3E%3C/svg%3E">
-    <link rel="icon" type="image/x-icon" href="./favicon.ico">
-    <link rel="apple-touch-icon"
-        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cstyle%3E.v%7Bfill:%23d2691e;font:bold 60px Inter,sans-serif%7D%3C/style%3E%3Ccircle cx='50' cy='50' r='45' fill='%23fefcf3' stroke='%23d2691e' stroke-width='6'/%3E%3Ctext x='50' y='70' text-anchor='middle' class='v'%3EV%3C/text%3E%3C/svg%3E">
+    <link rel="icon" type="image/jpeg" href="assets/img/naruto.jpg">
+    <link rel="apple-touch-icon" href="assets/img/naruto.jpg">
 
     <!-- Preconnect to external domains for better performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link rel="stylesheet" href="assets/css/styles.css" media="print" onload="this.media='all'">
-    <noscript>
-        <link rel="stylesheet" href="assets/css/styles.css">
-    </noscript>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"
-        media="print" onload="this.media='all'">
-    <noscript>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    </noscript>
+    <link rel="stylesheet" href="assets/css/styles.css" media="all">
+
+    <!-- Loading styles - inline to prevent FOUC -->
+    <style>
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg, #fefcf3);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .loading-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid var(--border, #e8dcc0);
+            border-top: 4px solid var(--accent, #8b4513);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        .loading-text {
+            color: var(--text-primary, #4d2200);
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .loading-subtext {
+            color: var(--text-secondary, #6d3000);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Hide main content until loaded */
+        body:not(.loaded) .container {
+            opacity: 0;
+        }
+
+        body.loaded .container {
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loading-screen">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Loading Portfolio...</div>
+        <div class="loading-subtext">🍕 Preparing something awesome 🍕</div>
+    </div>
     <!-- Progress Indicator -->
     <div class="cycling-progress" id="cycling-progress">
         <svg class="progress-ring" width="50" height="50">
@@ -74,7 +141,7 @@
         <header class="header">
             <div class="theme-toggle" id="theme-toggle">
                 <button class="theme-btn" data-theme="light" title="Light Mode">☀️</button>
-                <button class="theme-btn active" data-theme="warm" title="Warm Mode">🌅</button>
+                <button class="theme-btn" data-theme="warm" title="Warm Mode">🌅</button>
                 <button class="theme-btn" data-theme="dark" title="Dark Mode">🌙</button>
             </div>
 
@@ -96,7 +163,8 @@
         <main class="main">
             <section id="about" class="section active">
                 <h2>About</h2>
-                <p id="bio">Senior Software Engineer with experience in backend systems, data infrastructure, and AI integrations.</p>
+                <p id="bio">Senior Software Engineer with experience in backend systems, data infrastructure, and AI
+                    integrations.</p>
             </section>
 
             <section id="skills" class="section">
