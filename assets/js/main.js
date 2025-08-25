@@ -4,17 +4,23 @@ let portfolioData = null;
 async function loadContent() {
     try {
         const response = await fetch('assets/data/content.json');
+        
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+        
         portfolioData = await response.json();
         renderContent();
     } catch (error) {
         console.error('Error loading content:', error);
+        
         // Fallback content in case JSON fails to load
         portfolioData = {
             personal: {
-                name: "Vishnu Gajulapalli",
-                title: "Senior Backend Engineer",
-                bio: "Senior Backend Engineer with 3+ years of experience building scalable distributed systems.",
-                location: "Hyderabad, India"
+                name: "Vishnu Sai Jaswanth",
+                title: "Senior Software Development Engineer",
+                bio: "Senior Software Engineer with 3+ years of experience building scalable distributed systems.",
+                location: "Bengaluru, India"
             }
         };
         renderContent();
@@ -23,32 +29,42 @@ async function loadContent() {
 
 // Render all content to HTML
 function renderContent() {
-    if (!portfolioData) return;
+    if (!portfolioData) {
+        console.error('No portfolio data available');
+        return;
+    }
 
-    // Update page title and header
-    document.getElementById('page-title').textContent = portfolioData.personal.name;
-    document.getElementById('name').textContent = portfolioData.personal.name;
-    document.getElementById('title').textContent = portfolioData.personal.title;
-    document.getElementById('bio').textContent = portfolioData.personal.bio;
-    document.getElementById('location').textContent = `Based in ${portfolioData.personal.location}`;
+    try {
+        // Update page title and header
+        document.getElementById('page-title').textContent = portfolioData.personal.name;
+        document.getElementById('name').textContent = portfolioData.personal.name;
+        document.getElementById('title').textContent = portfolioData.personal.title;
+        document.getElementById('bio').textContent = portfolioData.personal.bio;
+        document.getElementById('location').textContent = `Based in ${portfolioData.personal.location}`;
 
-    // Render skills
-    renderSkills();
+        // Render skills
+        renderSkills();
 
-    // Render experience
-    renderExperience();
+        // Render experience
+        renderExperience();
 
-    // Render projects
-    renderProjects();
+        // Render projects
+        renderProjects();
 
-    // Render achievements
-    renderAchievements();
+        // Render achievements
+        renderAchievements();
 
-    // Render contact links
-    renderContact();
+        // Render contact links
+        renderContact();
 
-    // Render education
-    renderEducation();
+        // Render education
+        renderEducation();
+        
+        // Hide any remaining loading states
+        hideLoadingStates();
+    } catch (error) {
+        console.error('Error rendering content:', error);
+    }
 }
 
 function renderSkills() {
@@ -218,7 +234,26 @@ function renderProjects() {
         // Project description with collapse functionality
         const description = document.createElement('div');
         description.className = 'project-description collapsed';
-        description.textContent = project.description;
+        
+        // Add description text
+        const descText = document.createElement('p');
+        descText.textContent = project.description;
+        description.appendChild(descText);
+
+        // Technologies used
+        if (project.technologies && project.technologies.length > 0) {
+            const techContainer = document.createElement('div');
+            techContainer.className = 'project-technologies';
+            
+            project.technologies.forEach(tech => {
+                const techTag = document.createElement('span');
+                techTag.className = 'tech-tag';
+                techTag.textContent = tech;
+                techContainer.appendChild(techTag);
+            });
+            
+            description.appendChild(techContainer);
+        }
 
         // Project footer with link and expand button
         const projectFooter = document.createElement('div');
@@ -233,8 +268,13 @@ function renderProjects() {
             e.preventDefault();
             e.stopPropagation();
 
+            // Toggle collapsed state on this specific description
+            const isCollapsed = description.classList.contains('collapsed');
             description.classList.toggle('collapsed');
-            expandBtn.textContent = description.classList.contains('collapsed') ? 'Read more' : 'Read less';
+            expandBtn.textContent = isCollapsed ? 'Read less' : 'Read more';
+            
+            // Force layout recalculation to prevent other cards from being affected
+            projectDiv.style.height = 'auto';
         });
 
         const projectLink = document.createElement('a');
@@ -370,7 +410,10 @@ function setTheme(theme) {
 
     // Update active button
     themeButtons.forEach(btn => btn.classList.remove('active'));
-    document.querySelector(`[data-theme="${theme}"]`).classList.add('active');
+    const activeButton = document.querySelector(`[data-theme="${theme}"]`);
+    if (activeButton) {
+        activeButton.classList.add('active');
+    }
 }
 
 // Cycling progress indicator
@@ -425,13 +468,14 @@ function initEasterEggs() {
 
     // Keyboard shortcuts
     document.addEventListener('keydown', function (e) {
-        // Press 'C' for cycling boost
+        // Press 'C' for cycling boost (check if cycling track exists)
         if (e.key.toLowerCase() === 'c') {
-            const wheel = document.querySelector('.wheel');
-            if (wheel) {
-                wheel.style.animationDuration = '0.5s';
+            const cyclingTrack = document.querySelector('.cycling-track');
+            if (cyclingTrack && cyclingTrack.querySelector('::after')) {
+                // Speed up the cycling animation
+                cyclingTrack.style.setProperty('--cycle-speed', '0.5s');
                 setTimeout(() => {
-                    wheel.style.animationDuration = '3s';
+                    cyclingTrack.style.setProperty('--cycle-speed', '20s');
                 }, 2000);
             }
         }
@@ -439,6 +483,11 @@ function initEasterEggs() {
         // Press 'P' for pizza party
         if (e.key.toLowerCase() === 'p') {
             createPizzaParty();
+        }
+
+        // Press 'A' for anime sparkle burst
+        if (e.key.toLowerCase() === 'a') {
+            createAnimeSparkleBurst();
         }
     });
 }
@@ -494,7 +543,40 @@ function createPizzaParty() {
     }, 2000);
 }
 
-// Add CSS animations for easter eggs
+function createAnimeSparkleBurst() {
+    const sparkles = ['✨', '⭐', '💫', '🌟', '💥'];
+    
+    for (let i = 0; i < 8; i++) {
+        setTimeout(() => {
+            const sparkle = document.createElement('div');
+            sparkle.textContent = sparkles[Math.floor(Math.random() * sparkles.length)];
+            sparkle.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                font-size: ${Math.random() * 20 + 15}px;
+                z-index: 1000;
+                pointer-events: none;
+                animation: sparkleBurst 2s ease-out forwards;
+                transform: translate(-50%, -50%) rotate(${Math.random() * 360}deg) translateY(-${Math.random() * 100 + 50}px);
+            `;
+            
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => {
+                sparkle.remove();
+            }, 2000);
+        }, i * 100);
+    }
+}
+
+// Hide any loading states and ensure smooth content display
+function hideLoadingStates() {
+    // Ensure body is visible and all content is loaded
+    document.body.style.opacity = '1';
+    document.body.classList.add('loaded');
+}
+
 function addEasterEggStyles() {
     const style = document.createElement('style');
     style.textContent = `
@@ -523,6 +605,21 @@ function addEasterEggStyles() {
             100% { 
                 opacity: 0;
                 transform: translate(-50%, -50%) scale(0.8);
+            }
+        }
+        
+        @keyframes sparkleBurst {
+            0% { 
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0) rotate(0deg);
+            }
+            50% { 
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.2) rotate(180deg) translateY(-50px);
+            }
+            100% { 
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.5) rotate(360deg) translateY(-100px);
             }
         }
     `;

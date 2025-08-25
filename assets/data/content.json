@@ -68,7 +68,7 @@
       "id": 1,
       "title": "YelpCamp",
       "description": "Comprehensive platform connecting outdoor enthusiasts with global camping destinations. Implemented interactive maps, user-generated content, and personalized recommendations, resulting in a 20% increase in user interaction and retention.",
-      "technologies": ["Node", "Express", "MongoDB", "Cloudinary"],
+      "technologies": ["Node.js", "Express", "MongoDB", "Cloudinary", "Bootstrap"],
       "link": "https://tranquil-beach-92340.herokuapp.com/",
       "featured": true,
       "aiAssisted": false
@@ -77,7 +77,7 @@
       "id": 2,
       "title": "RapidMock",
       "description": "API mocking platform that accelerated frontend development workflows by 50%. Enabled developers to simulate diverse API responses without backend dependencies, reducing bottlenecks and decoupling frontend/backend cycles.",
-      "technologies": ["React", "Next.js", "Node", "MongoDB", "Tailwind"],
+      "technologies": ["React", "Next.js", "Node.js", "MongoDB", "Tailwind CSS"],
       "link": "https://www.rapidmock.com/",
       "featured": true,
       "aiAssisted": false
