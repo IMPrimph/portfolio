@@ -1,7 +1,7 @@
 {
   "personal": {
     "name": "Vishnu Sai Jaswanth",
-    "title": "Senior Software Development Engineer (SDE-3)",
+    "title": "Senior Software Development Engineer",
     "bio": "Senior Software Engineer with experience in backend systems, data infrastructure, and AI integrations. Skilled at building fault-tolerant microservices and scalable platforms; strong in system design, distributed systems, caching, and performance optimization. Looking for impactful backend roles in high-growth, learning-focused environments.",
     "location": "Bengaluru, India"
   },
@@ -70,7 +70,8 @@
       "description": "Comprehensive platform connecting outdoor enthusiasts with global camping destinations. Implemented interactive maps, user-generated content, and personalized recommendations, resulting in a 20% increase in user interaction and retention.",
       "technologies": ["Node", "Express", "MongoDB", "Cloudinary"],
       "link": "https://tranquil-beach-92340.herokuapp.com/",
-      "featured": true
+      "featured": true,
+      "aiAssisted": false
     },
     {
       "id": 2,
@@ -78,7 +79,8 @@
       "description": "API mocking platform that accelerated frontend development workflows by 50%. Enabled developers to simulate diverse API responses without backend dependencies, reducing bottlenecks and decoupling frontend/backend cycles.",
       "technologies": ["React", "Next.js", "Node", "MongoDB", "Tailwind"],
       "link": "https://www.rapidmock.com/",
-      "featured": true
+      "featured": true,
+      "aiAssisted": false
     }
   ],
   "education": [
@@ -93,8 +95,8 @@
   "achievements": [
     {
       "id": 1,
-      "title": "Best Employee of the Quarter",
-      "description": "Awarded Best Employee of the Quarter (Apr 2025) at BIK.AI for technical leadership, backend system design, and cross-functional impact."
+      "title": "Best Employee of the Quarter (Apr 2025)",
+      "description": "Awarded at BIK.AI for technical leadership, backend system design, and cross-functional impact in developing clustering infrastructure and deployment tools."
     }
   ]
 }

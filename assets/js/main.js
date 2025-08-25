@@ -35,6 +35,9 @@ function renderContent() {
     // Render skills
     renderSkills();
 
+    // Render experience
+    renderExperience();
+
     // Render projects
     renderProjects();
 
@@ -87,6 +90,85 @@ function renderSkills() {
         }
 
         skillsContainer.appendChild(categoryDiv);
+    });
+}
+
+function renderExperience() {
+    const experienceContainer = document.getElementById('experience-container');
+    if (!portfolioData.experience) return;
+
+    experienceContainer.innerHTML = '';
+    experienceContainer.className = 'experience-container';
+
+    portfolioData.experience.forEach(exp => {
+        const experienceDiv = document.createElement('div');
+        experienceDiv.className = 'experience-item';
+
+        const header = document.createElement('div');
+        header.className = 'experience-header';
+
+        const titleCompany = document.createElement('div');
+        titleCompany.className = 'title-company';
+
+        const title = document.createElement('h3');
+        title.className = 'experience-title';
+        title.textContent = exp.title;
+
+        const company = document.createElement('div');
+        company.className = 'experience-company';
+        company.textContent = exp.company;
+
+        titleCompany.appendChild(title);
+        titleCompany.appendChild(company);
+
+        const meta = document.createElement('div');
+        meta.className = 'experience-meta';
+
+        const duration = document.createElement('div');
+        duration.className = 'experience-duration';
+        duration.textContent = exp.duration;
+
+        const location = document.createElement('div');
+        location.className = 'experience-location';
+        location.textContent = exp.location;
+
+        meta.appendChild(duration);
+        meta.appendChild(location);
+
+        header.appendChild(titleCompany);
+        header.appendChild(meta);
+
+        const achievements = document.createElement('ul');
+        achievements.className = 'experience-achievements collapsed';
+
+        exp.achievements.forEach(achievement => {
+            const li = document.createElement('li');
+            li.textContent = achievement;
+            achievements.appendChild(li);
+        });
+
+        // Add expand/collapse functionality for achievements
+        if (exp.achievements.length > 2) {
+            const expandBtn = document.createElement('button');
+            expandBtn.className = 'expand-experience';
+            expandBtn.textContent = 'Show more';
+
+            expandBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                achievements.classList.toggle('collapsed');
+                expandBtn.textContent = achievements.classList.contains('collapsed') ? 'Show more' : 'Show less';
+            });
+
+            experienceDiv.appendChild(header);
+            experienceDiv.appendChild(achievements);
+            experienceDiv.appendChild(expandBtn);
+        } else {
+            achievements.classList.remove('collapsed');
+            experienceDiv.appendChild(header);
+            experienceDiv.appendChild(achievements);
+        }
+
+        experienceContainer.appendChild(experienceDiv);
     });
 }
 
@@ -145,12 +227,12 @@ function renderProjects() {
         const expandBtn = document.createElement('button');
         expandBtn.className = 'expand-project';
         expandBtn.textContent = 'Read more';
-        
+
         // Use direct element references (closure) instead of IDs
-        expandBtn.addEventListener('click', function(e) {
+        expandBtn.addEventListener('click', function (e) {
             e.preventDefault();
             e.stopPropagation();
-            
+
             description.classList.toggle('collapsed');
             expandBtn.textContent = description.classList.contains('collapsed') ? 'Read more' : 'Read less';
         });
@@ -291,9 +373,168 @@ function setTheme(theme) {
     document.querySelector(`[data-theme="${theme}"]`).classList.add('active');
 }
 
+// Cycling progress indicator
+function initCyclingProgress() {
+    const progressCircle = document.getElementById('progress-circle');
+    const circumference = 2 * Math.PI * 20; // 2πr where r=20
+
+    // Set initial state
+    if (progressCircle) {
+        progressCircle.style.strokeDasharray = circumference;
+        progressCircle.style.strokeDashoffset = circumference;
+    }
+
+    function updateProgress() {
+        const scrollTop = window.pageYOffset;
+        const docHeight = document.body.scrollHeight - window.innerHeight;
+        const scrollPercent = Math.min((scrollTop / docHeight) * 100, 100);
+
+        if (progressCircle) {
+            const offset = circumference - (scrollPercent / 100) * circumference;
+            progressCircle.style.strokeDashoffset = offset;
+        }
+
+        window.lastScrollTop = scrollTop;
+    }
+
+    window.addEventListener('scroll', updateProgress);
+    updateProgress(); // Initialize
+}
+
+// Fun easter eggs and interactions
+function initEasterEggs() {
+    let nameClickCount = 0;
+    const nameElement = document.getElementById('name');
+
+    // Pizza rain on triple-click name
+    if (nameElement) {
+        nameElement.addEventListener('click', function () {
+            nameClickCount++;
+
+            if (nameClickCount === 3) {
+                createPizzaRain();
+                nameClickCount = 0;
+            }
+
+            // Reset counter after 2 seconds
+            setTimeout(() => {
+                if (nameClickCount < 3) nameClickCount = 0;
+            }, 2000);
+        });
+    }
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', function (e) {
+        // Press 'C' for cycling boost
+        if (e.key.toLowerCase() === 'c') {
+            const wheel = document.querySelector('.wheel');
+            if (wheel) {
+                wheel.style.animationDuration = '0.5s';
+                setTimeout(() => {
+                    wheel.style.animationDuration = '3s';
+                }, 2000);
+            }
+        }
+
+        // Press 'P' for pizza party
+        if (e.key.toLowerCase() === 'p') {
+            createPizzaParty();
+        }
+    });
+}
+
+function createPizzaRain() {
+    const pizzas = ['🍕', '🍕', '🍕', '🍕', '🍕'];
+
+    pizzas.forEach((pizza, index) => {
+        setTimeout(() => {
+            const pizzaElement = document.createElement('div');
+            pizzaElement.textContent = pizza;
+            pizzaElement.style.cssText = `
+                position: fixed;
+                top: -50px;
+                left: ${Math.random() * window.innerWidth}px;
+                font-size: ${Math.random() * 20 + 20}px;
+                z-index: 1000;
+                pointer-events: none;
+                animation: pizzaFall 3s ease-in forwards;
+            `;
+
+            document.body.appendChild(pizzaElement);
+
+            setTimeout(() => {
+                pizzaElement.remove();
+            }, 3000);
+        }, index * 200);
+    });
+}
+
+function createPizzaParty() {
+    const container = document.querySelector('.container');
+    if (!container) return;
+
+    const party = document.createElement('div');
+    party.innerHTML = '🍕 PIZZA PARTY! 🍕';
+    party.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 2rem;
+        color: var(--accent, var(--warm-accent));
+        z-index: 1000;
+        pointer-events: none;
+        animation: partyPulse 2s ease-out forwards;
+    `;
+
+    document.body.appendChild(party);
+
+    setTimeout(() => {
+        party.remove();
+    }, 2000);
+}
+
+// Add CSS animations for easter eggs
+function addEasterEggStyles() {
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes pizzaFall {
+            0% { 
+                transform: translateY(-50px) rotate(0deg);
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { 
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes partyPulse {
+            0% { 
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.5);
+            }
+            50% { 
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+            100% { 
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.8);
+            }
+        }
+    `;
+    document.head.appendChild(style);
+}
+
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', function () {
     loadContent();
     initNavigation();
     initTheme();
+    initCyclingProgress();
+    initEasterEggs();
+    addEasterEggStyles();
 });

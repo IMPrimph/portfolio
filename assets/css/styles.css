@@ -51,6 +51,313 @@ body {
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     transition: background-color 0.3s ease, color 0.3s ease;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Cycling Progress Indicator */
+.cycling-progress {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    z-index: 100;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.cycling-progress:hover {
+    opacity: 1;
+}
+
+.progress-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotate(-90deg);
+}
+
+.progress-ring-background {
+    fill: none;
+    stroke: rgba(var(--accent-rgb, 139, 69, 19), 0.2);
+    stroke-width: 3;
+}
+
+.progress-ring-progress {
+    fill: none;
+    stroke: var(--accent, var(--warm-accent));
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-dasharray: 125.66; /* 2 * π * 20 */
+    stroke-dashoffset: 125.66;
+    transition: stroke-dashoffset 0.3s ease;
+}
+
+/* Removed cycling hub - clean progress ring only */
+
+@keyframes wheelSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes counterSpin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(-360deg); }
+}
+
+/* Fixed Footer */
+.fixed-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(var(--bg-rgb, 254, 252, 243), 0.95);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid var(--border, var(--warm-border));
+    padding: 8px 20px;
+    z-index: 50;
+    font-size: 0.8rem;
+    color: var(--text-muted, var(--warm-text-muted));
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.footer-separator {
+    opacity: 0.6;
+}
+
+.footer-credit {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Add CSS variables for RGB values */
+:root {
+    --bg-rgb: 254, 252, 243;
+    --accent-rgb: 139, 69, 19;
+}
+
+.theme-light {
+    --bg-rgb: 255, 255, 255;
+    --accent-rgb: 49, 130, 206;
+}
+
+.theme-dark {
+    --bg-rgb: 15, 15, 15;
+    --accent-rgb: 99, 179, 237;
+}
+
+/* Bottom Cycling Track - Adjusted for footer */
+.cycling-track {
+    position: fixed;
+    bottom: 35px; /* Moved up to account for footer */
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: linear-gradient(180deg, transparent 0%, var(--bg-alt, var(--warm-bg-alt)) 40%);
+    z-index: -2;
+    pointer-events: none;
+}
+
+.cycling-track::before {
+    content: '';
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: repeating-linear-gradient(
+        90deg,
+        var(--accent, var(--warm-accent)) 0px,
+        var(--accent, var(--warm-accent)) 10px,
+        transparent 10px,
+        transparent 20px
+    );
+    opacity: 0.3;
+}
+
+.cycling-track::after {
+    content: '🚴‍♂️';
+    position: absolute;
+    bottom: 20px;
+    font-size: 24px;
+    animation: cycleRide 20s linear infinite;
+    opacity: 0.4;
+    filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.2));
+    transform: scaleX(-1); /* Flip horizontally to face right */
+}
+
+@keyframes cycleRide {
+    0% { left: -50px; }
+    100% { left: calc(100% + 50px); }
+}
+
+/* Corner Pizza Slices */
+.pizza-corner-tl, .pizza-corner-tr, .pizza-corner-bl, .pizza-corner-br {
+    position: fixed;
+    font-size: 30px;
+    opacity: 0.15;
+    z-index: -1;
+    pointer-events: none;
+    animation: gentleBob 6s ease-in-out infinite;
+}
+
+.pizza-corner-tl { top: 10%; left: 5%; content: '🍕'; }
+.pizza-corner-tr { top: 15%; right: 5%; animation-delay: -2s; }
+.pizza-corner-bl { bottom: 20%; left: 3%; animation-delay: -4s; }
+.pizza-corner-br { bottom: 25%; right: 7%; animation-delay: -1s; }
+
+.pizza-corner-tl::before { content: '🍕'; }
+.pizza-corner-tr::before { content: '🍕'; }
+.pizza-corner-bl::before { content: '🍕'; }
+.pizza-corner-br::before { content: '🍕'; }
+
+@keyframes gentleBob {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-8px) rotate(5deg); }
+}
+
+/* Anime Sparkles */
+.sparkle-effects {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.sparkle {
+    position: absolute;
+    font-size: 16px;
+    opacity: 0.6;
+    animation: sparkleFloat 4s ease-in-out infinite;
+}
+
+.sparkle:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+.sparkle:nth-child(2) { top: 30%; right: 15%; animation-delay: -1s; }
+.sparkle:nth-child(3) { top: 50%; left: 20%; animation-delay: -2s; }
+.sparkle:nth-child(4) { top: 70%; right: 10%; animation-delay: -3s; }
+.sparkle:nth-child(5) { top: 40%; left: 80%; animation-delay: -0.5s; }
+
+@keyframes sparkleFloat {
+    0%, 100% { 
+        transform: scale(0.8) rotate(0deg);
+        opacity: 0.3;
+    }
+    50% { 
+        transform: scale(1.2) rotate(180deg);
+        opacity: 0.8;
+    }
+}
+
+/* Movie Film Strips */
+.film-strip {
+    position: fixed;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.1;
+}
+
+.film-strip-left {
+    left: 0;
+    top: 0;
+    width: 30px;
+    height: 100%;
+    background: linear-gradient(0deg, 
+        transparent 0%, 
+        var(--accent, var(--warm-accent)) 10%, 
+        transparent 20%, 
+        var(--accent, var(--warm-accent)) 30%, 
+        transparent 40%);
+    background-size: 100% 40px;
+    animation: filmMove 15s linear infinite;
+}
+
+.film-strip-right {
+    right: 0;
+    top: 0;
+    width: 30px;
+    height: 100%;
+    background: linear-gradient(0deg, 
+        transparent 0%, 
+        var(--accent, var(--warm-accent)) 15%, 
+        transparent 25%, 
+        var(--accent, var(--warm-accent)) 35%, 
+        transparent 45%);
+    background-size: 100% 35px;
+    animation: filmMove 18s linear infinite reverse;
+}
+
+@keyframes filmMove {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 100px; }
+}
+
+/* Clean background patterns with personality */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.06;
+    z-index: -1;
+    background-image: 
+        radial-gradient(circle at 20% 20%, var(--accent, var(--warm-accent)) 2px, transparent 2px),
+        radial-gradient(circle at 80% 40%, var(--accent, var(--warm-accent)) 1.5px, transparent 1.5px),
+        radial-gradient(circle at 40% 80%, var(--accent, var(--warm-accent)) 2px, transparent 2px),
+        radial-gradient(circle at 90% 10%, var(--accent, var(--warm-accent)) 1px, transparent 1px),
+        radial-gradient(circle at 10% 90%, var(--accent, var(--warm-accent)) 2px, transparent 2px);
+    background-size: 350px 350px, 280px 280px, 450px 450px, 200px 200px, 380px 380px;
+    background-position: 0 0, 100px 50px, 200px 100px, 50px 200px, 300px 0;
+    pointer-events: none;
+    animation: subtleShift 60s ease-in-out infinite;
+}
+
+/* Ambient floating elements - More visible */
+body::after {
+    content: '🍕 🚴‍♂️ ✨ 🎬 🍕 🚴‍♂️ ✨ 🎬 🍕 🚴‍♂️ ✨ 🎬';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 28px;
+    opacity: 0.12;
+    z-index: -1;
+    pointer-events: none;
+    white-space: pre;
+    line-height: 120px;
+    letter-spacing: 180px;
+    animation: floatAround 90s linear infinite;
+    overflow: hidden;
+}
+
+@keyframes subtleShift {
+    0%, 100% { transform: translateX(0px) translateY(0px); }
+    25% { transform: translateX(10px) translateY(-5px); }
+    50% { transform: translateX(-5px) translateY(10px); }
+    75% { transform: translateX(15px) translateY(-10px); }
+}
+
+@keyframes floatAround {
+    0% { transform: translateX(-100px) translateY(-50px) rotate(0deg); }
+    25% { transform: translateX(50px) translateY(100px) rotate(90deg); }
+    50% { transform: translateX(100px) translateY(-100px) rotate(180deg); }
+    75% { transform: translateX(-50px) translateY(50px) rotate(270deg); }
+    100% { transform: translateX(-100px) translateY(-50px) rotate(360deg); }
 }
 
 /* Theme Classes */
@@ -104,7 +411,7 @@ body.theme-warm {
 .container {
     max-width: 1000px;
     margin: 0 auto;
-    padding: 40px 20px;
+    padding: 40px 20px 120px 20px; /* Added 120px bottom padding for cycling track + footer */
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -112,7 +419,7 @@ body.theme-warm {
 
 @media (min-width: 768px) {
     .container {
-        padding: 48px 32px;
+        padding: 48px 32px 120px 32px; /* Added 120px bottom padding for desktop too */
     }
 }
 
@@ -122,9 +429,66 @@ body.theme-warm {
     position: relative;
 }
 
+/* Fun personality elements around header - More visible */
+.header::before {
+    content: '🍕';
+    position: absolute;
+    top: -30px;
+    right: 8%;
+    font-size: 35px;
+    opacity: 0.25;
+    animation: pizzaSpin 8s ease-in-out infinite;
+    pointer-events: none;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1));
+}
+
+.header::after {
+    content: '🚴‍♂️';
+    position: absolute;
+    bottom: -40px;
+    left: 12%;
+    font-size: 32px;
+    opacity: 0.22;
+    animation: cyclingMove 10s ease-in-out infinite;
+    pointer-events: none;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1));
+}
+
+@keyframes pizzaSpin {
+    0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.25; }
+    25% { transform: translateY(-12px) rotate(90deg); opacity: 0.4; }
+    50% { transform: translateY(-6px) rotate(180deg); opacity: 0.25; }
+    75% { transform: translateY(-15px) rotate(270deg); opacity: 0.35; }
+}
+
+@keyframes cyclingMove {
+    0%, 100% { transform: scaleX(-1) translateX(0px) rotate(0deg); opacity: 0.22; }
+    25% { transform: scaleX(-1) translateX(-20px) rotate(-8deg); opacity: 0.35; }
+    50% { transform: scaleX(1) translateX(12px) rotate(5deg); opacity: 0.25; }
+    75% { transform: scaleX(-1) translateX(-25px) rotate(-10deg); opacity: 0.3; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    33% { transform: translateY(-10px) rotate(120deg); }
+    66% { transform: translateY(-5px) rotate(240deg); }
+}
+
 @media (min-width: 768px) {
     .header {
         margin-bottom: 48px;
+    }
+    
+    .header::before {
+        width: 80px;
+        height: 80px;
+        right: 15%;
+    }
+    
+    .header::after {
+        width: 50px;
+        height: 50px;
+        left: 12%;
     }
 }
 
@@ -223,6 +587,18 @@ body.theme-warm {
 .nav-btn:hover {
     border-color: var(--accent, var(--dark-accent));
     color: var(--accent, var(--dark-accent));
+    transform: translateY(-2px);
+}
+
+.nav-btn:hover::after {
+    content: '🍿';
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    opacity: 0.6;
+    animation: popUp 0.3s ease-out;
 }
 
 .nav-btn.active {
@@ -241,10 +617,66 @@ body.theme-warm {
     max-width: 800px;
     margin: 0 auto;
     width: 100%;
+    position: relative;
 }
 
 .section.active {
     display: block;
+}
+
+/* Fun personality elements behind sections - More visible */
+.section::before {
+    content: '✨';
+    position: absolute;
+    top: 15px;
+    left: -35px;
+    font-size: 22px;
+    opacity: 0.2;
+    z-index: -1;
+    animation: sparkle 3s ease-in-out infinite;
+    pointer-events: none;
+    filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.1));
+}
+
+.section::after {
+    content: '🎬';
+    position: absolute;
+    bottom: 25px;
+    right: -40px;
+    font-size: 24px;
+    opacity: 0.18;
+    z-index: -1;
+    animation: filmRoll 6s ease-in-out infinite;
+    pointer-events: none;
+    filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.1));
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 0.2; transform: scale(1) rotate(0deg); }
+    50% { opacity: 0.4; transform: scale(1.1) rotate(180deg); }
+}
+
+@keyframes filmRoll {
+    0%, 100% { opacity: 0.18; transform: rotate(0deg); }
+    25% { opacity: 0.3; transform: rotate(90deg); }
+    50% { opacity: 0.25; transform: rotate(180deg); }
+    75% { opacity: 0.35; transform: rotate(270deg); }
+}
+
+@keyframes popUp {
+    0% { opacity: 0; transform: translateX(-50%) translateY(10px) scale(0.5); }
+    100% { opacity: 0.6; transform: translateX(-50%) translateY(0px) scale(1); }
+}
+
+@keyframes pizzaBounce {
+    0% { opacity: 0; transform: scale(0) rotate(0deg); }
+    50% { opacity: 0.8; transform: scale(1.2) rotate(180deg); }
+    100% { opacity: 0.7; transform: scale(1) rotate(360deg); }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.2; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(1.1); }
 }
 
 @keyframes fadeIn {
@@ -388,9 +820,144 @@ body.theme-warm {
 /* Focus styles for accessibility */
 .nav-btn:focus,
 .show-more-skills:focus,
-.expand-project:focus {
+.expand-project:focus,
+.expand-experience:focus {
     outline: 2px solid var(--accent, var(--dark-accent));
     outline-offset: 2px;
+}
+
+/* Experience */
+.experience-container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.experience-item {
+    background: var(--bg-alt, var(--dark-bg-alt));
+    border: 1px solid var(--border, var(--dark-border));
+    border-radius: 12px;
+    padding: 24px;
+    transition: all 0.3s ease;
+}
+
+.experience-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    border-color: var(--accent, var(--dark-accent));
+}
+
+.experience-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.title-company {
+    flex: 1;
+    min-width: 0;
+}
+
+.experience-title {
+    font-size: 1.3rem;
+    color: var(--text-primary, var(--dark-text-primary));
+    margin: 0 0 6px 0;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.experience-company {
+    font-size: 1rem;
+    color: var(--accent, var(--dark-accent));
+    font-weight: 500;
+}
+
+.experience-meta {
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.experience-duration {
+    font-size: 0.9rem;
+    color: var(--text-secondary, var(--dark-text-secondary));
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.experience-location {
+    font-size: 0.85rem;
+    color: var(--text-muted, var(--dark-text-muted));
+}
+
+.experience-achievements {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 16px 0;
+    line-height: 1.6;
+}
+
+.experience-achievements li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 12px;
+    color: var(--text-secondary, var(--dark-text-secondary));
+    font-size: 0.95rem;
+}
+
+.experience-achievements li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--accent, var(--dark-accent));
+    font-weight: bold;
+}
+
+.experience-achievements li:last-child {
+    margin-bottom: 0;
+}
+
+/* Progressive disclosure for experience achievements */
+.experience-achievements.collapsed li:nth-child(n+3) {
+    display: none;
+}
+
+.expand-experience {
+    background: none;
+    border: none;
+    color: var(--accent, var(--dark-accent));
+    font-size: 0.85rem;
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 0;
+    transition: opacity 0.2s ease;
+    font-family: inherit;
+}
+
+.expand-experience:hover {
+    opacity: 0.8;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .experience-header {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .experience-meta {
+        text-align: left;
+    }
+    
+    .experience-title {
+        font-size: 1.1rem;
+    }
+    
+    .experience-item {
+        padding: 20px;
+    }
 }
 
 /* Achievements */
@@ -438,6 +1005,18 @@ body.theme-warm {
     transform: translateY(-2px);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
     border-color: var(--accent, var(--dark-accent));
+}
+
+.project:hover::before {
+    content: '🍕';
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    font-size: 20px;
+    opacity: 0.8;
+    animation: pizzaBounce 0.6s ease-out;
+    pointer-events: none;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));
 }
 
 .project-header {
@@ -622,7 +1201,12 @@ body.theme-warm {
 /* Responsive */
 @media (max-width: 768px) {
     .container {
-        padding: 40px 16px;
+        padding: 40px 16px 120px 16px; /* Added 120px bottom padding for mobile too */
+    }
+    
+    .footer-content {
+        font-size: 0.75rem;
+        padding: 0 10px;
     }
     
     .theme-toggle {

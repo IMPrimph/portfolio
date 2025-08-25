@@ -30,6 +30,36 @@
 </head>
 
 <body>
+    <!-- Progress Indicator -->
+    <div class="cycling-progress" id="cycling-progress">
+        <svg class="progress-ring" width="50" height="50">
+            <circle class="progress-ring-background" cx="25" cy="25" r="20" />
+            <circle class="progress-ring-progress" cx="25" cy="25" r="20" id="progress-circle" />
+        </svg>
+    </div>
+
+    <!-- Bottom Cycling Track -->
+    <div class="cycling-track"></div>
+
+    <!-- Corner Pizza Slices -->
+    <div class="pizza-corner-tl"></div>
+    <div class="pizza-corner-tr"></div>
+    <div class="pizza-corner-bl"></div>
+    <div class="pizza-corner-br"></div>
+
+    <!-- Anime Sparkles -->
+    <div class="sparkle-effects">
+        <div class="sparkle">✨</div>
+        <div class="sparkle">⭐</div>
+        <div class="sparkle">✨</div>
+        <div class="sparkle">💫</div>
+        <div class="sparkle">✨</div>
+    </div>
+
+    <!-- Movie Film Strips -->
+    <div class="film-strip film-strip-left"></div>
+    <div class="film-strip film-strip-right"></div>
+
     <div class="container">
         <header class="header">
             <div class="theme-toggle" id="theme-toggle">
@@ -45,6 +75,7 @@
             <nav class="nav">
                 <button class="nav-btn active" data-section="about">About</button>
                 <button class="nav-btn" data-section="skills">Skills</button>
+                <button class="nav-btn" data-section="experience">Experience</button>
                 <button class="nav-btn" data-section="projects">Projects</button>
                 <button class="nav-btn" data-section="achievements">Achievements</button>
                 <button class="nav-btn" data-section="contact">Contact</button>
@@ -61,6 +92,13 @@
             <section id="skills" class="section">
                 <h2>Skills</h2>
                 <div id="skills-container">
+                    Loading...
+                </div>
+            </section>
+
+            <section id="experience" class="section">
+                <h2>Experience</h2>
+                <div id="experience-container">
                     Loading...
                 </div>
             </section>
@@ -95,6 +133,15 @@
             </section>
         </main>
     </div>
+
+    <!-- Fixed Footer -->
+    <footer class="fixed-footer">
+        <div class="footer-content">
+            <span class="footer-year">© 2025</span>
+            <span class="footer-separator">•</span>
+            <span class="footer-credit">Made with ❤️ by Claude</span>
+        </div>
+    </footer>
 
     <script src="assets/js/main.js" defer></script>
     <script type="application/ld+json">
