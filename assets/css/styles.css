@@ -11,7 +11,7 @@
     --light-accent-hover: #2c5282;
     --light-tag-bg: #f7fafc;
     --light-tag-border: #e2e8f0;
-    
+
     /* Dark Theme */
     --dark-bg: #0f0f0f;
     --dark-bg-alt: #1a1a1a;
@@ -23,7 +23,7 @@
     --dark-accent-hover: #90cdf4;
     --dark-tag-bg: #2d3748;
     --dark-tag-border: #4a5568;
-    
+
     /* Warm Theme */
     --warm-bg: #fefcf3;
     --warm-bg-alt: #faf6e8;
@@ -50,10 +50,17 @@ body {
     color: var(--warm-text-primary);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     transition: background-color 0.3s ease, color 0.3s ease, opacity 0.3s ease;
     position: relative;
     overflow-x: hidden;
-    opacity: 1; /* Ensure smooth appearance */
+    opacity: 1;
+    font-size: 16px;
+    /* Explicit base font size for mobile */
+    -webkit-text-size-adjust: 100%;
+    /* Prevent iOS text scaling */
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
 }
 
 /* Cycling Progress Indicator */
@@ -90,7 +97,8 @@ body {
     stroke: var(--accent, var(--warm-accent));
     stroke-width: 3;
     stroke-linecap: round;
-    stroke-dasharray: 125.66; /* 2 * π * 20 */
+    stroke-dasharray: 125.66;
+    /* 2 * π * 20 */
     stroke-dashoffset: 125.66;
     transition: stroke-dashoffset 0.3s ease;
 }
@@ -98,13 +106,23 @@ body {
 /* Removed cycling hub - clean progress ring only */
 
 @keyframes wheelSpin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 @keyframes counterSpin {
-    0% { transform: translate(-50%, -50%) rotate(0deg); }
-    100% { transform: translate(-50%, -50%) rotate(-360deg); }
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(-360deg);
+    }
 }
 
 /* Fixed Footer */
@@ -160,7 +178,8 @@ body {
 /* Bottom Cycling Track - Adjusted for footer */
 .cycling-track {
     position: fixed;
-    bottom: 35px; /* Moved up to account for footer */
+    bottom: 35px;
+    /* Moved up to account for footer */
     left: 0;
     width: 100%;
     height: 60px;
@@ -176,13 +195,11 @@ body {
     left: 0;
     width: 100%;
     height: 3px;
-    background: repeating-linear-gradient(
-        90deg,
-        var(--accent, var(--warm-accent)) 0px,
-        var(--accent, var(--warm-accent)) 10px,
-        transparent 10px,
-        transparent 20px
-    );
+    background: repeating-linear-gradient(90deg,
+            var(--accent, var(--warm-accent)) 0px,
+            var(--accent, var(--warm-accent)) 10px,
+            transparent 10px,
+            transparent 20px);
     opacity: 0.3;
 }
 
@@ -193,17 +210,26 @@ body {
     font-size: 24px;
     animation: cycleRide 20s linear infinite;
     opacity: 0.4;
-    filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.2));
-    transform: scaleX(-1); /* Flip horizontally to face right */
+    filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.2));
+    transform: scaleX(-1);
+    /* Flip horizontally to face right */
 }
 
 @keyframes cycleRide {
-    0% { left: -50px; }
-    100% { left: calc(100% + 50px); }
+    0% {
+        left: -50px;
+    }
+
+    100% {
+        left: calc(100% + 50px);
+    }
 }
 
 /* Corner Pizza Slices */
-.pizza-corner-tl, .pizza-corner-tr, .pizza-corner-bl, .pizza-corner-br {
+.pizza-corner-tl,
+.pizza-corner-tr,
+.pizza-corner-bl,
+.pizza-corner-br {
     position: fixed;
     font-size: 30px;
     opacity: 0.15;
@@ -212,19 +238,56 @@ body {
     animation: gentleBob 6s ease-in-out infinite;
 }
 
-.pizza-corner-tl { top: 10%; left: 5%; content: '🍕'; }
-.pizza-corner-tr { top: 15%; right: 5%; animation-delay: -2s; }
-.pizza-corner-bl { bottom: 20%; left: 3%; animation-delay: -4s; }
-.pizza-corner-br { bottom: 25%; right: 7%; animation-delay: -1s; }
+.pizza-corner-tl {
+    top: 10%;
+    left: 5%;
+    content: '🍕';
+}
 
-.pizza-corner-tl::before { content: '🍕'; }
-.pizza-corner-tr::before { content: '🍕'; }
-.pizza-corner-bl::before { content: '🍕'; }
-.pizza-corner-br::before { content: '🍕'; }
+.pizza-corner-tr {
+    top: 15%;
+    right: 5%;
+    animation-delay: -2s;
+}
+
+.pizza-corner-bl {
+    bottom: 20%;
+    left: 3%;
+    animation-delay: -4s;
+}
+
+.pizza-corner-br {
+    bottom: 25%;
+    right: 7%;
+    animation-delay: -1s;
+}
+
+.pizza-corner-tl::before {
+    content: '🍕';
+}
+
+.pizza-corner-tr::before {
+    content: '🍕';
+}
+
+.pizza-corner-bl::before {
+    content: '🍕';
+}
+
+.pizza-corner-br::before {
+    content: '🍕';
+}
 
 @keyframes gentleBob {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-8px) rotate(5deg); }
+
+    0%,
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-8px) rotate(5deg);
+    }
 }
 
 /* Anime Sparkles */
@@ -245,18 +308,45 @@ body {
     animation: sparkleFloat 4s ease-in-out infinite;
 }
 
-.sparkle:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
-.sparkle:nth-child(2) { top: 30%; right: 15%; animation-delay: -1s; }
-.sparkle:nth-child(3) { top: 50%; left: 20%; animation-delay: -2s; }
-.sparkle:nth-child(4) { top: 70%; right: 10%; animation-delay: -3s; }
-.sparkle:nth-child(5) { top: 40%; left: 80%; animation-delay: -0.5s; }
+.sparkle:nth-child(1) {
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.sparkle:nth-child(2) {
+    top: 30%;
+    right: 15%;
+    animation-delay: -1s;
+}
+
+.sparkle:nth-child(3) {
+    top: 50%;
+    left: 20%;
+    animation-delay: -2s;
+}
+
+.sparkle:nth-child(4) {
+    top: 70%;
+    right: 10%;
+    animation-delay: -3s;
+}
+
+.sparkle:nth-child(5) {
+    top: 40%;
+    left: 80%;
+    animation-delay: -0.5s;
+}
 
 @keyframes sparkleFloat {
-    0%, 100% { 
+
+    0%,
+    100% {
         transform: scale(0.8) rotate(0deg);
         opacity: 0.3;
     }
-    50% { 
+
+    50% {
         transform: scale(1.2) rotate(180deg);
         opacity: 0.8;
     }
@@ -275,12 +365,12 @@ body {
     top: 0;
     width: 30px;
     height: 100%;
-    background: linear-gradient(0deg, 
-        transparent 0%, 
-        var(--accent, var(--warm-accent)) 10%, 
-        transparent 20%, 
-        var(--accent, var(--warm-accent)) 30%, 
-        transparent 40%);
+    background: linear-gradient(0deg,
+            transparent 0%,
+            var(--accent, var(--warm-accent)) 10%,
+            transparent 20%,
+            var(--accent, var(--warm-accent)) 30%,
+            transparent 40%);
     background-size: 100% 40px;
     animation: filmMove 15s linear infinite;
 }
@@ -290,19 +380,24 @@ body {
     top: 0;
     width: 30px;
     height: 100%;
-    background: linear-gradient(0deg, 
-        transparent 0%, 
-        var(--accent, var(--warm-accent)) 15%, 
-        transparent 25%, 
-        var(--accent, var(--warm-accent)) 35%, 
-        transparent 45%);
+    background: linear-gradient(0deg,
+            transparent 0%,
+            var(--accent, var(--warm-accent)) 15%,
+            transparent 25%,
+            var(--accent, var(--warm-accent)) 35%,
+            transparent 45%);
     background-size: 100% 35px;
     animation: filmMove 18s linear infinite reverse;
 }
 
 @keyframes filmMove {
-    0% { background-position: 0 0; }
-    100% { background-position: 0 100px; }
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 0 100px;
+    }
 }
 
 /* Clean background patterns with personality */
@@ -315,7 +410,7 @@ body::before {
     height: 100%;
     opacity: 0.06;
     z-index: -1;
-    background-image: 
+    background-image:
         radial-gradient(circle at 20% 20%, var(--accent, var(--warm-accent)) 2px, transparent 2px),
         radial-gradient(circle at 80% 40%, var(--accent, var(--warm-accent)) 1.5px, transparent 1.5px),
         radial-gradient(circle at 40% 80%, var(--accent, var(--warm-accent)) 2px, transparent 2px),
@@ -347,18 +442,45 @@ body::after {
 }
 
 @keyframes subtleShift {
-    0%, 100% { transform: translateX(0px) translateY(0px); }
-    25% { transform: translateX(10px) translateY(-5px); }
-    50% { transform: translateX(-5px) translateY(10px); }
-    75% { transform: translateX(15px) translateY(-10px); }
+
+    0%,
+    100% {
+        transform: translateX(0px) translateY(0px);
+    }
+
+    25% {
+        transform: translateX(10px) translateY(-5px);
+    }
+
+    50% {
+        transform: translateX(-5px) translateY(10px);
+    }
+
+    75% {
+        transform: translateX(15px) translateY(-10px);
+    }
 }
 
 @keyframes floatAround {
-    0% { transform: translateX(-100px) translateY(-50px) rotate(0deg); }
-    25% { transform: translateX(50px) translateY(100px) rotate(90deg); }
-    50% { transform: translateX(100px) translateY(-100px) rotate(180deg); }
-    75% { transform: translateX(-50px) translateY(50px) rotate(270deg); }
-    100% { transform: translateX(-100px) translateY(-50px) rotate(360deg); }
+    0% {
+        transform: translateX(-100px) translateY(-50px) rotate(0deg);
+    }
+
+    25% {
+        transform: translateX(50px) translateY(100px) rotate(90deg);
+    }
+
+    50% {
+        transform: translateX(100px) translateY(-100px) rotate(180deg);
+    }
+
+    75% {
+        transform: translateX(-50px) translateY(50px) rotate(270deg);
+    }
+
+    100% {
+        transform: translateX(-100px) translateY(-50px) rotate(360deg);
+    }
 }
 
 /* Theme Classes */
@@ -412,7 +534,8 @@ body.theme-warm {
 .container {
     max-width: 1000px;
     margin: 0 auto;
-    padding: 40px 20px 120px 20px; /* Added 120px bottom padding for cycling track + footer */
+    padding: 40px 20px 120px 20px;
+    /* Added 120px bottom padding for cycling track + footer */
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -420,7 +543,8 @@ body.theme-warm {
 
 @media (min-width: 768px) {
     .container {
-        padding: 48px 32px 120px 32px; /* Added 120px bottom padding for desktop too */
+        padding: 48px 32px 120px 32px;
+        /* Added 120px bottom padding for desktop too */
     }
 }
 
@@ -440,7 +564,7 @@ body.theme-warm {
     opacity: 0.25;
     animation: pizzaSpin 8s ease-in-out infinite;
     pointer-events: none;
-    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1));
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.1));
 }
 
 .header::after {
@@ -452,40 +576,84 @@ body.theme-warm {
     opacity: 0.22;
     animation: cyclingMove 10s ease-in-out infinite;
     pointer-events: none;
-    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1));
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.1));
 }
 
 @keyframes pizzaSpin {
-    0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.25; }
-    25% { transform: translateY(-12px) rotate(90deg); opacity: 0.4; }
-    50% { transform: translateY(-6px) rotate(180deg); opacity: 0.25; }
-    75% { transform: translateY(-15px) rotate(270deg); opacity: 0.35; }
+
+    0%,
+    100% {
+        transform: translateY(0px) rotate(0deg);
+        opacity: 0.25;
+    }
+
+    25% {
+        transform: translateY(-12px) rotate(90deg);
+        opacity: 0.4;
+    }
+
+    50% {
+        transform: translateY(-6px) rotate(180deg);
+        opacity: 0.25;
+    }
+
+    75% {
+        transform: translateY(-15px) rotate(270deg);
+        opacity: 0.35;
+    }
 }
 
 @keyframes cyclingMove {
-    0%, 100% { transform: scaleX(-1) translateX(0px) rotate(0deg); opacity: 0.22; }
-    25% { transform: scaleX(-1) translateX(-20px) rotate(-8deg); opacity: 0.35; }
-    50% { transform: scaleX(1) translateX(12px) rotate(5deg); opacity: 0.25; }
-    75% { transform: scaleX(-1) translateX(-25px) rotate(-10deg); opacity: 0.3; }
+
+    0%,
+    100% {
+        transform: scaleX(-1) translateX(0px) rotate(0deg);
+        opacity: 0.22;
+    }
+
+    25% {
+        transform: scaleX(-1) translateX(-20px) rotate(-8deg);
+        opacity: 0.35;
+    }
+
+    50% {
+        transform: scaleX(1) translateX(12px) rotate(5deg);
+        opacity: 0.25;
+    }
+
+    75% {
+        transform: scaleX(-1) translateX(-25px) rotate(-10deg);
+        opacity: 0.3;
+    }
 }
 
 @keyframes float {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    33% { transform: translateY(-10px) rotate(120deg); }
-    66% { transform: translateY(-5px) rotate(240deg); }
+
+    0%,
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    33% {
+        transform: translateY(-10px) rotate(120deg);
+    }
+
+    66% {
+        transform: translateY(-5px) rotate(240deg);
+    }
 }
 
 @media (min-width: 768px) {
     .header {
         margin-bottom: 48px;
     }
-    
+
     .header::before {
         width: 80px;
         height: 80px;
         right: 15%;
     }
-    
+
     .header::after {
         width: 50px;
         height: 50px;
@@ -638,7 +806,7 @@ body.theme-warm {
     z-index: -1;
     animation: sparkle 3s ease-in-out infinite;
     pointer-events: none;
-    filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.1));
+    filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.1));
 }
 
 .section::after {
@@ -651,40 +819,100 @@ body.theme-warm {
     z-index: -1;
     animation: filmRoll 6s ease-in-out infinite;
     pointer-events: none;
-    filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.1));
+    filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.1));
 }
 
 @keyframes sparkle {
-    0%, 100% { opacity: 0.2; transform: scale(1) rotate(0deg); }
-    50% { opacity: 0.4; transform: scale(1.1) rotate(180deg); }
+
+    0%,
+    100% {
+        opacity: 0.2;
+        transform: scale(1) rotate(0deg);
+    }
+
+    50% {
+        opacity: 0.4;
+        transform: scale(1.1) rotate(180deg);
+    }
 }
 
 @keyframes filmRoll {
-    0%, 100% { opacity: 0.18; transform: rotate(0deg); }
-    25% { opacity: 0.3; transform: rotate(90deg); }
-    50% { opacity: 0.25; transform: rotate(180deg); }
-    75% { opacity: 0.35; transform: rotate(270deg); }
+
+    0%,
+    100% {
+        opacity: 0.18;
+        transform: rotate(0deg);
+    }
+
+    25% {
+        opacity: 0.3;
+        transform: rotate(90deg);
+    }
+
+    50% {
+        opacity: 0.25;
+        transform: rotate(180deg);
+    }
+
+    75% {
+        opacity: 0.35;
+        transform: rotate(270deg);
+    }
 }
 
 @keyframes popUp {
-    0% { opacity: 0; transform: translateX(-50%) translateY(10px) scale(0.5); }
-    100% { opacity: 0.6; transform: translateX(-50%) translateY(0px) scale(1); }
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(10px) scale(0.5);
+    }
+
+    100% {
+        opacity: 0.6;
+        transform: translateX(-50%) translateY(0px) scale(1);
+    }
 }
 
 @keyframes pizzaBounce {
-    0% { opacity: 0; transform: scale(0) rotate(0deg); }
-    50% { opacity: 0.8; transform: scale(1.2) rotate(180deg); }
-    100% { opacity: 0.7; transform: scale(1) rotate(360deg); }
+    0% {
+        opacity: 0;
+        transform: scale(0) rotate(0deg);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: scale(1.2) rotate(180deg);
+    }
+
+    100% {
+        opacity: 0.7;
+        transform: scale(1) rotate(360deg);
+    }
 }
 
 @keyframes pulse {
-    0%, 100% { opacity: 0.2; transform: scale(1); }
-    50% { opacity: 0.4; transform: scale(1.1); }
+
+    0%,
+    100% {
+        opacity: 0.2;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.4;
+        transform: scale(1.1);
+    }
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .section h2 {
@@ -943,23 +1171,256 @@ body.theme-warm {
     opacity: 0.8;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
+/* Mobile First - Base styles for mobile */
+@media (max-width: 480px) {
+    .container {
+        padding: 20px 12px 120px 12px;
+    }
+
+    .header {
+        margin-bottom: 30px;
+    }
+
+    .theme-toggle {
+        position: static;
+        margin: 0 auto 20px;
+        width: fit-content;
+        gap: 2px;
+        padding: 2px;
+    }
+
+    .theme-btn {
+        padding: 4px 8px;
+        font-size: 12px;
+        min-width: 28px;
+        height: 28px;
+    }
+
+    .name {
+        font-size: 1.8rem;
+        margin-bottom: 6px;
+        line-height: 1.2;
+    }
+
+    .title {
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+
+    .experience-badge {
+        font-size: 0.75rem;
+        padding: 3px 10px;
+        margin-bottom: 20px;
+    }
+
+    .nav {
+        gap: 4px;
+        justify-content: center;
+    }
+
+    .nav-btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+        border-radius: 4px;
+    }
+
+    .section h2 {
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+    }
+
+    .section p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    /* Skills adjustments */
+    .skills-container {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .skill-category {
+        padding: 12px;
+    }
+
+    .tech-tags span {
+        font-size: 0.75rem;
+        padding: 3px 8px;
+    }
+
+    /* Experience adjustments */
+    .experience-item {
+        padding: 16px;
+        margin-bottom: 20px;
+    }
+
+    .experience-title {
+        font-size: 1rem;
+        line-height: 1.3;
+    }
+
+    .experience-company {
+        font-size: 0.9rem;
+    }
+
+    .experience-duration {
+        font-size: 0.8rem;
+    }
+
+    .experience-location {
+        font-size: 0.75rem;
+    }
+
+    .experience-achievements li {
+        font-size: 0.85rem;
+        line-height: 1.4;
+        margin-bottom: 8px;
+    }
+
+    /* Projects adjustments */
+    .projects-container {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .project {
+        padding: 16px;
+    }
+
+    .project h3 {
+        font-size: 1rem;
+        line-height: 1.3;
+    }
+
+    .project-description {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+
+    .ai-badge,
+    .independent-badge {
+        font-size: 0.7rem;
+        padding: 3px 6px;
+    }
+
+    .tech-tag {
+        font-size: 0.7rem;
+        padding: 3px 6px;
+    }
+
+    /* Contact adjustments */
+    .contact-links {
+        gap: 12px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-link {
+        padding: 10px 16px;
+        font-size: 0.85rem;
+        min-width: 120px;
+    }
+
+    /* Progress indicator adjustments */
+    .cycling-progress {
+        top: 15px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .progress-ring {
+        width: 40px;
+        height: 40px;
+    }
+
+    /* Background elements - reduce on mobile */
+    .pizza-corner-tl,
+    .pizza-corner-tr,
+    .pizza-corner-bl,
+    .pizza-corner-br {
+        font-size: 20px;
+        opacity: 0.1;
+    }
+
+    .sparkle {
+        font-size: 12px;
+        opacity: 0.4;
+    }
+
+    /* Footer adjustments */
+    .footer-content {
+        font-size: 0.7rem;
+        padding: 0 8px;
+        gap: 6px;
+    }
+
+    /* Hide some decorative elements on very small screens */
+    .header::before,
+    .header::after,
+    .section::before,
+    .section::after {
+        display: none;
+    }
+
+    /* Film strips - make thinner */
+    .film-strip-left,
+    .film-strip-right {
+        width: 15px;
+        opacity: 0.05;
+    }
+}
+
+/* Tablet styles */
+@media (min-width: 481px) and (max-width: 768px) {
+    .container {
+        padding: 30px 16px 120px 16px;
+    }
+
+    .theme-toggle {
+        position: static;
+        margin: 0 auto 25px;
+        width: fit-content;
+    }
+
+    .name {
+        font-size: 2rem;
+    }
+
+    .nav {
+        gap: 8px;
+    }
+
+    .nav-btn {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+    }
+
+    .skills-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+
+    .projects-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
     .experience-header {
         flex-direction: column;
         gap: 12px;
     }
-    
+
     .experience-meta {
         text-align: left;
     }
-    
-    .experience-title {
-        font-size: 1.1rem;
-    }
-    
-    .experience-item {
-        padding: 20px;
+
+    .contact-links {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 16px;
+        justify-content: center;
     }
 }
 
@@ -992,7 +1453,8 @@ body.theme-warm {
     display: grid;
     grid-template-columns: 1fr;
     gap: 24px;
-    align-items: start; /* Prevent height stretching between cards */
+    align-items: start;
+    /* Prevent height stretching between cards */
 }
 
 .project {
@@ -1003,8 +1465,10 @@ body.theme-warm {
     transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
-    height: auto; /* Ensure each card has independent height */
-    width: 100%; /* Prevent width changes affecting other cards */
+    height: auto;
+    /* Ensure each card has independent height */
+    width: 100%;
+    /* Prevent width changes affecting other cards */
 }
 
 .project:hover {
@@ -1022,7 +1486,7 @@ body.theme-warm {
     opacity: 0.8;
     animation: pizzaBounce 0.6s ease-out;
     pointer-events: none;
-    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
 }
 
 .project-header {
@@ -1043,7 +1507,8 @@ body.theme-warm {
     min-width: 0;
 }
 
-.ai-badge, .independent-badge {
+.ai-badge,
+.independent-badge {
     font-size: 0.75rem;
     font-weight: 600;
     padding: 4px 8px;
@@ -1075,6 +1540,7 @@ body.theme-warm {
 .project-description.collapsed p {
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -1145,23 +1611,50 @@ body.theme-warm {
 }
 
 /* Responsive improvements */
-@media (min-width: 768px) {
-    .projects-container {
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-        align-items: start; /* Maintain independent heights on desktop */
+/* Desktop and larger screens */
+@media (min-width: 769px) {
+    .container {
+        padding: 48px 32px 120px 32px;
     }
-    
-    .skills-container {
-        grid-template-columns: 1fr 1fr;
+
+    .header {
+        margin-bottom: 48px;
     }
-    
+
+    .theme-toggle {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    .header::before {
+        width: 80px;
+        height: 80px;
+        right: 15%;
+    }
+
+    .header::after {
+        width: 50px;
+        height: 50px;
+        left: 12%;
+    }
+
     .nav {
         gap: 16px;
     }
-    
+
     .nav-btn {
         padding: 12px 24px;
+    }
+
+    .projects-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        align-items: start;
+    }
+
+    .skills-container {
+        grid-template-columns: 1fr 1fr;
     }
 }
 
@@ -1169,6 +1662,10 @@ body.theme-warm {
     .skills-container {
         grid-template-columns: 1fr 1fr 1fr;
         gap: 20px;
+    }
+
+    .container {
+        max-width: 1000px;
     }
 }
 
@@ -1234,55 +1731,77 @@ body.theme-warm {
     font-size: 0.9rem;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .container {
-        padding: 40px 16px 120px 16px; /* Added 120px bottom padding for mobile too */
+/* Touch-friendly and accessibility improvements */
+@media (hover: none) and (pointer: coarse) {
+
+    /* Touch devices - remove hover effects that don't work well */
+    .nav-btn:hover::after {
+        display: none;
     }
-    
-    .footer-content {
-        font-size: 0.75rem;
-        padding: 0 10px;
+
+    .project:hover::before {
+        display: none;
     }
-    
-    .theme-toggle {
-        position: static;
-        margin: 0 auto 30px;
-        width: fit-content;
-    }
-    
-    .name {
-        font-size: 2.2rem;
-    }
-    
-    .nav {
-        gap: 6px;
-    }
-    
+
+    /* Make touch targets larger */
     .nav-btn {
-        padding: 8px 16px;
-        font-size: 0.85rem;
+        min-height: 44px;
+        min-width: 44px;
     }
-    
-    .contact-links {
-        gap: 20px;
-        flex-direction: column;
-        align-items: center;
+
+    .theme-btn {
+        min-height: 44px;
+        min-width: 44px;
     }
-    
-    .project-header {
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
+
+    .contact-link {
+        min-height: 44px;
     }
-    
-    .project h3 {
-        font-size: 1.1rem;
+
+    .expand-project,
+    .expand-experience,
+    .show-more-skills {
+        min-height: 44px;
+        padding: 8px 12px;
     }
-    
-    .project-image {
-        max-width: 100%;
-        height: 200px;
+}
+
+/* High DPI / Retina displays */
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+    .loading-spinner {
+        border-width: 2px;
+    }
+
+    .progress-ring-background,
+    .progress-ring-progress {
+        stroke-width: 2;
+    }
+}
+
+/* Landscape orientation on phones */
+@media (max-width: 768px) and (orientation: landscape) {
+    .container {
+        padding: 20px 16px 80px 16px;
+    }
+
+    .header {
+        margin-bottom: 20px;
+    }
+
+    .name {
+        font-size: 1.6rem;
+    }
+
+    .cycling-progress {
+        top: 10px;
+        right: 10px;
+        width: 35px;
+        height: 35px;
+    }
+
+    .fixed-footer {
+        padding: 6px 20px;
     }
 }
 

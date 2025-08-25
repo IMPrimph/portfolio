@@ -474,30 +474,51 @@ function initEasterEggs() {
         });
     }
 
-    // Keyboard shortcuts
-    document.addEventListener('keydown', function (e) {
-        // Press 'C' for cycling boost (check if cycling track exists)
-        if (e.key.toLowerCase() === 'c') {
-            const cyclingTrack = document.querySelector('.cycling-track');
-            if (cyclingTrack && cyclingTrack.querySelector('::after')) {
-                // Speed up the cycling animation
-                cyclingTrack.style.setProperty('--cycle-speed', '0.5s');
-                setTimeout(() => {
-                    cyclingTrack.style.setProperty('--cycle-speed', '20s');
-                }, 2000);
+    // Touch-friendly interactions for mobile
+    if ('ontouchstart' in window) {
+        // Add touch feedback for buttons
+        const buttons = document.querySelectorAll('.nav-btn, .theme-btn, .contact-link, .expand-project, .expand-experience, .show-more-skills');
+        buttons.forEach(button => {
+            button.addEventListener('touchstart', function () {
+                this.style.transform = 'scale(0.95)';
+            });
+
+            button.addEventListener('touchend', function () {
+                this.style.transform = '';
+            });
+
+            button.addEventListener('touchcancel', function () {
+                this.style.transform = '';
+            });
+        });
+    }
+
+    // Keyboard shortcuts (desktop only)
+    if (!('ontouchstart' in window)) {
+        document.addEventListener('keydown', function (e) {
+            // Press 'C' for cycling boost (check if cycling track exists)
+            if (e.key.toLowerCase() === 'c') {
+                const cyclingTrack = document.querySelector('.cycling-track');
+                if (cyclingTrack && cyclingTrack.querySelector('::after')) {
+                    // Speed up the cycling animation
+                    cyclingTrack.style.setProperty('--cycle-speed', '0.5s');
+                    setTimeout(() => {
+                        cyclingTrack.style.setProperty('--cycle-speed', '20s');
+                    }, 2000);
+                }
             }
-        }
 
-        // Press 'P' for pizza party
-        if (e.key.toLowerCase() === 'p') {
-            createPizzaParty();
-        }
+            // Press 'P' for pizza party
+            if (e.key.toLowerCase() === 'p') {
+                createPizzaParty();
+            }
 
-        // Press 'A' for anime sparkle burst
-        if (e.key.toLowerCase() === 'a') {
-            createAnimeSparkleBurst();
-        }
-    });
+            // Press 'A' for anime sparkle burst
+            if (e.key.toLowerCase() === 'a') {
+                createAnimeSparkleBurst();
+            }
+        });
+    }
 }
 
 function createPizzaRain() {
