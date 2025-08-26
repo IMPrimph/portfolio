@@ -28,6 +28,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+    <!-- Preload critical resources -->
+    <link rel="preload" href="assets/data/content.json" as="fetch" crossorigin>
+    <link rel="preload" href="assets/js/main.js" as="script">
+    <link rel="preload" href="assets/css/styles.css" as="style">
+
     <link rel="stylesheet" href="assets/css/styles.css" media="all">
 
     <!-- Loading styles - inline to prevent FOUC -->
@@ -101,6 +106,12 @@
 </head>
 
 <body>
+    <!-- Skip Navigation for Screen Readers -->
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <!-- Status announcements for screen readers -->
+    <div id="status" aria-live="polite" class="sr-only"></div>
+
     <!-- Loading Screen -->
     <div class="loading-screen" id="loading-screen">
         <div class="loading-spinner"></div>
@@ -118,13 +129,13 @@
     <!-- Bottom Cycling Track -->
     <div class="cycling-track"></div>
 
-    <!-- Corner Pizza Slices -->
+    <!-- Subtle Pizza Corner Slices -->
     <div class="pizza-corner-tl"></div>
     <div class="pizza-corner-tr"></div>
     <div class="pizza-corner-bl"></div>
     <div class="pizza-corner-br"></div>
 
-    <!-- Anime Sparkles -->
+    <!-- Gentle Sparkle Effects -->
     <div class="sparkle-effects">
         <div class="sparkle">✨</div>
         <div class="sparkle">⭐</div>
@@ -133,34 +144,46 @@
         <div class="sparkle">✨</div>
     </div>
 
-    <!-- Movie Film Strips -->
+    <!-- Minimal Film Strips -->
     <div class="film-strip film-strip-left"></div>
     <div class="film-strip film-strip-right"></div>
 
     <div class="container">
         <header class="header">
-            <div class="theme-toggle" id="theme-toggle">
-                <button class="theme-btn" data-theme="light" title="Light Mode">☀️</button>
-                <button class="theme-btn" data-theme="warm" title="Warm Mode">🌅</button>
-                <button class="theme-btn" data-theme="dark" title="Dark Mode">🌙</button>
+            <div class="theme-toggle" id="theme-toggle" role="radiogroup" aria-label="Theme selection">
+                <button class="theme-btn" data-theme="light" role="radio" aria-checked="false"
+                    aria-label="Light theme">☀️</button>
+                <button class="theme-btn active" data-theme="warm" role="radio" aria-checked="true"
+                    aria-label="Warm theme">🌅</button>
+                <button class="theme-btn" data-theme="dark" role="radio" aria-checked="false"
+                    aria-label="Dark theme">🌙</button>
             </div>
 
             <h1 class="name" id="name">Vishnu Sai Jaswanth</h1>
             <p class="title" id="title">Senior Software Development Engineer</p>
             <div class="experience-badge" id="experience-badge">3+ Years Experience</div>
 
-            <nav class="nav">
-                <button class="nav-btn active" data-section="about">About</button>
-                <button class="nav-btn" data-section="skills">Skills</button>
-                <button class="nav-btn" data-section="experience">Experience</button>
-                <button class="nav-btn" data-section="projects">Projects</button>
-                <button class="nav-btn" data-section="achievements">Achievements</button>
-                <button class="nav-btn" data-section="contact">Contact</button>
-                <button class="nav-btn" data-section="education">Education</button>
+            <nav class="nav" role="navigation" aria-label="Main navigation">
+                <button class="nav-btn active" data-section="about" aria-pressed="true"
+                    aria-controls="about">About</button>
+                <button class="nav-btn" data-section="skills" aria-pressed="false"
+                    aria-controls="skills">Skills</button>
+                <button class="nav-btn" data-section="experience" aria-pressed="false"
+                    aria-controls="experience">Experience</button>
+                <button class="nav-btn" data-section="projects" aria-pressed="false"
+                    aria-controls="projects">Projects</button>
+                <button class="nav-btn" data-section="achievements" aria-pressed="false"
+                    aria-controls="achievements">Achievements</button>
+                <button class="nav-btn" data-section="recommendations" aria-pressed="false"
+                    aria-controls="recommendations">🎬 Recommendations</button>
+                <button class="nav-btn" data-section="contact" aria-pressed="false"
+                    aria-controls="contact">Contact</button>
+                <button class="nav-btn" data-section="education" aria-pressed="false"
+                    aria-controls="education">Education</button>
             </nav>
         </header>
 
-        <main class="main">
+        <main class="main" id="main">
             <section id="about" class="section active">
                 <h2>About</h2>
                 <p id="bio">Senior Software Engineer with experience in backend systems, data infrastructure, and AI
@@ -192,6 +215,50 @@
                 <h2>Achievements</h2>
                 <div id="achievements-container">
                     <!-- Achievements will be loaded here -->
+                </div>
+            </section>
+
+            <section id="recommendations" class="section">
+                <h2>🎬 My Recommendations</h2>
+                <div class="recommendations-toggle">
+                    <button class="toggle-btn active" data-type="movies">🎬 Movies</button>
+                    <button class="toggle-btn" data-type="anime">🎌 Anime</button>
+                    <button class="toggle-btn" data-type="music">🎵 Music</button>
+                </div>
+                <div class="recommendations-filters">
+                    <div class="filter-row">
+                        <div class="custom-dropdown" id="language-dropdown">
+                            <button class="dropdown-btn" type="button" aria-haspopup="listbox" aria-expanded="false"
+                                aria-labelledby="language-label">
+                                <span id="language-label" class="dropdown-text">All Languages</span>
+                                <span class="dropdown-arrow" aria-hidden="true">🔽</span>
+                            </button>
+                            <ul class="dropdown-menu" id="language-menu" role="listbox"
+                                aria-labelledby="language-label">
+                                <li class="dropdown-item active" data-value="" role="option" aria-selected="true">All
+                                    Languages</li>
+                            </ul>
+                        </div>
+                        <div class="custom-dropdown" id="genre-dropdown">
+                            <button class="dropdown-btn" type="button" aria-haspopup="listbox" aria-expanded="false"
+                                aria-labelledby="genre-label">
+                                <span id="genre-label" class="dropdown-text">All Genres</span>
+                                <span class="dropdown-arrow" aria-hidden="true">🔽</span>
+                            </button>
+                            <ul class="dropdown-menu" id="genre-menu" role="listbox" aria-labelledby="genre-label">
+                                <li class="dropdown-item active" data-value="" role="option" aria-selected="true">All
+                                    Genres</li>
+                            </ul>
+                        </div>
+                        <button id="clear-filters" class="clear-btn">✨ Clear Filters</button>
+                    </div>
+                    <div class="search-row">
+                        <input type="text" id="recommendations-search" placeholder="🔍 Search recommendations..." />
+                        <button id="random-pick">🎲 Random Pick</button>
+                    </div>
+                </div>
+                <div id="recommendations-container">
+                    <!-- Recommendations will be loaded here -->
                 </div>
             </section>
 

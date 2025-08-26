@@ -98,5 +98,1119 @@
       "title": "Best Employee of the Quarter (Apr 2025)",
       "description": "Awarded at BIK.AI for technical leadership, backend system design, and cross-functional impact in developing clustering infrastructure and deployment tools."
     }
-  ]
+  ],
+  "recommendations": {
+    "movies": [
+      {
+        "title": "Nightcrawler",
+        "genre": "Thriller",
+        "rating": 5,
+        "vishnu_pick": true,
+        "language": "English",
+        "description": "A dark psychological thriller about ambition and media ethics"
+      },
+      {
+        "title": "The Prestige",
+        "genre": "Mystery",
+        "rating": 5,
+        "vishnu_pick": true,
+        "language": "English",
+        "description": "A mind-bending tale of rival magicians"
+      },
+      {
+        "title": "Dunkirk",
+        "genre": "War",
+        "rating": 5,
+        "vishnu_pick": true,
+        "language": "English",
+        "description": "Intense WWII evacuation masterpiece"
+      },
+      {
+        "title": "Shutter Island",
+        "genre": "Thriller",
+        "rating": 5,
+        "vishnu_pick": true,
+        "language": "English",
+        "description": "Psychological thriller with mind-bending twists"
+      },
+      {
+        "title": "Dredd",
+        "genre": "Action",
+        "rating": 4,
+        "language": "English",
+        "description": "Brutal dystopian action in a mega tower"
+      },
+      {
+        "title": "Catch Me If You Can",
+        "genre": "Drama",
+        "rating": 4,
+        "language": "English",
+        "description": "Con artist vs FBI - based on true story"
+      },
+      {
+        "title": "Forrest Gump",
+        "genre": "Drama",
+        "rating": 5,
+        "vishnu_pick": true,
+        "language": "English",
+        "description": "Life is like a box of chocolates"
+      },
+      {
+        "title": "Hot Fuzz",
+        "genre": "Comedy",
+        "rating": 4,
+        "language": "English",
+        "description": "British comedy action parody perfection"
+      },
+      {
+        "title": "Ready Player One",
+        "genre": "Sci-Fi",
+        "rating": 4,
+        "language": "English",
+        "description": "Virtual reality treasure hunt adventure"
+      },
+      {
+        "title": "Donnie Darko",
+        "genre": "Sci-Fi",
+        "rating": 4,
+        "language": "English",
+        "description": "Mind-bending time travel psychological thriller"
+      },
+      {
+        "title": "Into the Wild",
+        "genre": "Drama",
+        "rating": 4,
+        "language": "English",
+        "description": "Journey of self-discovery in Alaska wilderness"
+      },
+      {
+        "title": "Seven",
+        "genre": "Thriller",
+        "rating": 5,
+        "vishnu_pick": true,
+        "language": "English",
+        "description": "Dark detective thriller about seven deadly sins"
+      },
+      {
+        "title": "Inception",
+        "genre": "Sci-Fi",
+        "rating": 5,
+        "vishnu_pick": true,
+        "language": "English",
+        "description": "Dreams within dreams - a masterpiece"
+      },
+      {
+        "title": "The Dark Knight",
+        "genre": "Action",
+        "rating": 5,
+        "vishnu_pick": true,
+        "language": "English",
+        "description": "Heath Ledger's Joker steals the show"
+      },
+      {
+        "title": "Fight Club",
+        "genre": "Drama",
+        "rating": 5,
+        "vishnu_pick": true,
+        "language": "English",
+        "description": "Rule #1: You don't talk about Fight Club"
+      },
+      {
+        "title": "Interstellar",
+        "genre": "Sci-Fi",
+        "rating": 5,
+        "vishnu_pick": true,
+        "language": "English",
+        "description": "Space, time, and love across dimensions"
+      },
+      {
+        "title": "The Collateral",
+        "genre": "Thriller",
+        "rating": 4,
+        "language": "English",
+        "description": "Tom Cruise as hitman in LA night thriller"
+      },
+      {
+        "title": "The Matrix",
+        "genre": "Sci-Fi",
+        "rating": 5,
+        "vishnu_pick": true,
+        "language": "English",
+        "description": "Red pill or blue pill?"
+      },
+      {
+        "title": "Source Code",
+        "genre": "Sci-Fi",
+        "rating": 4,
+        "language": "English",
+        "description": "8-minute time loop thriller"
+      },
+      {
+        "title": "Edge of Tomorrow",
+        "genre": "Sci-Fi",
+        "rating": 4,
+        "language": "English",
+        "description": "Groundhog Day meets alien invasion"
+      },
+      {
+        "title": "Chappie",
+        "genre": "Sci-Fi",
+        "rating": 3,
+        "language": "English",
+        "description": "AI robot learning about life and consciousness"
+      },
+      {
+        "title": "District 9",
+        "genre": "Sci-Fi",
+        "rating": 4,
+        "language": "English",
+        "description": "Alien apartheid allegory from South Africa"
+      },
+      {
+        "title": "Man on Fire",
+        "genre": "Action",
+        "rating": 4,
+        "language": "English",
+        "description": "Denzel Washington's revenge thriller"
+      },
+      {
+        "title": "The Equalizer",
+        "genre": "Action",
+        "rating": 4,
+        "language": "English",
+        "description": "Denzel as retired black ops operative"
+      },
+      {
+        "title": "Gone Girl",
+        "genre": "Thriller",
+        "rating": 5,
+        "vishnu_pick": true,
+        "language": "English",
+        "description": "Marriage thriller that'll keep you guessing"
+      },
+      {
+        "title": "Phone Booth",
+        "genre": "Thriller",
+        "rating": 4,
+        "language": "English",
+        "description": "Single location thriller with Colin Farrell"
+      },
+      {
+        "title": "The Social Network",
+        "genre": "Drama",
+        "rating": 4,
+        "language": "English",
+        "description": "The Facebook origin story"
+      },
+      {
+        "title": "Predestination",
+        "genre": "Sci-Fi",
+        "rating": 4,
+        "language": "English",
+        "description": "Time-traveling agent meets mysterious writer"
+      },
+      {
+        "title": "The Revenant",
+        "genre": "Drama",
+        "rating": 4,
+        "language": "English",
+        "description": "Leonardo DiCaprio's survival epic"
+      },
+      {
+        "title": "Mad Max: Fury Road",
+        "genre": "Action",
+        "rating": 5,
+        "vishnu_pick": true,
+        "language": "English",
+        "description": "Non-stop action masterpiece in wasteland"
+      },
+      {
+        "title": "V for Vendetta",
+        "genre": "Action",
+        "rating": 4,
+        "language": "English",
+        "description": "Remember, remember the 5th of November"
+      },
+      {
+        "title": "Contratiempo",
+        "genre": "Thriller",
+        "rating": 4,
+        "language": "Spanish",
+        "description": "The Invisible Guest - twisty Spanish thriller"
+      },
+      {
+        "title": "The Sixth Sense",
+        "genre": "Thriller",
+        "rating": 4,
+        "language": "English",
+        "description": "I see dead people - M. Night's masterpiece"
+      },
+      {
+        "title": "Primal Fear",
+        "genre": "Thriller",
+        "rating": 4,
+        "language": "English",
+        "description": "Edward Norton's breakout legal thriller"
+      },
+      {
+        "title": "Coherence",
+        "genre": "Sci-Fi",
+        "rating": 4,
+        "language": "English",
+        "description": "Low-budget high-concept mind bender"
+      },
+      {
+        "title": "The Iron Giant",
+        "genre": "Animation",
+        "rating": 4,
+        "language": "English",
+        "description": "Heartwarming animated robot friendship"
+      },
+      {
+        "title": "Arrival",
+        "genre": "Sci-Fi",
+        "rating": 5,
+        "vishnu_pick": true,
+        "language": "English",
+        "description": "First contact linguistics masterpiece"
+      },
+      {
+        "title": "L.A. Confidential",
+        "genre": "Crime",
+        "rating": 4,
+        "language": "English",
+        "description": "1950s LA noir corruption thriller"
+      },
+      {
+        "title": "It's a Wonderful Life",
+        "genre": "Drama",
+        "rating": 4,
+        "language": "English",
+        "description": "Christmas classic about life's meaning"
+      },
+      {
+        "title": "Taken",
+        "genre": "Action",
+        "rating": 4,
+        "language": "English",
+        "description": "Liam Neeson's particular set of skills"
+      },
+      {
+        "title": "Vertigo",
+        "genre": "Thriller",
+        "rating": 4,
+        "language": "English",
+        "description": "Hitchcock's psychological masterpiece"
+      },
+      {
+        "title": "Identity",
+        "genre": "Thriller",
+        "rating": 4,
+        "language": "English",
+        "description": "Motel murder mystery with twists"
+      },
+      {
+        "title": "The Bourne Series",
+        "genre": "Action",
+        "rating": 4,
+        "language": "English",
+        "description": "Jason Bourne identity thriller trilogy"
+      },
+      {
+        "title": "Guppy",
+        "genre": "Drama",
+        "rating": 4,
+        "language": "Malayalam",
+        "description": "Heartwarming coming-of-age story"
+      },
+      {
+        "title": "Charlie",
+        "genre": "Romance",
+        "rating": 4,
+        "language": "Malayalam",
+        "description": "Quirky romantic adventure with Dulquer"
+      },
+      {
+        "title": "Ambili",
+        "genre": "Drama",
+        "rating": 4,
+        "language": "Malayalam",
+        "description": "Simple man's journey of self-discovery"
+      },
+      {
+        "title": "Kumbalangi Nights",
+        "genre": "Drama",
+        "rating": 5,
+        "vishnu_pick": true,
+        "language": "Malayalam",
+        "description": "Four brothers' dysfunctional family dynamics"
+      },
+      {
+        "title": "Bangalore Days",
+        "genre": "Drama",
+        "rating": 5,
+        "vishnu_pick": true,
+        "language": "Malayalam",
+        "description": "Friendship and dreams in the city"
+      },
+      {
+        "title": "Kilometers and Kilometers",
+        "genre": "Comedy",
+        "rating": 4,
+        "language": "Malayalam",
+        "description": "Road trip comedy with Tovino Thomas"
+      },
+      {
+        "title": "Romancham",
+        "genre": "Horror Comedy",
+        "rating": 4,
+        "language": "Malayalam",
+        "description": "Ouija board horror comedy"
+      },
+      {
+        "title": "Ela Veezha Poonchira",
+        "genre": "Thriller",
+        "rating": 5,
+        "vishnu_pick": true,
+        "language": "Malayalam",
+        "description": "Murder mystery in scenic Kerala"
+      },
+      {
+        "title": "Premam",
+        "genre": "Romance",
+        "rating": 4,
+        "language": "Malayalam",
+        "description": "Three stages of love story"
+      },
+      {
+        "title": "Android Kunjappan Ver 5.25",
+        "genre": "Sci-Fi Comedy",
+        "rating": 5,
+        "vishnu_pick": true,
+        "language": "Malayalam",
+        "description": "Elderly man and his robot companion"
+      },
+      {
+        "title": "Jana Gana Mana",
+        "genre": "Thriller",
+        "rating": 4,
+        "language": "Malayalam",
+        "description": "Political conspiracy thriller with Prithviraj"
+      },
+      {
+        "title": "Kooman",
+        "genre": "Thriller",
+        "rating": 3,
+        "language": "Malayalam",
+        "description": "Police procedural with Asif Ali"
+      },
+      {
+        "title": "Lucifer",
+        "genre": "Action",
+        "rating": 4,
+        "language": "Malayalam",
+        "description": "Mohanlal's political action thriller"
+      },
+      {
+        "title": "Memories",
+        "genre": "Thriller",
+        "rating": 4,
+        "language": "Malayalam",
+        "description": "Prithviraj's cop investigating murders"
+      },
+      {
+        "title": "Drishyam",
+        "genre": "Thriller",
+        "rating": 5,
+        "vishnu_pick": true,
+        "language": "Malayalam",
+        "description": "Perfect crime thriller with Mohanlal"
+      },
+      {
+        "title": "Drishyam 2",
+        "genre": "Thriller",
+        "rating": 5,
+        "vishnu_pick": true,
+        "language": "Malayalam",
+        "description": "Brilliant sequel continuing the perfect crime"
+      },
+      {
+        "title": "Ayyappanum Koshiyum",
+        "genre": "Action",
+        "rating": 5,
+        "vishnu_pick": true,
+        "language": "Malayalam",
+        "description": "Ego clash between police officer and civilian"
+      },
+      {
+        "title": "Neru",
+        "genre": "Thriller",
+        "rating": 4,
+        "language": "Malayalam",
+        "description": "Mohanlal's lawyer fighting for justice"
+      },
+      {
+        "title": "Minnal Murali",
+        "genre": "Superhero",
+        "rating": 4,
+        "language": "Malayalam",
+        "description": "Kerala's own superhero origin story"
+      },
+      {
+        "title": "Forensic",
+        "genre": "Thriller",
+        "rating": 4,
+        "language": "Malayalam",
+        "description": "Serial killer investigation with Tovino"
+      },
+      {
+        "title": "Iratta",
+        "genre": "Thriller",
+        "rating": 4,
+        "language": "Malayalam",
+        "description": "Twin brothers murder mystery"
+      },
+      {
+        "title": "Nayattu",
+        "genre": "Thriller",
+        "rating": 4,
+        "language": "Malayalam",
+        "description": "Police officers on the run"
+      },
+      {
+        "title": "Anjaam Pathiraa",
+        "genre": "Thriller",
+        "rating": 5,
+        "vishnu_pick": true,
+        "language": "Malayalam",
+        "description": "Serial killer targeting police officers"
+      },
+      {
+        "title": "Appan",
+        "genre": "Drama",
+        "rating": 4,
+        "language": "Malayalam",
+        "description": "Complex family relationships drama"
+      },
+      {
+        "title": "Ustaad Hotel",
+        "genre": "Drama",
+        "rating": 4,
+        "language": "Malayalam",
+        "description": "Dulquer's culinary journey of self-discovery"
+      },
+      {
+        "title": "Manjadikuru",
+        "genre": "Drama",
+        "rating": 4,
+        "language": "Malayalam",
+        "description": "Coming-of-age story in rural Kerala"
+      },
+      {
+        "title": "Ponman",
+        "genre": "Drama",
+        "rating": 4,
+        "language": "Malayalam",
+        "description": "Basil Joseph's directorial debut"
+      },
+      {
+        "title": "Indru Netru Naalai",
+        "genre": "Sci-Fi Comedy",
+        "rating": 4,
+        "language": "Tamil",
+        "description": "Time travel comedy with clever twists"
+      },
+      {
+        "title": "Mundasupatti",
+        "genre": "Comedy",
+        "rating": 4,
+        "language": "Tamil",
+        "description": "Rural comedy about fear of photography"
+      },
+      {
+        "title": "Por Thozhil",
+        "genre": "Crime Thriller",
+        "rating": 4,
+        "language": "Tamil",
+        "description": "Investigation thriller with Ashok Selvan"
+      },
+      {
+        "title": "Ratsasan",
+        "genre": "Crime Thriller",
+        "rating": 5,
+        "vishnu_pick": true,
+        "language": "Tamil",
+        "description": "Psycho killer hunting teenage girls"
+      },
+      {
+        "title": "Maayavan",
+        "genre": "Sci-Fi Thriller",
+        "rating": 5,
+        "vishnu_pick": true,
+        "language": "Tamil",
+        "description": "Memory transfer sci-fi crime thriller"
+      },
+      {
+        "title": "Theeran Adhigaaram Ondru",
+        "genre": "Action Thriller",
+        "rating": 5,
+        "vishnu_pick": true,
+        "language": "Tamil",
+        "description": "Highway robbery investigation across states"
+      },
+      {
+        "title": "Kaithi",
+        "genre": "Action Thriller",
+        "rating": 5,
+        "vishnu_pick": true,
+        "language": "Tamil",
+        "description": "Ex-convict's one night mission to save cops"
+      },
+      {
+        "title": "Vikram",
+        "genre": "Action Thriller",
+        "rating": 4,
+        "language": "Tamil",
+        "description": "Kamal Haasan's stylish action thriller"
+      },
+      {
+        "title": "Imaikkaa Nodigal",
+        "genre": "Crime Thriller",
+        "rating": 5,
+        "vishnu_pick": true,
+        "language": "Tamil",
+        "description": "CBI officer vs serial killer cat-and-mouse"
+      },
+      {
+        "title": "OK Kanmani",
+        "genre": "Romance",
+        "rating": 4,
+        "language": "Tamil",
+        "description": "Modern love story by Mani Ratnam"
+      },
+      {
+        "title": "Irumbu Thirai",
+        "genre": "Cyber Thriller",
+        "rating": 5,
+        "vishnu_pick": true,
+        "language": "Tamil",
+        "description": "Military officer vs cyber criminal"
+      },
+      {
+        "title": "Sardar",
+        "genre": "Action Thriller",
+        "rating": 4,
+        "language": "Tamil",
+        "description": "Karthi's spy thriller with dual roles"
+      },
+      {
+        "title": "Dhuruvangal Pathinaaru",
+        "genre": "Crime Thriller",
+        "rating": 5,
+        "vishnu_pick": true,
+        "language": "Tamil",
+        "description": "Retired cop recounts unsolved case"
+      },
+      {
+        "title": "Visaranai",
+        "genre": "Crime Drama",
+        "rating": 5,
+        "vishnu_pick": true,
+        "language": "Tamil",
+        "description": "Police brutality and corruption expose"
+      },
+      {
+        "title": "Asuran",
+        "genre": "Action Drama",
+        "rating": 4,
+        "language": "Tamil",
+        "description": "Dhanush's caste violence revenge drama"
+      },
+      {
+        "title": "Maanagaram",
+        "genre": "Thriller",
+        "rating": 5,
+        "vishnu_pick": true,
+        "language": "Tamil",
+        "description": "Chennai hyperlink thriller"
+      },
+      {
+        "title": "Vikram Vedha",
+        "genre": "Action Thriller",
+        "rating": 4,
+        "language": "Tamil",
+        "description": "Cop and gangster philosophical duel"
+      },
+      {
+        "title": "Jigarthanda DoubleX",
+        "genre": "Action Comedy",
+        "rating": 5,
+        "vishnu_pick": true,
+        "language": "Tamil",
+        "description": "Western-style action comedy sequel"
+      },
+      {
+        "title": "Jigarthanda",
+        "genre": "Crime Comedy",
+        "rating": 5,
+        "vishnu_pick": true,
+        "language": "Tamil",
+        "description": "Filmmaker meets ruthless gangster"
+      },
+      {
+        "title": "Mahaan",
+        "genre": "Crime Drama",
+        "rating": 4,
+        "language": "Tamil",
+        "description": "Vikram's transformation from teacher to gangster"
+      },
+      {
+        "title": "Oththa Seruppu Size 7",
+        "genre": "Crime Thriller",
+        "rating": 5,
+        "vishnu_pick": true,
+        "language": "Tamil",
+        "description": "One-man show interrogation thriller"
+      },
+      {
+        "title": "Thani Oruvan",
+        "genre": "Action Thriller",
+        "rating": 5,
+        "vishnu_pick": true,
+        "language": "Tamil",
+        "description": "IPS officer vs brilliant criminal mastermind"
+      },
+      {
+        "title": "Unnaipol Oruvan",
+        "genre": "Crime Thriller",
+        "rating": 5,
+        "vishnu_pick": true,
+        "language": "Tamil",
+        "description": "Kamal Haasan's remake of A Wednesday"
+      },
+      {
+        "title": "Lubber Pandhu",
+        "genre": "Sports Drama",
+        "rating": 4,
+        "language": "Tamil",
+        "description": "Cricket-based rural sports drama"
+      },
+      {
+        "title": "Konchem Istam Konchem Kastam",
+        "genre": "Romance",
+        "rating": 4,
+        "language": "Telugu",
+        "description": "Siddarth's romantic comedy drama"
+      },
+      {
+        "title": "Chintakayala Ravi",
+        "genre": "Comedy",
+        "rating": 4,
+        "language": "Telugu",
+        "description": "Venkatesh's comedy about fake success"
+      },
+      {
+        "title": "Awe",
+        "genre": "Sci-Fi Thriller",
+        "rating": 4,
+        "language": "Telugu",
+        "description": "Mind-bending multi-layered narrative"
+      },
+      {
+        "title": "Kick",
+        "genre": "Action",
+        "rating": 4,
+        "language": "Telugu",
+        "description": "Ravi Teja's adrenaline-fueled action"
+      },
+      {
+        "title": "Gamyam",
+        "genre": "Drama",
+        "rating": 4,
+        "language": "Telugu",
+        "description": "Journey of self-discovery road trip"
+      },
+      {
+        "title": "Aditya 369",
+        "genre": "Sci-Fi",
+        "rating": 4,
+        "language": "Telugu",
+        "description": "Time travel adventure classic"
+      },
+      {
+        "title": "Jamba Lakidi Pamba",
+        "genre": "Fantasy Comedy",
+        "rating": 5,
+        "vishnu_pick": true,
+        "language": "Telugu",
+        "description": "Gender role reversal fantasy comedy"
+      },
+      {
+        "title": "Aa Naluguru",
+        "genre": "Drama",
+        "rating": 4,
+        "language": "Telugu",
+        "description": "Social drama about human values"
+      },
+      {
+        "title": "Eega",
+        "genre": "Fantasy",
+        "rating": 4,
+        "language": "Telugu",
+        "description": "Rajamouli's fly revenge fantasy"
+      },
+      {
+        "title": "Vedam",
+        "genre": "Drama",
+        "rating": 4,
+        "language": "Telugu",
+        "description": "Multi-narrative urban drama"
+      },
+      {
+        "title": "Anasuya",
+        "genre": "Thriller",
+        "rating": 4,
+        "language": "Telugu",
+        "description": "Psychological thriller remake"
+      },
+      {
+        "title": "Prasthanam",
+        "genre": "Political Drama",
+        "rating": 4,
+        "language": "Telugu",
+        "description": "Political family power struggle"
+      },
+      {
+        "title": "Mayabazar",
+        "genre": "Fantasy",
+        "rating": 5,
+        "vishnu_pick": true,
+        "language": "Telugu",
+        "description": "Timeless mythological classic"
+      },
+      {
+        "title": "Gundamma Katha",
+        "genre": "Comedy",
+        "rating": 4,
+        "language": "Telugu",
+        "description": "Classic family comedy drama"
+      },
+      {
+        "title": "Mathu Vadalara",
+        "genre": "Comedy Thriller",
+        "rating": 5,
+        "vishnu_pick": true,
+        "language": "Telugu",
+        "description": "Delivery boy's accidental crime spree"
+      },
+      {
+        "title": "Aatmapamphlet",
+        "genre": "Comedy Drama",
+        "rating": 4,
+        "language": "Marathi",
+        "description": "Self-discovery through humor"
+      },
+      {
+        "title": "Anya Ya April",
+        "genre": "Drama",
+        "rating": 5,
+        "vishnu_pick": true,
+        "language": "Marathi",
+        "description": "Emotional family drama"
+      },
+      {
+        "title": "Murphy",
+        "genre": "Comedy Drama",
+        "rating": 4,
+        "language": "Kannada",
+        "description": "Prabhu Mundkur's comedy drama"
+      },
+      {
+        "title": "Kavaludaari",
+        "genre": "Mystery Thriller",
+        "rating": 4,
+        "language": "Kannada",
+        "description": "Traffic cop solves old murder case"
+      },
+      {
+        "title": "Love Mocktail",
+        "genre": "Romance",
+        "rating": 4,
+        "language": "Kannada",
+        "description": "Sweet romantic tale in Bangalore"
+      },
+      {
+        "title": "Birbal",
+        "genre": "Mystery",
+        "rating": 4,
+        "language": "Kannada",
+        "description": "Case files mystery thriller"
+      },
+      {
+        "title": "Shakhahaari",
+        "genre": "Comedy Drama",
+        "rating": 4,
+        "language": "Kannada",
+        "description": "Vegetarian's humorous journey"
+      },
+      {
+        "title": "777 Charlie",
+        "genre": "Adventure Drama",
+        "rating": 5,
+        "vishnu_pick": true,
+        "language": "Kannada",
+        "description": "Lonely man's life-changing bond with Labrador"
+      },
+      {
+        "title": "Dia",
+        "genre": "Romance Drama",
+        "rating": 4,
+        "language": "Kannada",
+        "description": "Love triangle spanning decades"
+      }
+    ],
+    "anime": [
+      {
+        "title": "Chainsaw Man",
+        "genre": "Action",
+        "rating": 5,
+        "vishnu_pick": true,
+        "episodes": "12",
+        "description": "Denji merges with chainsaw devil - dark and brutal"
+      },
+      {
+        "title": "Assassination Classroom",
+        "genre": "Comedy",
+        "rating": 5,
+        "vishnu_pick": true,
+        "episodes": "47",
+        "description": "Students trying to assassinate their alien teacher"
+      },
+      {
+        "title": "Naruto",
+        "genre": "Action",
+        "rating": 5,
+        "vishnu_pick": true,
+        "episodes": "720",
+        "description": "Ninja boy's journey to become Hokage"
+      },
+      {
+        "title": "Blue Lock",
+        "genre": "Sports",
+        "rating": 4,
+        "episodes": "24+",
+        "description": "Revolutionary soccer training facility"
+      },
+      {
+        "title": "Parasyte",
+        "genre": "Horror",
+        "rating": 4,
+        "episodes": "24",
+        "description": "Alien parasites taking over human bodies"
+      },
+      {
+        "title": "One Punch Man",
+        "genre": "Comedy",
+        "rating": 5,
+        "vishnu_pick": true,
+        "episodes": "24",
+        "description": "Hero who defeats any enemy with one punch"
+      },
+      {
+        "title": "Violet Evergarden",
+        "genre": "Drama",
+        "rating": 5,
+        "vishnu_pick": true,
+        "episodes": "13",
+        "description": "Former soldier learning about love and emotions"
+      },
+      {
+        "title": "Dororo",
+        "genre": "Action",
+        "rating": 4,
+        "episodes": "24",
+        "description": "Boy reclaiming body parts stolen by demons"
+      },
+      {
+        "title": "Buddy Daddies",
+        "genre": "Comedy",
+        "rating": 4,
+        "episodes": "12",
+        "description": "Two assassins become surrogate fathers"
+      },
+      {
+        "title": "Demon Slayer",
+        "genre": "Action",
+        "rating": 5,
+        "vishnu_pick": true,
+        "episodes": "44+",
+        "description": "Beautiful animation, demon hunting with katana"
+      },
+      {
+        "title": "Death Note",
+        "genre": "Thriller",
+        "rating": 5,
+        "vishnu_pick": true,
+        "episodes": "37",
+        "description": "High school genius vs detective L"
+      },
+      {
+        "title": "Gurren Lagann",
+        "genre": "Mecha",
+        "rating": 4,
+        "episodes": "27",
+        "description": "Drill-powered mecha breaking through heavens"
+      },
+      {
+        "title": "The Disastrous Life of Saiki K.",
+        "genre": "Comedy",
+        "rating": 4,
+        "episodes": "120",
+        "description": "Psychic boy dealing with daily annoyances"
+      },
+      {
+        "title": "Ron Kamonohashi's Forbidden Deductions",
+        "genre": "Mystery",
+        "rating": 3,
+        "episodes": "13+",
+        "description": "Brilliant detective solving impossible cases"
+      },
+      {
+        "title": "Black Clover",
+        "genre": "Action",
+        "rating": 4,
+        "episodes": "170",
+        "description": "Magic-less boy in world full of magic users"
+      },
+      {
+        "title": "Spy x Family",
+        "genre": "Comedy",
+        "rating": 5,
+        "vishnu_pick": true,
+        "episodes": "25+",
+        "description": "Fake family of spy, assassin, and telepath"
+      },
+      {
+        "title": "Solo Leveling",
+        "genre": "Action",
+        "rating": 4,
+        "episodes": "12+",
+        "description": "Weakest hunter becomes world's strongest"
+      },
+      {
+        "title": "Death Parade",
+        "genre": "Drama",
+        "rating": 4,
+        "episodes": "12",
+        "description": "Bar where the dead play games for judgment"
+      },
+      {
+        "title": "Barakamon",
+        "genre": "Slice of Life",
+        "rating": 4,
+        "episodes": "12",
+        "description": "Calligrapher finding peace in rural village"
+      },
+      {
+        "title": "The Apothecary Diaries",
+        "genre": "Mystery",
+        "rating": 4,
+        "episodes": "24+",
+        "description": "Pharmacist solving mysteries in imperial court"
+      },
+      {
+        "title": "Devilman Crybaby",
+        "genre": "Horror",
+        "rating": 4,
+        "episodes": "10",
+        "description": "Human-devil fusion in apocalyptic setting"
+      },
+      {
+        "title": "Banana Fish",
+        "genre": "Crime",
+        "rating": 4,
+        "episodes": "24",
+        "description": "Gang leader and journalist uncover conspiracy"
+      },
+      {
+        "title": "Akame ga Kill",
+        "genre": "Action",
+        "rating": 3,
+        "episodes": "24",
+        "description": "Revolutionary group fighting corrupt empire"
+      },
+      {
+        "title": "Ranking of Kings",
+        "genre": "Adventure",
+        "rating": 4,
+        "episodes": "23",
+        "description": "Deaf prince's journey to become true king"
+      },
+      {
+        "title": "Usagi Drop",
+        "genre": "Slice of Life",
+        "rating": 4,
+        "episodes": "11",
+        "description": "Bachelor raising his grandfather's daughter"
+      },
+      {
+        "title": "Made in Abyss",
+        "genre": "Adventure",
+        "rating": 4,
+        "episodes": "25+",
+        "description": "Cute art style hiding dark, brutal story"
+      },
+      {
+        "title": "Kino's Journey",
+        "genre": "Adventure",
+        "rating": 4,
+        "episodes": "13+",
+        "description": "Traveler exploring different countries and cultures"
+      },
+      {
+        "title": "Erased",
+        "genre": "Mystery",
+        "rating": 4,
+        "episodes": "12",
+        "description": "Time travel to prevent childhood murders"
+      },
+      {
+        "title": "Another",
+        "genre": "Horror",
+        "rating": 4,
+        "episodes": "12",
+        "description": "Cursed classroom with deadly mystery"
+      },
+      {
+        "title": "Tsukigakirei",
+        "genre": "Romance",
+        "rating": 4,
+        "episodes": "12",
+        "description": "Pure middle school romance story"
+      },
+      {
+        "title": "Insomniacs After School",
+        "genre": "Romance",
+        "rating": 4,
+        "episodes": "13",
+        "description": "Two insomniacs find solace together"
+      },
+      {
+        "title": "Inuyashiki",
+        "genre": "Sci-Fi",
+        "rating": 4,
+        "episodes": "11",
+        "description": "Elderly man gets mechanical body and superpowers"
+      }
+    ],
+    "music": [
+      {
+        "title": "Vishnu's Playlist",
+        "platform": "Spotify",
+        "embed_url": "https://open.spotify.com/embed/playlist/04djUANKNuGBNKCgONlNzS?utm_source=generator&theme=0",
+        "external_url": "https://open.spotify.com/playlist/04djUANKNuGBNKCgONlNzS?si=707fd3a400ef409a",
+        "description": "My personal curated playlist"
+      }
+    ]
+  }
 }

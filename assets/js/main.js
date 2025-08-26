@@ -1,5 +1,58 @@
 let portfolioData = null;
 
+// DOM Cache for performance
+const DOMCache = {
+    pageTitle: null,
+    name: null,
+    title: null,
+    bio: null,
+    location: null,
+    skillsContainer: null,
+    experienceContainer: null,
+    projectsContainer: null,
+    achievementsContainer: null,
+    contactLinks: null,
+    educationContainer: null,
+    recommendationsContainer: null,
+    themeToggle: null,
+    navButtons: null,
+    sections: null,
+    status: null,
+
+    // Initialize DOM cache
+    init() {
+        this.pageTitle = document.getElementById('page-title');
+        this.name = document.getElementById('name');
+        this.title = document.getElementById('title');
+        this.bio = document.getElementById('bio');
+        this.location = document.getElementById('location');
+        this.skillsContainer = document.getElementById('skills-container');
+        this.experienceContainer = document.getElementById('experience-container');
+        this.projectsContainer = document.getElementById('projects-container');
+        this.achievementsContainer = document.getElementById('achievements-container');
+        this.contactLinks = document.getElementById('contact-links');
+        this.educationContainer = document.getElementById('education-container');
+        this.recommendationsContainer = document.getElementById('recommendations-container');
+        this.themeToggle = document.getElementById('theme-toggle');
+        this.navButtons = document.querySelectorAll('.nav-btn');
+        this.sections = document.querySelectorAll('.section');
+        this.status = document.getElementById('status');
+    }
+};
+
+// Debounce utility function
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
 // Initialize theme immediately to prevent flash
 (function initThemeEarly() {
     const savedTheme = localStorage.getItem('portfolio-theme') || 'warm';
@@ -43,12 +96,12 @@ function renderContent() {
     }
 
     try {
-        // Update page title and header
-        document.getElementById('page-title').textContent = portfolioData.personal.name;
-        document.getElementById('name').textContent = portfolioData.personal.name;
-        document.getElementById('title').textContent = portfolioData.personal.title;
-        document.getElementById('bio').textContent = portfolioData.personal.bio;
-        document.getElementById('location').textContent = `Based in ${portfolioData.personal.location}`;
+        // Update page title and header using cached DOM elements
+        if (DOMCache.pageTitle) DOMCache.pageTitle.textContent = portfolioData.personal.name;
+        if (DOMCache.name) DOMCache.name.textContent = portfolioData.personal.name;
+        if (DOMCache.title) DOMCache.title.textContent = portfolioData.personal.title;
+        if (DOMCache.bio) DOMCache.bio.textContent = portfolioData.personal.bio;
+        if (DOMCache.location) DOMCache.location.textContent = `Based in ${portfolioData.personal.location}`;
 
         // Render skills
         renderSkills();
@@ -68,6 +121,9 @@ function renderContent() {
         // Render education
         renderEducation();
 
+        // Render recommendations
+        renderRecommendations();
+
         // Hide any remaining loading states
         hideLoadingStates();
     } catch (error) {
@@ -76,11 +132,10 @@ function renderContent() {
 }
 
 function renderSkills() {
-    const skillsContainer = document.getElementById('skills-container');
-    if (!portfolioData.skills) return;
+    if (!portfolioData.skills || !DOMCache.skillsContainer) return;
 
-    skillsContainer.innerHTML = '';
-    skillsContainer.className = 'skills-container';
+    DOMCache.skillsContainer.innerHTML = '';
+    DOMCache.skillsContainer.className = 'skills-container';
 
     Object.keys(portfolioData.skills).forEach(category => {
         const categoryDiv = document.createElement('div');
@@ -368,6 +423,603 @@ function renderEducation() {
     });
 }
 
+// Recommendations functionality
+let currentRecommendationType = 'movies';
+let filteredRecommendations = [];
+let currentFilters = {
+    language: '',
+    genre: '',
+    search: ''
+};
+
+function renderRecommendations() {
+    if (!portfolioData.recommendations) return;
+
+    // Initialize recommendations
+    initializeRecommendations();
+
+    // Populate filter dropdowns
+    populateFilterDropdowns();
+
+    // Render initial movie recommendations
+    displayRecommendations(portfolioData.recommendations.movies);
+}
+
+function initializeRecommendations() {
+    // Toggle button functionality
+    const toggleButtons = document.querySelectorAll('.toggle-btn');
+    toggleButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const type = button.getAttribute('data-type');
+            switchRecommendationType(type);
+
+            // Update button states
+            toggleButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+        });
+    });
+
+    // Initialize custom dropdowns
+    initializeCustomDropdowns();
+
+    // Search functionality with debouncing
+    const searchInput = document.getElementById('recommendations-search');
+    if (searchInput) {
+        const debouncedSearch = debounce((value) => {
+            currentFilters.search = value;
+            applyAllFilters();
+        }, 300);
+
+        searchInput.addEventListener('input', (e) => {
+            debouncedSearch(e.target.value);
+        });
+    }
+
+    // Clear filters functionality
+    const clearButton = document.getElementById('clear-filters');
+    if (clearButton) {
+        clearButton.addEventListener('click', () => {
+            clearAllFilters();
+        });
+    }
+
+    // Random pick functionality
+    const randomButton = document.getElementById('random-pick');
+    if (randomButton) {
+        randomButton.addEventListener('click', () => {
+            pickRandomRecommendation();
+        });
+    }
+
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.custom-dropdown')) {
+            document.querySelectorAll('.custom-dropdown.active').forEach(dropdown => {
+                dropdown.classList.remove('active');
+            });
+        }
+    });
+}
+
+function switchRecommendationType(type) {
+    currentRecommendationType = type;
+
+    // Show/hide filters based on type
+    const filtersContainer = document.querySelector('.recommendations-filters');
+    if (type === 'music') {
+        filtersContainer.style.display = 'none';
+    } else {
+        filtersContainer.style.display = 'block';
+        // Clear filters when switching types
+        clearAllFilters();
+
+        // Repopulate filters for the new type
+        populateFilterDropdowns();
+    }
+
+    // Display recommendations
+    const recommendations = portfolioData.recommendations[type];
+    displayRecommendations(recommendations);
+}
+
+function displayRecommendations(recommendations) {
+    const container = document.getElementById('recommendations-container');
+    if (!container || !recommendations) return;
+
+    filteredRecommendations = recommendations;
+    container.innerHTML = '';
+
+    // Set appropriate class based on content type
+    if (currentRecommendationType === 'music') {
+        container.className = 'recommendations-container music-container';
+    } else {
+        container.className = 'recommendations-container';
+    }
+
+    if (recommendations.length === 0) {
+        container.innerHTML = '<div class="no-results">No recommendations found 😔</div>';
+        return;
+    }
+
+    recommendations.forEach(item => {
+        const card = createRecommendationCard(item);
+        container.appendChild(card);
+    });
+}
+
+function createRecommendationCard(item) {
+    const card = document.createElement('div');
+    card.className = 'recommendation-card';
+
+    // Check if this is a music item
+    if (currentRecommendationType === 'music') {
+        return createMusicCard(item);
+    }
+
+    // Create header with title and Vishnu's pick badge
+    const header = document.createElement('div');
+    header.className = 'recommendation-header';
+
+    const title = document.createElement('h3');
+    title.className = 'recommendation-title';
+    title.textContent = item.title;
+    header.appendChild(title);
+
+    if (item.vishnu_pick) {
+        const badge = document.createElement('div');
+        badge.className = 'vishnu-pick';
+        badge.textContent = "Vishnu's Pick";
+        header.appendChild(badge);
+    }
+
+    // Create meta information
+    const meta = document.createElement('div');
+    meta.className = 'recommendation-meta';
+
+    // Genre tag
+    if (item.genre) {
+        const genreTag = document.createElement('span');
+        genreTag.className = 'genre-tag';
+        genreTag.textContent = item.genre;
+        meta.appendChild(genreTag);
+    }
+
+    // Rating tag
+    if (item.rating) {
+        const ratingTag = document.createElement('span');
+        ratingTag.className = 'rating-tag';
+        ratingTag.textContent = '★'.repeat(item.rating) + '☆'.repeat(5 - item.rating);
+        meta.appendChild(ratingTag);
+    }
+
+    // Episodes tag (for anime)
+    if (item.episodes) {
+        const episodesTag = document.createElement('span');
+        episodesTag.className = 'episodes-tag';
+        episodesTag.textContent = `${item.episodes} eps`;
+        meta.appendChild(episodesTag);
+    }
+
+    // Language tag (for non-English movies)
+    if (item.language) {
+        const languageTag = document.createElement('span');
+        languageTag.className = 'language-tag';
+        languageTag.textContent = item.language;
+        meta.appendChild(languageTag);
+    }
+
+    // Description
+    const description = document.createElement('p');
+    description.className = 'recommendation-description';
+    description.textContent = item.description;
+
+    // Assemble card
+    card.appendChild(header);
+    card.appendChild(meta);
+    card.appendChild(description);
+
+    return card;
+}
+
+function createMusicCard(item) {
+    const card = document.createElement('div');
+    card.className = 'music-card';
+
+    // Create header
+    const header = document.createElement('div');
+    header.className = 'music-header';
+
+    const title = document.createElement('h3');
+    title.className = 'music-title';
+    title.textContent = item.title;
+    header.appendChild(title);
+
+    const platform = document.createElement('span');
+    platform.className = 'music-platform';
+    platform.textContent = `🎵 ${item.platform}`;
+    header.appendChild(platform);
+
+    // Description
+    const description = document.createElement('p');
+    description.className = 'music-description';
+    description.textContent = item.description;
+
+    // Spotify embed
+    const embedContainer = document.createElement('div');
+    embedContainer.className = 'spotify-embed-container';
+
+    const embed = document.createElement('iframe');
+    embed.src = item.embed_url;
+    embed.width = "100%";
+    embed.height = "500";
+    embed.frameBorder = "0";
+    embed.allowtransparency = "true";
+    embed.allow = "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture";
+    embed.loading = "lazy";
+
+    embedContainer.appendChild(embed);
+
+    // External link
+    const linkContainer = document.createElement('div');
+    linkContainer.className = 'music-link-container';
+
+    const externalLink = document.createElement('a');
+    externalLink.href = item.external_url;
+    externalLink.target = '_blank';
+    externalLink.rel = 'noopener noreferrer';
+    externalLink.className = 'music-external-link';
+    externalLink.innerHTML = '🎵 Open in Spotify';
+
+    linkContainer.appendChild(externalLink);
+
+    // Assemble card
+    card.appendChild(header);
+    card.appendChild(description);
+    card.appendChild(embedContainer);
+    card.appendChild(linkContainer);
+
+    return card;
+}
+
+function initializeCustomDropdowns() {
+    // Language dropdown
+    const languageDropdown = document.getElementById('language-dropdown');
+    const languageBtn = languageDropdown.querySelector('.dropdown-btn');
+
+    languageBtn.addEventListener('click', () => {
+        toggleDropdown(languageDropdown);
+    });
+
+    // Genre dropdown
+    const genreDropdown = document.getElementById('genre-dropdown');
+    const genreBtn = genreDropdown.querySelector('.dropdown-btn');
+
+    genreBtn.addEventListener('click', () => {
+        toggleDropdown(genreDropdown);
+    });
+}
+
+function toggleDropdown(dropdown) {
+    // Close other dropdowns
+    document.querySelectorAll('.custom-dropdown.active').forEach(otherDropdown => {
+        if (otherDropdown !== dropdown) {
+            otherDropdown.classList.remove('active');
+            const btn = otherDropdown.querySelector('.dropdown-btn');
+            if (btn) btn.setAttribute('aria-expanded', 'false');
+        }
+    });
+
+    // Toggle current dropdown
+    const isOpening = !dropdown.classList.contains('active');
+    dropdown.classList.toggle('active');
+
+    const button = dropdown.querySelector('.dropdown-btn');
+    if (button) {
+        button.setAttribute('aria-expanded', isOpening ? 'true' : 'false');
+    }
+
+    // Apply smart positioning if opening
+    if (isOpening) {
+        requestAnimationFrame(() => {
+            adjustDropdownPosition(dropdown);
+        });
+    }
+}
+
+function adjustDropdownPosition(dropdown) {
+    const menu = dropdown.querySelector('.dropdown-menu');
+    if (!menu) return;
+
+    // Reset position
+    menu.style.top = 'calc(100% + 12px)';
+    menu.style.bottom = 'auto';
+
+    // Get dimensions
+    const menuRect = menu.getBoundingClientRect();
+    const viewportHeight = window.innerHeight;
+    const viewportWidth = window.innerWidth;
+
+    // Check if dropdown goes below viewport
+    if (menuRect.bottom > viewportHeight - 20) {
+        // Position above the button
+        menu.style.top = 'auto';
+        menu.style.bottom = 'calc(100% + 12px)';
+        menu.style.transform = 'translateX(-50%) translateY(10px) scale(0.95)';
+    }
+
+    // Check if dropdown goes outside viewport horizontally
+    if (menuRect.left < 10) {
+        menu.style.left = '0';
+        menu.style.transform = menu.style.transform.replace('translateX(-50%)', 'translateX(10px)');
+    } else if (menuRect.right > viewportWidth - 10) {
+        menu.style.left = 'auto';
+        menu.style.right = '0';
+        menu.style.transform = menu.style.transform.replace('translateX(-50%)', 'translateX(-10px)');
+    }
+
+    // Trigger the animation
+    requestAnimationFrame(() => {
+        if (dropdown.classList.contains('active')) {
+            if (menu.style.bottom !== 'auto') {
+                menu.style.transform = menu.style.transform.replace('translateY(10px)', 'translateY(0)');
+            } else {
+                menu.style.transform = menu.style.transform.replace('translateY(-10px)', 'translateY(0)');
+            }
+        }
+    });
+}
+
+function populateFilterDropdowns() {
+    const recommendations = portfolioData.recommendations[currentRecommendationType];
+    if (!recommendations) return;
+
+    // Populate language filter
+    const languageMenu = document.getElementById('language-menu');
+    const languages = [...new Set(recommendations
+        .map(item => item.language || 'English')
+        .filter(lang => lang)
+    )].sort();
+
+    languageMenu.innerHTML = '<li class="dropdown-item active" data-value="">All Languages</li>';
+    languages.forEach(language => {
+        const item = document.createElement('li');
+        item.className = 'dropdown-item';
+        item.setAttribute('data-value', language);
+        item.textContent = language;
+        item.addEventListener('click', () => {
+            selectLanguage(language);
+        });
+        languageMenu.appendChild(item);
+    });
+
+    // Add click handler for "All Languages"
+    languageMenu.querySelector('[data-value=""]').addEventListener('click', () => {
+        selectLanguage('');
+    });
+
+    // Populate genre filter
+    const genreMenu = document.getElementById('genre-menu');
+    const genres = [...new Set(recommendations
+        .map(item => item.genre)
+        .filter(genre => genre)
+    )].sort();
+
+    genreMenu.innerHTML = '<li class="dropdown-item active" data-value="">All Genres</li>';
+    genres.forEach(genre => {
+        const item = document.createElement('li');
+        item.className = 'dropdown-item';
+        item.setAttribute('data-value', genre);
+        item.textContent = genre;
+        item.addEventListener('click', () => {
+            selectGenre(genre);
+        });
+        genreMenu.appendChild(item);
+    });
+
+    // Add click handler for "All Genres"
+    genreMenu.querySelector('[data-value=""]').addEventListener('click', () => {
+        selectGenre('');
+    });
+}
+
+function selectLanguage(language) {
+    const languageDropdown = document.getElementById('language-dropdown');
+    const languageText = languageDropdown.querySelector('.dropdown-text');
+    const languageMenu = document.getElementById('language-menu');
+
+    // Update button text
+    languageText.textContent = language || 'All Languages';
+
+    // Update active state
+    languageMenu.querySelectorAll('.dropdown-item').forEach(item => {
+        item.classList.remove('active');
+        if (item.getAttribute('data-value') === language) {
+            item.classList.add('active');
+        }
+    });
+
+    // Close dropdown
+    languageDropdown.classList.remove('active');
+
+    // Update filter
+    currentFilters.language = language;
+    applyAllFilters();
+}
+
+function selectGenre(genre) {
+    const genreDropdown = document.getElementById('genre-dropdown');
+    const genreText = genreDropdown.querySelector('.dropdown-text');
+    const genreMenu = document.getElementById('genre-menu');
+
+    // Update button text
+    genreText.textContent = genre || 'All Genres';
+
+    // Update active state
+    genreMenu.querySelectorAll('.dropdown-item').forEach(item => {
+        item.classList.remove('active');
+        if (item.getAttribute('data-value') === genre) {
+            item.classList.add('active');
+        }
+    });
+
+    // Close dropdown
+    genreDropdown.classList.remove('active');
+
+    // Update filter
+    currentFilters.genre = genre;
+    applyAllFilters();
+}
+
+function applyAllFilters() {
+    const recommendations = portfolioData.recommendations[currentRecommendationType];
+    if (!recommendations) return;
+
+    let filtered = recommendations.filter(item => {
+        // Language filter
+        if (currentFilters.language && (item.language || 'English') !== currentFilters.language) {
+            return false;
+        }
+
+        // Genre filter
+        if (currentFilters.genre && item.genre !== currentFilters.genre) {
+            return false;
+        }
+
+        // Search filter
+        if (currentFilters.search) {
+            const searchTerm = currentFilters.search.toLowerCase();
+            const matchesTitle = item.title.toLowerCase().includes(searchTerm);
+            const matchesGenre = item.genre.toLowerCase().includes(searchTerm);
+            const matchesDescription = item.description && item.description.toLowerCase().includes(searchTerm);
+            const matchesLanguage = (item.language || 'English').toLowerCase().includes(searchTerm);
+
+            if (!matchesTitle && !matchesGenre && !matchesDescription && !matchesLanguage) {
+                return false;
+            }
+        }
+
+        return true;
+    });
+
+    displayRecommendations(filtered);
+}
+
+function clearAllFilters() {
+    // Reset filter state
+    currentFilters = {
+        language: '',
+        genre: '',
+        search: ''
+    };
+
+    // Reset custom dropdowns
+    const languageDropdown = document.getElementById('language-dropdown');
+    const genreDropdown = document.getElementById('genre-dropdown');
+    const searchInput = document.getElementById('recommendations-search');
+
+    // Reset language dropdown
+    if (languageDropdown) {
+        const languageText = languageDropdown.querySelector('.dropdown-text');
+        const languageMenu = document.getElementById('language-menu');
+
+        languageText.textContent = 'All Languages';
+        languageMenu.querySelectorAll('.dropdown-item').forEach(item => {
+            item.classList.remove('active');
+            if (item.getAttribute('data-value') === '') {
+                item.classList.add('active');
+            }
+        });
+        languageDropdown.classList.remove('active');
+    }
+
+    // Reset genre dropdown
+    if (genreDropdown) {
+        const genreText = genreDropdown.querySelector('.dropdown-text');
+        const genreMenu = document.getElementById('genre-menu');
+
+        genreText.textContent = 'All Genres';
+        genreMenu.querySelectorAll('.dropdown-item').forEach(item => {
+            item.classList.remove('active');
+            if (item.getAttribute('data-value') === '') {
+                item.classList.add('active');
+            }
+        });
+        genreDropdown.classList.remove('active');
+    }
+
+    // Reset search input
+    if (searchInput) {
+        searchInput.value = '';
+    }
+
+    // Show all recommendations
+    const recommendations = portfolioData.recommendations[currentRecommendationType];
+    displayRecommendations(recommendations);
+}
+
+function pickRandomRecommendation() {
+    const recommendations = filteredRecommendations;
+    if (recommendations.length === 0) return;
+
+    // Pick random recommendation
+    const randomIndex = Math.floor(Math.random() * recommendations.length);
+    const randomPick = recommendations[randomIndex];
+
+    // Highlight the card
+    const cards = document.querySelectorAll('.recommendation-card');
+    cards.forEach((card, index) => {
+        card.classList.remove('highlight');
+        if (index === randomIndex) {
+            card.classList.add('highlight');
+            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    });
+
+    // Show notification
+    showRandomPickNotification(randomPick.title);
+}
+
+function showRandomPickNotification(title) {
+    const notification = document.createElement('div');
+    notification.innerHTML = `🎯 Random Pick: ${title}`;
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: var(--accent, var(--warm-accent));
+        color: white;
+        padding: 12px 20px;
+        border-radius: 25px;
+        font-weight: 500;
+        z-index: 1000;
+        animation: slideInRight 0.3s ease-out forwards, slideOutRight 0.3s ease-in 2.7s forwards;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    `;
+
+    document.body.appendChild(notification);
+
+    setTimeout(() => {
+        notification.remove();
+    }, 3000);
+
+    // Add keyframes for notification animation
+    if (!document.querySelector('#random-pick-styles')) {
+        const style = document.createElement('style');
+        style.id = 'random-pick-styles';
+        style.textContent = `
+            @keyframes slideInRight {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOutRight {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+}
+
 // Navigation functionality
 function initNavigation() {
     const navButtons = document.querySelectorAll('.nav-btn');
@@ -384,6 +1036,9 @@ function initNavigation() {
             // Add active class to clicked button and corresponding section
             button.classList.add('active');
             document.getElementById(targetSection).classList.add('active');
+
+            // Set data attribute for container width management
+            document.body.setAttribute('data-active-section', targetSection);
         });
     });
 }
@@ -391,7 +1046,6 @@ function initNavigation() {
 // Theme functionality
 function initTheme() {
     const themeButtons = document.querySelectorAll('.theme-btn');
-    const body = document.body;
 
     // Load saved theme or default to warm
     const savedTheme = localStorage.getItem('portfolio-theme') || 'warm';
@@ -416,12 +1070,13 @@ function setTheme(theme) {
     // Add new theme class
     body.classList.add(`theme-${theme}`);
 
-    // Update active button
-    themeButtons.forEach(btn => btn.classList.remove('active'));
-    const activeButton = document.querySelector(`[data-theme="${theme}"]`);
-    if (activeButton) {
-        activeButton.classList.add('active');
-    }
+    // Update ARIA attributes for theme buttons
+    themeButtons.forEach(button => {
+        const buttonTheme = button.getAttribute('data-theme');
+        const isActive = buttonTheme === theme;
+        button.classList.toggle('active', isActive);
+        button.setAttribute('aria-checked', isActive ? 'true' : 'false');
+    });
 }
 
 // Cycling progress indicator
@@ -495,19 +1150,55 @@ function initEasterEggs() {
 
     // Keyboard shortcuts (desktop only)
     if (!('ontouchstart' in window)) {
+        let cyclingBoostActive = false;
+        let cyclingPushTimeout = null;
+
         document.addEventListener('keydown', function (e) {
-            // Press 'C' for cycling boost (check if cycling track exists)
-            if (e.key.toLowerCase() === 'c') {
+            // Press 'C' for cycling boost
+            if (e.key.toLowerCase() === 'c' && !e.repeat) {
                 const cyclingTrack = document.querySelector('.cycling-track');
-                if (cyclingTrack && cyclingTrack.querySelector('::after')) {
-                    // Speed up the cycling animation
-                    cyclingTrack.style.setProperty('--cycle-speed', '0.5s');
-                    setTimeout(() => {
-                        cyclingTrack.style.setProperty('--cycle-speed', '20s');
-                    }, 2000);
+                if (cyclingTrack && !cyclingBoostActive) {
+                    cyclingBoostActive = true;
+
+                    // Give a quick push (subtly faster for short time)
+                    cyclingTrack.style.setProperty('--cycle-speed', '15s');
+
+                    // Clear any existing timeout
+                    if (cyclingPushTimeout) {
+                        clearTimeout(cyclingPushTimeout);
+                    }
+
+                    // If holding, make it moderately faster after the initial push
+                    cyclingPushTimeout = setTimeout(() => {
+                        if (cyclingBoostActive) {
+                            cyclingTrack.style.setProperty('--cycle-speed', '13s');
+                        }
+                    }, 800);
                 }
             }
+        });
 
+        document.addEventListener('keyup', function (e) {
+            // Release 'C' - return to normal speed
+            if (e.key.toLowerCase() === 'c') {
+                const cyclingTrack = document.querySelector('.cycling-track');
+                if (cyclingTrack && cyclingBoostActive) {
+                    cyclingBoostActive = false;
+
+                    // Clear timeout if still pending
+                    if (cyclingPushTimeout) {
+                        clearTimeout(cyclingPushTimeout);
+                        cyclingPushTimeout = null;
+                    }
+
+                    // Return to normal speed
+                    cyclingTrack.style.setProperty('--cycle-speed', '20s');
+                }
+            }
+        });
+
+        // Other keyboard shortcuts
+        document.addEventListener('keydown', function (e) {
             // Press 'P' for pizza party
             if (e.key.toLowerCase() === 'p') {
                 createPizzaParty();
@@ -678,6 +1369,9 @@ function addEasterEggStyles() {
 
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', function () {
+    // Initialize DOM cache first
+    DOMCache.init();
+
     // Start loading timeout protection
     ensureLoadingTimeout();
 
