@@ -168,16 +168,15 @@ function renderSkills() {
             categoryDiv.appendChild(showMoreBtn);
         }
 
-        skillsContainer.appendChild(categoryDiv);
+        DOMCache.skillsContainer.appendChild(categoryDiv);
     });
 }
 
 function renderExperience() {
-    const experienceContainer = document.getElementById('experience-container');
-    if (!portfolioData.experience) return;
+    if (!portfolioData.experience || !DOMCache.experienceContainer) return;
 
-    experienceContainer.innerHTML = '';
-    experienceContainer.className = 'experience-container';
+    DOMCache.experienceContainer.innerHTML = '';
+    DOMCache.experienceContainer.className = 'experience-container';
 
     portfolioData.experience.forEach(exp => {
         const experienceDiv = document.createElement('div');
@@ -247,15 +246,14 @@ function renderExperience() {
             experienceDiv.appendChild(achievements);
         }
 
-        experienceContainer.appendChild(experienceDiv);
+        DOMCache.experienceContainer.appendChild(experienceDiv);
     });
 }
 
 function renderAchievements() {
-    const achievementsContainer = document.getElementById('achievements-container');
-    if (!portfolioData.achievements) return;
+    if (!portfolioData.achievements || !DOMCache.achievementsContainer) return;
 
-    achievementsContainer.innerHTML = '';
+    DOMCache.achievementsContainer.innerHTML = '';
     portfolioData.achievements.forEach(achievement => {
         const achievementDiv = document.createElement('div');
         achievementDiv.className = 'achievement';
@@ -265,16 +263,15 @@ function renderAchievements() {
             <p>${achievement.description}</p>
         `;
 
-        achievementsContainer.appendChild(achievementDiv);
+        DOMCache.achievementsContainer.appendChild(achievementDiv);
     });
 }
 
 function renderProjects() {
-    const projectsContainer = document.getElementById('projects-container');
-    if (!portfolioData.projects) return;
+    if (!portfolioData.projects || !DOMCache.projectsContainer) return;
 
-    projectsContainer.innerHTML = '';
-    projectsContainer.className = 'projects-container';
+    DOMCache.projectsContainer.innerHTML = '';
+    DOMCache.projectsContainer.className = 'projects-container';
 
     portfolioData.projects.forEach((project) => {
         const projectDiv = document.createElement('div');
@@ -354,15 +351,14 @@ function renderProjects() {
         projectDiv.appendChild(description);
         projectDiv.appendChild(projectFooter);
 
-        projectsContainer.appendChild(projectDiv);
+        DOMCache.projectsContainer.appendChild(projectDiv);
     });
 }
 
 function renderContact() {
-    const contactContainer = document.getElementById('contact-links');
-    if (!portfolioData.contact) return;
+    if (!portfolioData.contact || !DOMCache.contactLinks) return;
 
-    contactContainer.innerHTML = '';
+    DOMCache.contactLinks.innerHTML = '';
 
     // Resume (Primary CTA)
     if (portfolioData.contact.resume) {
@@ -371,7 +367,7 @@ function renderContact() {
         resumeLink.className = 'contact-link';
         resumeLink.target = '_blank';
         resumeLink.textContent = '📄 Resume';
-        contactContainer.appendChild(resumeLink);
+        DOMCache.contactLinks.appendChild(resumeLink);
     }
 
     // Email
@@ -380,7 +376,7 @@ function renderContact() {
         emailLink.href = `mailto:${portfolioData.contact.email}`;
         emailLink.className = 'contact-link';
         emailLink.textContent = '✉️ Email';
-        contactContainer.appendChild(emailLink);
+        DOMCache.contactLinks.appendChild(emailLink);
     }
 
     // LinkedIn
@@ -390,7 +386,7 @@ function renderContact() {
         linkedinLink.className = 'contact-link';
         linkedinLink.target = '_blank';
         linkedinLink.textContent = '💼 LinkedIn';
-        contactContainer.appendChild(linkedinLink);
+        DOMCache.contactLinks.appendChild(linkedinLink);
     }
 
     // GitHub
@@ -400,15 +396,14 @@ function renderContact() {
         githubLink.className = 'contact-link';
         githubLink.target = '_blank';
         githubLink.textContent = '💻 GitHub';
-        contactContainer.appendChild(githubLink);
+        DOMCache.contactLinks.appendChild(githubLink);
     }
 }
 
 function renderEducation() {
-    const educationContainer = document.getElementById('education-container');
-    if (!portfolioData.education) return;
+    if (!portfolioData.education || !DOMCache.educationContainer) return;
 
-    educationContainer.innerHTML = '';
+    DOMCache.educationContainer.innerHTML = '';
     portfolioData.education.forEach(edu => {
         const educationDiv = document.createElement('div');
         educationDiv.className = 'education';
@@ -419,7 +414,7 @@ function renderEducation() {
             <p class="year">${edu.duration}</p>
         `;
 
-        educationContainer.appendChild(educationDiv);
+        DOMCache.educationContainer.appendChild(educationDiv);
     });
 }
 

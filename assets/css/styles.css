@@ -1105,9 +1105,13 @@ body {
 }
 
 
-/* Minimal Film Strips - Temporarily disabled for debugging */
+/* Minimal Film Strips */
 .film-strip {
-    display: none;
+    position: fixed;
+    z-index: -18;
+    pointer-events: none;
+    opacity: 0.02;
+    border: none;
 }
 
 .film-strip-left {
