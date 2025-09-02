@@ -107,7 +107,7 @@
 
 <body>
     <!-- Skip Navigation for Screen Readers -->
-    <!-- <a href="#main" class="skip-link">Skip to main content</a> -->
+    <a href="#main" class="skip-link">Skip to main content</a>
 
     <!-- Status announcements for screen readers -->
     <div id="status" aria-live="polite" class="sr-only"></div>
@@ -128,6 +128,12 @@
 
     <!-- Bottom Cycling Track -->
     <div class="cycling-track"></div>
+    <!-- Fun-only extras -->
+    <div class="cloud-layer" aria-hidden="true"></div>
+    <div class="nature-hills" aria-hidden="true"></div>
+    <div class="forest-edge" aria-hidden="true"></div>
+    <div class="pizza-comet" aria-hidden="true"></div>
+    <div class="hiker-walk" aria-hidden="true"></div>
 
     <!-- Subtle Pizza Corner Slices -->
     <div class="pizza-corner-tl"></div>
@@ -157,6 +163,11 @@
                     aria-label="Warm theme">🌅</button>
                 <button class="theme-btn" data-theme="dark" role="radio" aria-checked="false"
                     aria-label="Dark theme">🌙</button>
+            </div>
+
+            <!-- Fun mode toggle: off by default for minimal look -->
+            <div class="fun-toggle">
+                <button id="fun-toggle" class="fun-btn" aria-pressed="false" aria-label="Toggle fun mode">✨ Fun</button>
             </div>
 
             <h1 class="name" id="name">Vishnu Sai Jaswanth</h1>

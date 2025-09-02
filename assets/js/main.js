@@ -59,6 +59,14 @@ function debounce(func, wait) {
     document.body.classList.add(`theme-${savedTheme}`);
 })();
 
+// Initialize fun mode early to avoid flashes
+(function initFunEarly() {
+    try {
+        const funOn = localStorage.getItem('portfolio-fun') === 'on';
+        if (funOn) document.body.classList.add('fun');
+    } catch (_) { /* no-op */ }
+})();
+
 // Load content from JSON file
 async function loadContent() {
     try {
@@ -340,6 +348,7 @@ function renderProjects() {
         const projectLink = document.createElement('a');
         projectLink.href = project.link;
         projectLink.target = '_blank';
+        projectLink.rel = 'noopener noreferrer';
         projectLink.className = 'project-link';
         projectLink.textContent = 'View Project →';
 
@@ -366,6 +375,7 @@ function renderContact() {
         resumeLink.href = portfolioData.contact.resume;
         resumeLink.className = 'contact-link';
         resumeLink.target = '_blank';
+        resumeLink.rel = 'noopener noreferrer';
         resumeLink.textContent = '📄 Resume';
         DOMCache.contactLinks.appendChild(resumeLink);
     }
@@ -385,6 +395,7 @@ function renderContact() {
         linkedinLink.href = portfolioData.contact.linkedin;
         linkedinLink.className = 'contact-link';
         linkedinLink.target = '_blank';
+        linkedinLink.rel = 'noopener noreferrer';
         linkedinLink.textContent = '💼 LinkedIn';
         DOMCache.contactLinks.appendChild(linkedinLink);
     }
@@ -395,6 +406,7 @@ function renderContact() {
         githubLink.href = portfolioData.contact.github;
         githubLink.className = 'contact-link';
         githubLink.target = '_blank';
+        githubLink.rel = 'noopener noreferrer';
         githubLink.textContent = '💻 GitHub';
         DOMCache.contactLinks.appendChild(githubLink);
     }
@@ -451,6 +463,9 @@ function initializeRecommendations() {
             // Update button states
             toggleButtons.forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
+
+            // Fun: anime sparkle trail on press
+            sparkleTrailAt(button);
         });
     });
 
@@ -1020,6 +1035,10 @@ function initNavigation() {
     const navButtons = document.querySelectorAll('.nav-btn');
     const sections = document.querySelectorAll('.section');
 
+    // Set initial aria-current on the active nav button
+    const initiallyActive = document.querySelector('.nav-btn.active');
+    if (initiallyActive) initiallyActive.setAttribute('aria-current', 'page');
+
     navButtons.forEach(button => {
         button.addEventListener('click', () => {
             const targetSection = button.getAttribute('data-section');
@@ -1034,6 +1053,10 @@ function initNavigation() {
 
             // Set data attribute for container width management
             document.body.setAttribute('data-active-section', targetSection);
+
+            // Accessibility: mark current page in the nav
+            navButtons.forEach(btn => btn.removeAttribute('aria-current'));
+            button.setAttribute('aria-current', 'page');
         });
     });
 }
@@ -1074,6 +1097,27 @@ function setTheme(theme) {
     });
 }
 
+// Fun mode toggle
+function initFunMode() {
+    const funBtn = document.getElementById('fun-toggle');
+    if (!funBtn) return;
+
+    // Initialize state from storage
+    const funOn = localStorage.getItem('portfolio-fun') === 'on';
+    funBtn.setAttribute('aria-pressed', funOn ? 'true' : 'false');
+    document.body.classList.toggle('fun', funOn);
+
+    funBtn.addEventListener('click', () => {
+        const isOn = funBtn.getAttribute('aria-pressed') === 'true';
+        const next = !isOn;
+        funBtn.setAttribute('aria-pressed', next ? 'true' : 'false');
+        document.body.classList.toggle('fun', next);
+        try {
+            localStorage.setItem('portfolio-fun', next ? 'on' : 'off');
+        } catch (_) { /* no-op */ }
+    });
+}
+
 // Cycling progress indicator
 function initCyclingProgress() {
     const progressCircle = document.getElementById('progress-circle');
@@ -1100,6 +1144,76 @@ function initCyclingProgress() {
 
     window.addEventListener('scroll', updateProgress);
     updateProgress(); // Initialize
+}
+
+// Film strip edge pulse on scroll
+function initFilmPulse() {
+    const left = document.querySelector('.film-strip-left');
+    const right = document.querySelector('.film-strip-right');
+    if (!left || !right) return;
+
+    let ticking = false;
+    let lastY = 0;
+    let lastPulse = 0;
+
+    function onScroll() {
+        const y = window.pageYOffset || document.documentElement.scrollTop || 0;
+        const delta = Math.abs(y - lastY);
+        const now = Date.now();
+        if ((delta > 200 && now - lastPulse > 800) || Math.random() < 0.02) {
+            [left, right].forEach(el => {
+                el.classList.add('pulse');
+                setTimeout(() => el.classList.remove('pulse'), 900);
+            });
+            lastPulse = now;
+        }
+        lastY = y;
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            ticking = true;
+            requestAnimationFrame(onScroll);
+        }
+    });
+}
+
+// Simple parallax for clouds and horizon
+function initParallax() {
+    const clouds = document.querySelector('.cloud-layer');
+    const hills = document.querySelector('.nature-hills');
+    if (!clouds && !hills) return;
+
+    function update() {
+        const y = window.pageYOffset || 0;
+        if (clouds) clouds.style.transform = `translateY(${y * 0.05}px)`;
+        if (hills) hills.style.transform = `translateY(${y * 0.02}px)`;
+    }
+
+    window.addEventListener('scroll', () => requestAnimationFrame(update));
+    update();
+}
+
+// Sparkle trail effect at an element
+function sparkleTrailAt(el) {
+    if (!document.body.classList.contains('fun')) return; // only in Fun mode
+    const rect = el.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2 + window.scrollX;
+    const centerY = rect.top + rect.height / 2 + window.scrollY;
+    const chars = ['✨','💫','⭐','🌟'];
+
+    for (let i = 0; i < 10; i++) {
+        const s = document.createElement('div');
+        s.textContent = chars[Math.floor(Math.random()*chars.length)];
+        const angle = (Math.PI * 2) * (i / 10) + Math.random()*0.6;
+        const distance = 12 + Math.random()*24;
+        const x = centerX + Math.cos(angle) * distance;
+        const y = centerY + Math.sin(angle) * distance;
+        s.style.cssText = `position:absolute; left:${x}px; top:${y}px; font-size:${12+Math.random()*10}px; opacity:0; transform: translate(-50%,-50%) scale(0.7); pointer-events:none; z-index:1000; animation: sparkleTrail 900ms ease-out forwards;`;
+        document.body.appendChild(s);
+        setTimeout(() => s.remove(), 1000);
+    }
 }
 
 // Fun easter eggs and interactions
@@ -1203,6 +1317,18 @@ function initEasterEggs() {
             if (e.key.toLowerCase() === 'a') {
                 createAnimeSparkleBurst();
             }
+
+            // Press 'M' for movie clap
+            if (e.key.toLowerCase() === 'm') {
+                createMovieClap();
+            }
+
+            // Press 'N' for nature leaves
+            if (e.key.toLowerCase() === 'n') {
+                createLeafFall();
+            }
+
+            // 'W' walking boost removed with footstep track
         });
     }
 }
@@ -1358,6 +1484,24 @@ function addEasterEggStyles() {
                 transform: translate(-50%, -50%) scale(0.5) rotate(360deg) translateY(-100px);
             }
         }
+
+        @keyframes sparkleTrail {
+            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.6); }
+            30% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+            100% { opacity: 0; transform: translate(-50%, -50%) translateY(-8px) scale(0.8); }
+        }
+
+        @keyframes clapPop {
+            0% { transform: translate(-50%, -50%) scale(0.6) rotate(-10deg); opacity: 0; }
+            50% { transform: translate(-50%, -50%) scale(1.1) rotate(5deg); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(0.9) rotate(0deg); opacity: 0; }
+        }
+
+        @keyframes leafFall {
+            0% { transform: translateY(-60px) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
     `;
     document.head.appendChild(style);
 }
@@ -1382,7 +1526,10 @@ document.addEventListener('DOMContentLoaded', function () {
         // Initialize all components
         initNavigation();
         initTheme();
+        initFunMode();
         initCyclingProgress();
+        initFilmPulse();
+        initParallax();
         initEasterEggs();
         addEasterEggStyles();
 
@@ -1394,3 +1541,27 @@ document.addEventListener('DOMContentLoaded', function () {
         hideLoadingStates();
     });
 });
+
+// Extra fun helpers
+function createMovieClap() {
+    const el = document.createElement('div');
+    el.textContent = '🎬';
+    el.style.cssText = `
+        position: fixed; top: 45%; left: 50%; transform: translate(-50%, -50%);
+        font-size: 48px; z-index: 1000; pointer-events: none; animation: clapPop 900ms ease-out forwards;`;
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 900);
+}
+
+function createLeafFall() {
+    const leaves = ['🍃','🍂','🍁'];
+    for (let i = 0; i < 10; i++) {
+        const leaf = document.createElement('div');
+        leaf.textContent = leaves[Math.floor(Math.random()*leaves.length)];
+        leaf.style.cssText = `position: fixed; top: -40px; left: ${Math.random()*100}vw; font-size: ${14 + Math.random()*14}px; z-index: 1000; pointer-events: none; animation: leafFall ${6 + Math.random()*4}s linear forwards;`;
+        document.body.appendChild(leaf);
+        setTimeout(() => leaf.remove(), 11000);
+    }
+}
+
+// walking boost removed

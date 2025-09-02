@@ -39,21 +39,26 @@
 
 /* Accessibility Utilities */
 .skip-link {
-    position: absolute;
-    top: -40px;
-    left: 6px;
+    position: fixed;
+    top: 8px;
+    left: 8px;
     background: var(--accent, var(--warm-accent));
-    color: white;
-    padding: 8px;
-    border-radius: 4px;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 6px;
     text-decoration: none;
-    z-index: 9999;
+    z-index: 10000;
     font-weight: 600;
-    transition: top 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    transform: translateY(-150%);
+    opacity: 0;
+    transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-.skip-link:focus {
-    top: 6px;
+.skip-link:focus,
+.skip-link:focus-visible {
+    transform: translateY(0);
+    opacity: 1;
 }
 
 .sr-only {
@@ -150,6 +155,69 @@ body {
     /* Prevent iOS text scaling */
     -ms-text-size-adjust: 100%;
     text-size-adjust: 100%;
+}
+
+/* Fun mode toggle + minimal defaults */
+.fun-toggle {
+    display: flex;
+    justify-content: center;
+    margin: 8px 0 16px;
+}
+
+.fun-btn {
+    background: var(--bg-alt, var(--warm-bg-alt));
+    color: var(--text-secondary, var(--warm-text-secondary));
+    border: 1px solid var(--border, var(--warm-border));
+    padding: 8px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.fun-btn:hover {
+    border-color: var(--accent, var(--warm-accent));
+}
+
+.fun-btn[aria-pressed="true"] {
+    background: var(--accent, var(--warm-accent));
+    color: var(--bg, var(--warm-bg));
+    border-color: var(--accent, var(--warm-accent));
+}
+
+/* Minimal by default: hide decorative flourishes unless fun mode is enabled */
+body:not(.fun) .cycling-track,
+body:not(.fun) .pizza-corner-tl,
+body:not(.fun) .pizza-corner-tr,
+body:not(.fun) .pizza-corner-bl,
+body:not(.fun) .pizza-corner-br,
+body:not(.fun) .sparkle-effects,
+body:not(.fun) .film-strip,
+body:not(.fun) .cloud-layer,
+body:not(.fun) .nature-hills,
+body:not(.fun) .forest-edge,
+body:not(.fun) .pizza-comet,
+body:not(.fun) .hiker-walk {
+    display: none !important;
+}
+
+body:not(.fun) .section::before,
+body:not(.fun) .section::after,
+body:not(.fun)::after {
+    content: none !important;
+}
+
+body:not(.fun) .nav-btn:hover::after {
+    content: none !important;
+}
+
+/* Tone down hover drama in minimal mode */
+body:not(.fun) .toggle-btn:hover,
+body:not(.fun) .nav-btn:hover,
+body:not(.fun) .recommendation-card:hover,
+body:not(.fun) .music-card:hover,
+body:not(.fun) .project:hover {
+    transform: none !important;
+    box-shadow: none !important;
 }
 
 /* Cycling Progress Indicator */
@@ -311,6 +379,131 @@ body {
 }
 
 /* Recommendations Section */
+.cloud-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    pointer-events: none;
+    z-index: -9;
+}
+
+.cloud-layer::before,
+.cloud-layer::after {
+    content: '☁️  ☁️   ☁️  ☁️   ☁️';
+    position: absolute;
+    top: 20px;
+    left: -20%;
+    font-size: 32px;
+    opacity: 0.22;
+    animation: cloudDrift 70s linear infinite;
+    white-space: pre;
+}
+
+.cloud-layer::after {
+    top: 65px;
+    animation-duration: 85s;
+    opacity: 0.18;
+}
+
+@keyframes cloudDrift {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(140%); }
+}
+
+.nature-hills {
+    position: fixed;
+    bottom: 56px;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    z-index: -11;
+    pointer-events: none;
+    /* Convert to a very subtle neutral horizon mist instead of green hills */
+    background:
+      radial-gradient(240px 40px at 20% 100%, rgba(var(--accent-rgb,139,69,19),0.06) 0%, rgba(0,0,0,0) 70%),
+      radial-gradient(260px 45px at 55% 100%, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0) 70%),
+      radial-gradient(220px 38px at 85% 100%, rgba(var(--accent-rgb,139,69,19),0.05) 0%, rgba(0,0,0,0) 70%);
+}
+
+/* Fun badge near recommendations title */
+body.fun #recommendations h2::after {
+    content: '  🎬 Now Showing';
+    font-size: 0.9rem;
+    color: var(--text-secondary, var(--warm-text-secondary));
+    margin-left: 10px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--border, var(--warm-border));
+    background: var(--bg-alt, var(--warm-bg-alt));
+}
+
+/* Forest edge with trees */
+.forest-edge { display: none; }
+
+/* Film strip pulse on scroll */
+.film-strip.pulse {
+    animation: filmPulse 1.2s ease-out;
+}
+
+@keyframes filmPulse {
+    0% { opacity: 0.05; transform: scaleX(1); }
+    40% { opacity: 0.14; transform: scaleX(1.03); }
+    100% { opacity: 0.05; transform: scaleX(1); }
+}
+
+/* Hiker walking across bottom (fun mode only) */
+.hiker-walk {
+    position: fixed;
+    bottom: 72px;
+    left: -60px;
+    width: 1px;
+    height: 1px;
+    z-index: -9;
+    pointer-events: none;
+    animation: hikerAcross var(--hike-speed, 48s) linear infinite;
+}
+
+.hiker-walk::before {
+    content: '🚶‍♂️';
+    font-size: 18px;
+    opacity: 0.35;
+}
+
+@keyframes hikerAcross {
+    0% { transform: translateX(-40px) scaleX(-1); opacity: 0; }
+    5% { opacity: 0.35; }
+    95% { transform: translateX(calc(100vw + 40px)) scaleX(-1); opacity: 0.35; }
+    100% { transform: translateX(calc(100vw + 40px)) scaleX(-1); opacity: 0; }
+}
+
+/* Pizza comet (diagonal shooting slice) */
+.pizza-comet {
+    position: fixed;
+    top: -30px;
+    left: -40px;
+    width: 1px;
+    height: 1px;
+    z-index: -8;
+    pointer-events: none;
+    animation: pizzaComet 60s linear infinite;
+}
+
+.pizza-comet::before {
+    content: '🍕';
+    font-size: 20px;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2));
+    opacity: 0.2;
+}
+
+@keyframes pizzaComet {
+    0% { transform: translate(-10%, -10%) rotate(0deg); opacity: 0; }
+    5% { opacity: 0.22; }
+    50% { transform: translate(120vw, 60vh) rotate(360deg); opacity: 0.22; }
+    55% { opacity: 0; }
+    100% { transform: translate(120vw, 60vh) rotate(720deg); opacity: 0; }
+}
 .recommendations-toggle {
     display: flex;
     gap: 12px;
@@ -324,13 +517,14 @@ body {
     border: 2px solid var(--border, var(--warm-border));
     color: var(--text-secondary, var(--warm-text-secondary));
     padding: 12px 20px;
-    border-radius: 25px;
+    border-radius: 9999px;
     cursor: pointer;
     transition: all 0.3s ease;
     font-size: 1rem;
     font-weight: 500;
     position: relative;
     overflow: hidden;
+    outline: none;
 }
 
 .toggle-btn:hover {
@@ -362,6 +556,18 @@ body {
 .toggle-btn:hover::after {
     width: 100%;
     height: 100%;
+}
+
+/* Replace default browser focus ring with consistent rounded one */
+.toggle-btn:focus,
+.toggle-btn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(var(--accent-rgb, 139, 69, 19), 0.35);
+}
+
+/* Minimal mode: remove hover ripple to avoid odd oval artifacts */
+body:not(.fun) .toggle-btn::after {
+    display: none !important;
 }
 
 .recommendations-filters {
@@ -1308,10 +1514,8 @@ body.theme-warm {
     max-width: 1200px;
 }
 
-/* Fallback for browsers that don't support :has() */
-body[data-active-section="recommendations"] .container {
-    max-width: 1200px;
-}
+/* Removed fallback that widened the whole container on Recommendations
+   to keep header/nav layout consistent across sections. */
 
 @media (min-width: 768px) {
     .container {
