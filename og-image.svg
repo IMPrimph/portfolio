@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fbf6ea"/>
+      <stop offset="100%" stop-color="#f4ecd6"/>
+    </linearGradient>
+    <linearGradient id="mono" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#b1561e"/>
+      <stop offset="100%" stop-color="#7a3a13"/>
+    </linearGradient>
+    <radialGradient id="dot" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#b1561e" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#b1561e" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Subtle ambient dots -->
+  <circle cx="180" cy="120" r="80" fill="url(#dot)"/>
+  <circle cx="1050" cy="540" r="100" fill="url(#dot)"/>
+  <circle cx="950" cy="100" r="60" fill="url(#dot)"/>
+
+  <!-- Monogram tile -->
+  <g transform="translate(96, 200)">
+    <rect width="180" height="180" rx="44" fill="url(#mono)"/>
+    <text x="90" y="138" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="100" fill="#ffffff" text-anchor="middle" letter-spacing="-3">VJ</text>
+    <ellipse cx="90" cy="60" rx="60" ry="20" fill="#ffffff" opacity="0.15"/>
+  </g>
+
+  <!-- Identity text -->
+  <text x="320" y="280" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="78" fill="#2a1a08" letter-spacing="-2">Vishnu Sai Jaswanth</text>
+  <text x="320" y="338" font-family="Helvetica, Arial, sans-serif" font-weight="600" font-size="34" fill="#b1561e">Senior Software Development Engineer</text>
+
+  <!-- Tagline -->
+  <text x="320" y="408" font-family="Helvetica, Arial, sans-serif" font-weight="400" font-size="26" fill="#5b3d1c">AI platforms · LLM orchestration · LangGraph agents</text>
+
+  <!-- Chip strip -->
+  <g transform="translate(320, 460)" font-family="Helvetica, Arial, sans-serif" font-size="22" font-weight="500" fill="#5b3d1c">
+    <g>
+      <rect width="270" height="48" rx="24" fill="#fffaee" stroke="#e2d3ac" stroke-width="1"/>
+      <text x="135" y="32" text-anchor="middle">🏢 10x Productivity</text>
+    </g>
+    <g transform="translate(286, 0)">
+      <rect width="200" height="48" rx="24" fill="#fffaee" stroke="#e2d3ac" stroke-width="1"/>
+      <text x="100" y="32" text-anchor="middle">📍 Bengaluru</text>
+    </g>
+    <g transform="translate(502, 0)">
+      <rect width="230" height="48" rx="24" fill="#fffaee" stroke="#e2d3ac" stroke-width="1"/>
+      <text x="115" y="32" text-anchor="middle">🧠 AI + LLM</text>
+    </g>
+  </g>
+
+  <!-- URL -->
+  <text x="96" y="580" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="22" fill="#7d5d34">jaswanth123.netlify.app</text>
+
+  <!-- Pizza signature -->
+  <text x="1100" y="585" font-size="64" text-anchor="middle">🍕</text>
+</svg>

@@ -4,25 +4,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Vishnu Sai Jaswanth - Senior Software Development Engineer with 3+ years building scalable backend systems, AI integrations, and distributed architectures. Expert in microservices, cloud platforms, and performance optimization.">
-    <meta name="keywords"
-        content="Senior Software Engineer, Backend Developer, Full Stack Developer, System Design, Distributed Systems, Microservices, AI Integration, Cloud Architecture, Node.js, TypeScript, Python">
-    <meta name="author" content="Vishnu Sai Jaswanth">
-    <meta property="og:title" content="Vishnu Sai Jaswanth - Senior Software Development Engineer">
-    <meta property="og:description"
-        content="Senior Software Development Engineer with 3+ years building scalable backend systems, AI integrations, and distributed architectures.">
-    <meta property="og:url" content="https://jaswanth123.netlify.app">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Vishnu Sai Jaswanth - Senior Software Development Engineer">
-    <meta name="twitter:description"
-        content="Senior Software Development Engineer with 3+ years building scalable backend systems, AI integrations, and distributed architectures.">
-    <title id="page-title">Vishnu Sai Jaswanth - Portfolio</title>
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/jpeg" href="assets/img/naruto.jpg">
-    <link rel="apple-touch-icon" href="assets/img/naruto.jpg">
+    <!-- Primary meta -->
+    <title>Vishnu Sai Jaswanth | Senior Backend Engineer (10x Productivity)</title>
+    <meta name="description"
+        content="Senior Software Development Engineer at 10x Productivity. 4+ years building AI / creative-intelligence platforms — LLM orchestration, LangGraph agents, distributed job systems. Bengaluru, India.">
+    <meta name="keywords"
+        content="Senior Software Engineer, Backend Developer, NestJS, AI Platform, LLM Orchestration, LangChain, LangGraph, Claude, Gemini, BullMQ, Distributed Systems, Microservices, PostgreSQL, TypeScript, Python, 10x Productivity, BIK.AI, Bengaluru">
+    <meta name="author" content="Vishnu Sai Jaswanth">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://jaswanth123.netlify.app/">
+
+    <!-- Theme color (adapts to light / dark mode browser chrome on mobile) -->
+    <meta name="theme-color" content="#fbf6ea" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0c0d12" media="(prefers-color-scheme: dark)">
+    <meta name="color-scheme" content="light dark">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="profile">
+    <meta property="og:title" content="Vishnu Sai Jaswanth | Senior Backend Engineer">
+    <meta property="og:description"
+        content="Senior Backend Engineer at 10x Productivity. Building AI / creative-intelligence platforms — LLM orchestration, LangGraph agents, and PDF report systems at scale.">
+    <meta property="og:url" content="https://jaswanth123.netlify.app/">
+    <meta property="og:site_name" content="Vishnu Sai Jaswanth — Portfolio">
+    <meta property="og:locale" content="en_IN">
+    <meta property="og:image" content="https://jaswanth123.netlify.app/og-image.svg">
+    <meta property="og:image:type" content="image/svg+xml">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Vishnu Sai Jaswanth — Senior Software Development Engineer">
+    <meta property="profile:first_name" content="Vishnu">
+    <meta property="profile:last_name" content="Sai Jaswanth">
+    <meta property="profile:username" content="IMPrimph">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Vishnu Sai Jaswanth | Senior Backend Engineer">
+    <meta name="twitter:description"
+        content="Senior SDE at 10x Productivity. AI platforms, LLM orchestration, LangGraph agents. Bengaluru, India.">
+    <meta name="twitter:image" content="https://jaswanth123.netlify.app/og-image.svg">
+    <meta name="twitter:image:alt" content="Vishnu Sai Jaswanth — Senior Software Development Engineer">
+
+    <!-- Icons + manifest -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/img/favicon/favicon-192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
 
     <!-- Preconnect to external domains for better performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,7 +66,7 @@
 
     <link rel="stylesheet" href="assets/css/styles.css" media="all">
 
-    <!-- Loading styles - inline to prevent FOUC -->
+    <!-- Loading styles - inline to prevent flash of unstyled content -->
     <style>
         .loading-screen {
             position: fixed;
@@ -49,7 +80,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
         }
 
         .loading-screen.hidden {
@@ -58,51 +89,31 @@
         }
 
         .loading-spinner {
-            width: 60px;
-            height: 60px;
-            border: 4px solid var(--border, #e8dcc0);
-            border-top: 4px solid var(--accent, #8b4513);
+            width: 48px;
+            height: 48px;
+            border: 3px solid var(--border, #e8dcc0);
+            border-top: 3px solid var(--accent, #8b4513);
             border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-bottom: 20px;
-        }
-
-        .loading-text {
-            color: var(--text-primary, #4d2200);
-            font-family: 'Inter', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 500;
-            margin-bottom: 10px;
-        }
-
-        .loading-subtext {
-            color: var(--text-secondary, #6d3000);
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-            opacity: 0.8;
+            animation: spin 0.9s linear infinite;
         }
 
         @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
+            to {
                 transform: rotate(360deg);
             }
         }
 
-        /* Hide main content until loaded */
         body:not(.loaded) .container {
             opacity: 0;
         }
 
         body.loaded .container {
             opacity: 1;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.2s ease;
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Inter for body, Fraunces for display headings -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -112,17 +123,32 @@
     <!-- Status announcements for screen readers -->
     <div id="status" aria-live="polite" class="sr-only"></div>
 
+    <!-- Cursor sparkle layer (fun mode only) -->
+    <canvas id="cursor-sparkles" aria-hidden="true"></canvas>
+
     <!-- Loading Screen -->
     <div class="loading-screen" id="loading-screen">
         <div class="loading-spinner"></div>
-        <div class="loading-text">Loading Portfolio...</div>
-        <div class="loading-subtext">🍕 Preparing something awesome 🍕</div>
     </div>
+
+    <!-- Floating top-right control cluster (theme + fun) -->
+    <div class="control-cluster" role="toolbar" aria-label="Display controls">
+        <div class="theme-toggle" id="theme-toggle" role="radiogroup" aria-label="Theme selection">
+            <button class="theme-btn" data-theme="light" role="radio" aria-checked="false"
+                aria-label="Light theme">☀️</button>
+            <button class="theme-btn active" data-theme="warm" role="radio" aria-checked="true"
+                aria-label="Warm theme">🌅</button>
+            <button class="theme-btn" data-theme="dark" role="radio" aria-checked="false"
+                aria-label="Dark theme">🌙</button>
+        </div>
+        <button id="fun-toggle" class="fun-btn" aria-pressed="false" aria-label="Toggle fun mode">✨ Fun</button>
+    </div>
+
     <!-- Progress Indicator -->
-    <div class="cycling-progress" id="cycling-progress">
-        <svg class="progress-ring" width="50" height="50">
-            <circle class="progress-ring-background" cx="25" cy="25" r="20" />
-            <circle class="progress-ring-progress" cx="25" cy="25" r="20" id="progress-circle" />
+    <div class="cycling-progress" id="cycling-progress" aria-hidden="true">
+        <svg class="progress-ring" width="42" height="42">
+            <circle class="progress-ring-background" cx="21" cy="21" r="17" />
+            <circle class="progress-ring-progress" cx="21" cy="21" r="17" id="progress-circle" />
         </svg>
     </div>
 
@@ -156,23 +182,36 @@
 
     <div class="container">
         <header class="header">
-            <div class="theme-toggle" id="theme-toggle" role="radiogroup" aria-label="Theme selection">
-                <button class="theme-btn" data-theme="light" role="radio" aria-checked="false"
-                    aria-label="Light theme">☀️</button>
-                <button class="theme-btn active" data-theme="warm" role="radio" aria-checked="true"
-                    aria-label="Warm theme">🌅</button>
-                <button class="theme-btn" data-theme="dark" role="radio" aria-checked="false"
-                    aria-label="Dark theme">🌙</button>
+            <div class="hero-identity">
+                <svg class="hero-monogram" id="hero-monogram" viewBox="0 0 76 76" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                    <defs>
+                        <linearGradient id="heroMonoGrad" x1="0" y1="0" x2="0.8" y2="1">
+                            <stop offset="0%" stop-color="currentColor" stop-opacity="1"/>
+                            <stop offset="100%" stop-color="#000" stop-opacity="0.35"/>
+                        </linearGradient>
+                        <radialGradient id="heroMonoHighlight" cx="28%" cy="22%" r="65%">
+                            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.32"/>
+                            <stop offset="60%" stop-color="#ffffff" stop-opacity="0.05"/>
+                            <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+                        </radialGradient>
+                    </defs>
+                    <rect width="76" height="76" rx="20" ry="20" fill="url(#heroMonoGrad)"/>
+                    <rect width="76" height="76" rx="20" ry="20" fill="url(#heroMonoHighlight)"/>
+                    <text id="hero-monogram-text" x="38" y="52.5" text-anchor="middle" font-family="'Fraunces', Georgia, 'Times New Roman', serif" font-weight="700" font-size="34" letter-spacing="-1" fill="#ffffff">VJ</text>
+                </svg>
+                <div class="hero-text">
+                    <h1 class="name" id="name">Vishnu Sai Jaswanth</h1>
+                    <p class="title">
+                        <span class="title-static" id="title-static">Senior Software Development Engineer</span>
+                        <span class="title-typewriter" id="title-typewriter" aria-hidden="true"></span>
+                    </p>
+                    <div class="experience-badge" id="experience-badge">3+ Years Experience</div>
+                </div>
             </div>
 
-            <!-- Fun mode toggle: off by default for minimal look -->
-            <div class="fun-toggle">
-                <button id="fun-toggle" class="fun-btn" aria-pressed="false" aria-label="Toggle fun mode">✨ Fun</button>
+            <div class="hero-chips" id="hero-chips" aria-label="Quick facts">
+                <!-- Populated by JS -->
             </div>
-
-            <h1 class="name" id="name">Vishnu Sai Jaswanth</h1>
-            <p class="title" id="title">Senior Software Development Engineer</p>
-            <div class="experience-badge" id="experience-badge">3+ Years Experience</div>
 
             <nav class="nav" role="navigation" aria-label="Main navigation">
                 <button class="nav-btn active" data-section="about" aria-pressed="true"
@@ -184,9 +223,9 @@
                 <button class="nav-btn" data-section="projects" aria-pressed="false"
                     aria-controls="projects">Projects</button>
                 <button class="nav-btn" data-section="achievements" aria-pressed="false"
-                    aria-controls="achievements">Achievements</button>
-                <button class="nav-btn" data-section="recommendations" aria-pressed="false"
-                    aria-controls="recommendations">🎬 Recommendations</button>
+                    aria-controls="achievements">Wins</button>
+                <button class="nav-btn" data-section="vibes" aria-pressed="false"
+                    aria-controls="vibes">🎧 Vibes</button>
                 <button class="nav-btn" data-section="contact" aria-pressed="false"
                     aria-controls="contact">Contact</button>
                 <button class="nav-btn" data-section="education" aria-pressed="false"
@@ -196,93 +235,115 @@
 
         <main class="main" id="main">
             <section id="about" class="section active">
-                <h2>About</h2>
-                <p id="bio">Senior Software Engineer with experience in backend systems, data infrastructure, and AI
-                    integrations.</p>
+                <h2 class="section-heading">About</h2>
+                <div class="about-bento" id="about-bento">
+                    <article class="bento-card bento-card-bio">
+                        <p class="bento-tagline" id="bento-tagline"></p>
+                        <p class="bento-bio" id="bento-bio"></p>
+                        <div class="bento-stack">
+                            <span class="bento-stack-label">Stack</span>
+                            <div class="bento-stack-chips" id="bento-stack-chips"></div>
+                        </div>
+                    </article>
+
+                    <article class="bento-card bento-card-now">
+                        <h3 class="bento-heading">
+                            <span class="bento-pulse" aria-hidden="true"></span>
+                            Currently
+                        </h3>
+                        <ul class="bento-list" id="bento-currently"></ul>
+                    </article>
+
+                    <article class="bento-card bento-card-stats">
+                        <h3 class="bento-heading">By the numbers</h3>
+                        <div class="bento-stats" id="bento-stats"></div>
+                    </article>
+
+                    <article class="bento-card bento-card-where">
+                        <h3 class="bento-heading">Where</h3>
+                        <p class="bento-where-loc" id="bento-location">Bengaluru, India</p>
+                        <p class="bento-where-tz" id="bento-timezone">IST (UTC+5:30)</p>
+                    </article>
+
+                    <article class="bento-card bento-card-open">
+                        <h3 class="bento-heading">Open to</h3>
+                        <div class="bento-chips" id="bento-open-to"></div>
+                    </article>
+                </div>
             </section>
 
             <section id="skills" class="section">
-                <h2>Skills</h2>
+                <h2 class="section-heading">Skills</h2>
                 <div id="skills-container">
                     <!-- Skills will be loaded here -->
                 </div>
             </section>
 
             <section id="experience" class="section">
-                <h2>Experience</h2>
+                <h2 class="section-heading">Experience</h2>
                 <div id="experience-container">
                     <!-- Experience will be loaded here -->
                 </div>
             </section>
 
             <section id="projects" class="section">
-                <h2>Projects</h2>
+                <h2 class="section-heading">Projects</h2>
                 <div id="projects-container">
                     <!-- Projects will be loaded here -->
                 </div>
             </section>
 
             <section id="achievements" class="section">
-                <h2>Achievements</h2>
+                <h2 class="section-heading">Wins</h2>
                 <div id="achievements-container">
                     <!-- Achievements will be loaded here -->
                 </div>
             </section>
 
-            <section id="recommendations" class="section">
-                <h2>🎬 My Recommendations</h2>
-                <div class="recommendations-toggle">
-                    <button class="toggle-btn active" data-type="movies">🎬 Movies</button>
-                    <button class="toggle-btn" data-type="anime">🎌 Anime</button>
-                    <button class="toggle-btn" data-type="music">🎵 Music</button>
-                </div>
-                <div class="recommendations-filters">
-                    <div class="filter-row">
-                        <div class="custom-dropdown" id="language-dropdown">
-                            <button class="dropdown-btn" type="button" aria-haspopup="listbox" aria-expanded="false"
-                                aria-labelledby="language-label">
-                                <span id="language-label" class="dropdown-text">All Languages</span>
-                                <span class="dropdown-arrow" aria-hidden="true">🔽</span>
-                            </button>
-                            <ul class="dropdown-menu" id="language-menu" role="listbox"
-                                aria-labelledby="language-label">
-                                <li class="dropdown-item active" data-value="" role="option" aria-selected="true">All
-                                    Languages</li>
-                            </ul>
-                        </div>
-                        <div class="custom-dropdown" id="genre-dropdown">
-                            <button class="dropdown-btn" type="button" aria-haspopup="listbox" aria-expanded="false"
-                                aria-labelledby="genre-label">
-                                <span id="genre-label" class="dropdown-text">All Genres</span>
-                                <span class="dropdown-arrow" aria-hidden="true">🔽</span>
-                            </button>
-                            <ul class="dropdown-menu" id="genre-menu" role="listbox" aria-labelledby="genre-label">
-                                <li class="dropdown-item active" data-value="" role="option" aria-selected="true">All
-                                    Genres</li>
-                            </ul>
-                        </div>
-                        <button id="clear-filters" class="clear-btn">✨ Clear Filters</button>
-                    </div>
-                    <div class="search-row">
-                        <input type="text" id="recommendations-search" placeholder="🔍 Search recommendations..." />
-                        <button id="random-pick">🎲 Random Pick</button>
-                    </div>
-                </div>
-                <div id="recommendations-container">
-                    <!-- Recommendations will be loaded here -->
+            <section id="vibes" class="section">
+                <h2 class="section-heading">🎧 Now Playing</h2>
+                <div id="playlist-container">
+                    <!-- Playlist will be loaded here -->
                 </div>
             </section>
 
             <section id="contact" class="section">
-                <h2>Contact</h2>
-                <div class="contact-links" id="contact-links">
-                    <!-- Contact links will be loaded here -->
+                <h2 class="section-heading">Contact</h2>
+                <div class="contact-page">
+                    <article class="contact-intro">
+                        <div class="contact-availability" id="contact-availability">
+                            <span class="availability-dot" aria-hidden="true"></span>
+                            <span id="contact-availability-text">Open to senior backend roles &amp; interesting chats</span>
+                        </div>
+                        <h3 class="contact-heading">Let's talk.</h3>
+                        <p class="contact-intro-text" id="contact-intro-text">I read every message — pick whatever channel works for you.</p>
+                    </article>
+
+                    <div class="contact-channels" id="contact-channels">
+                        <!-- Channel cards rendered by JS -->
+                    </div>
+
+                    <article class="contact-where">
+                        <div class="contact-where-row">
+                            <span class="contact-where-icon" aria-hidden="true">📍</span>
+                            <div>
+                                <strong id="contact-where-location">Bengaluru, India</strong>
+                                <span class="contact-where-meta">
+                                    — it's <span id="contact-live-time">--:--</span> here right now
+                                </span>
+                            </div>
+                        </div>
+                        <div class="contact-where-row">
+                            <span class="contact-where-icon" aria-hidden="true">☕</span>
+                            <div>Coffee chats? Always a yes.</div>
+                        </div>
+                    </article>
                 </div>
-                <p class="location" id="location">Based in Bengaluru, India</p>
+                <p class="location sr-only" id="location">Based in Bengaluru, India</p>
             </section>
 
             <section id="education" class="section">
-                <h2>Education</h2>
+                <h2 class="section-heading">Education</h2>
                 <div id="education-container">
                     <!-- Education will be loaded here -->
                 </div>
@@ -290,12 +351,52 @@
         </main>
     </div>
 
+    <!-- Keyboard shortcuts overlay -->
+    <div class="shortcuts-overlay" id="shortcuts-overlay" role="dialog" aria-modal="true" aria-labelledby="shortcuts-title" hidden>
+        <div class="shortcuts-panel">
+            <div class="shortcuts-header">
+                <h2 id="shortcuts-title">Keyboard Shortcuts</h2>
+                <button class="shortcuts-close" id="shortcuts-close" aria-label="Close shortcuts">✕</button>
+            </div>
+            <ul class="shortcuts-list">
+                <li><kbd>?</kbd><span>Show this help</span></li>
+                <li><kbd>`</kbd><span>Open terminal mode</span></li>
+                <li><kbd>P</kbd><span>Pizza party</span></li>
+                <li><kbd>A</kbd><span>Sparkle burst</span></li>
+                <li><kbd>M</kbd><span>Movie clap</span></li>
+                <li><kbd>N</kbd><span>Falling leaves</span></li>
+                <li><kbd>C</kbd><span>Cycling boost (hold)</span></li>
+                <li><kbd>Esc</kbd><span>Close overlays</span></li>
+                <li class="shortcuts-hint">…and try the Konami code 🎮</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Terminal mode overlay -->
+    <div class="terminal-overlay" id="terminal-overlay" role="dialog" aria-modal="true" aria-label="Terminal" hidden>
+        <div class="terminal-window">
+            <div class="terminal-titlebar">
+                <span class="terminal-dot terminal-dot-r"></span>
+                <span class="terminal-dot terminal-dot-y"></span>
+                <span class="terminal-dot terminal-dot-g"></span>
+                <span class="terminal-title">vishnu@portfolio: ~</span>
+            </div>
+            <div class="terminal-body" id="terminal-body" tabindex="0">
+                <div class="terminal-output" id="terminal-output"></div>
+                <div class="terminal-input-line">
+                    <span class="terminal-prompt">$</span>
+                    <input type="text" id="terminal-input" class="terminal-input" autocomplete="off" spellcheck="false" aria-label="Terminal input" />
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Fixed Footer -->
     <footer class="fixed-footer">
         <div class="footer-content">
-            <span class="footer-year">© 2025</span>
-            <span class="footer-separator">•</span>
-            <span class="footer-credit">Made with ❤️ by Claude</span>
+            <span class="footer-year" id="footer-year">© 2026</span>
+            <button class="footer-shortcuts-btn" id="footer-shortcuts-btn" aria-label="Show keyboard shortcuts"><kbd>?</kbd> shortcuts</button>
+            <button class="footer-terminal-btn" id="footer-terminal-btn" aria-label="Open terminal"><kbd>`</kbd> terminal</button>
         </div>
     </footer>
 
@@ -303,29 +404,96 @@
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Vishnu Sai Jaswanth",
-  "alternateName": "Vishnu Gajulapalli",
-  "jobTitle": "Senior Software Development Engineer",
-  "worksFor": {
-    "@type": "Organization",
-    "name": "BIK.AI"
-  },
-  "url": "https://jaswanth123.netlify.app",
-  "email": "vishnugajulapalli123@gmail.com",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Bengaluru",
-    "addressCountry": "India"
-  },
-  "alumniOf": {
-    "@type": "CollegeOrUniversity",
-    "name": "Pondicherry Engineering College"
-  },
-  "knowsAbout": ["Backend Development", "System Design", "Distributed Systems", "AI Integration", "Cloud Architecture", "JavaScript", "TypeScript", "Python", "Node.js"],
-  "sameAs": [
-    "https://www.linkedin.com/in/vishnu-sai-jaswanth-gajulapalli-0670811a7/",
-    "https://github.com/IMPrimph"
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://jaswanth123.netlify.app/#person",
+      "name": "Vishnu Sai Jaswanth",
+      "givenName": "Vishnu",
+      "familyName": "Sai Jaswanth Gajulapalli",
+      "alternateName": ["Vishnu Gajulapalli", "Vishnu Sai Jaswanth Gajulapalli"],
+      "jobTitle": "Senior Software Development Engineer",
+      "description": "Senior backend engineer (4+ yrs) building AI / creative-intelligence platforms at 10x Productivity. Specializes in NestJS, multi-model LLM orchestration (Claude / Gemini / OpenAI), LangGraph agents, distributed job systems, and PDF report pipelines.",
+      "url": "https://jaswanth123.netlify.app/",
+      "image": "https://jaswanth123.netlify.app/og-image.svg",
+      "email": "vishnugajulapalli123@gmail.com",
+      "nationality": "Indian",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bengaluru",
+        "addressRegion": "Karnataka",
+        "addressCountry": "IN"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Pondicherry Engineering College",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Puducherry",
+          "addressCountry": "IN"
+        }
+      },
+      "worksFor": {
+        "@type": "Organization",
+        "name": "10x Productivity"
+      },
+      "knowsAbout": [
+        "Backend Development",
+        "AI Platform Engineering",
+        "LLM Orchestration",
+        "LangChain",
+        "LangGraph",
+        "Anthropic Claude",
+        "Google Gemini",
+        "OpenAI API",
+        "Model Context Protocol",
+        "Distributed Systems",
+        "Job Orchestration",
+        "BullMQ",
+        "NestJS",
+        "Microservices Architecture",
+        "Vector Databases",
+        "Elasticsearch",
+        "Caching Strategies",
+        "Performance Optimization",
+        "Cloud Architecture",
+        "TypeScript",
+        "JavaScript",
+        "Python",
+        "Node.js",
+        "PostgreSQL",
+        "TypeORM",
+        "Redis",
+        "Puppeteer",
+        "Handlebars"
+      ],
+      "knowsLanguage": ["English", "Telugu"],
+      "sameAs": [
+        "https://www.linkedin.com/in/vishnu-sai-jaswanth-gajulapalli-0670811a7/",
+        "https://github.com/IMPrimph"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://jaswanth123.netlify.app/#website",
+      "url": "https://jaswanth123.netlify.app/",
+      "name": "Vishnu Sai Jaswanth — Portfolio",
+      "description": "Personal portfolio of Vishnu Sai Jaswanth, Senior Software Development Engineer at 10x Productivity.",
+      "inLanguage": "en-IN",
+      "author": { "@id": "https://jaswanth123.netlify.app/#person" },
+      "publisher": { "@id": "https://jaswanth123.netlify.app/#person" }
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": "https://jaswanth123.netlify.app/#webpage",
+      "url": "https://jaswanth123.netlify.app/",
+      "name": "Vishnu Sai Jaswanth | Senior Backend Engineer (10x Productivity)",
+      "isPartOf": { "@id": "https://jaswanth123.netlify.app/#website" },
+      "about": { "@id": "https://jaswanth123.netlify.app/#person" },
+      "mainEntity": { "@id": "https://jaswanth123.netlify.app/#person" },
+      "primaryImageOfPage": "https://jaswanth123.netlify.app/og-image.svg",
+      "inLanguage": "en-IN"
+    }
   ]
 }
 </script>

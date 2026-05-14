@@ -1,0 +1,30 @@
+# Allow all standard crawlers
+User-agent: *
+Allow: /
+
+# AI / LLM crawlers — explicitly allowed (delete or set Disallow to opt out)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://jaswanth123.netlify.app/sitemap.xml
