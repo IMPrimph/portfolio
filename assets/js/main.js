@@ -15,13 +15,11 @@ const DOMCache = {
     location: null,
     experienceBadge: null,
     heroMonogram: null,
-    heroMonogramText: null,
     heroChips: null,
     skillsContainer: null,
     experienceContainer: null,
     projectsContainer: null,
     achievementsContainer: null,
-    contactLinks: null,
     educationContainer: null,
     playlistContainer: null,
     themeToggle: null,
@@ -44,13 +42,11 @@ const DOMCache = {
         this.location = document.getElementById('location');
         this.experienceBadge = document.getElementById('experience-badge');
         this.heroMonogram = document.getElementById('hero-monogram');
-        this.heroMonogramText = document.getElementById('hero-monogram-text');
         this.heroChips = document.getElementById('hero-chips');
         this.skillsContainer = document.getElementById('skills-container');
         this.experienceContainer = document.getElementById('experience-container');
         this.projectsContainer = document.getElementById('projects-container');
         this.achievementsContainer = document.getElementById('achievements-container');
-        this.contactLinks = document.getElementById('contact-links');
         this.educationContainer = document.getElementById('education-container');
         this.playlistContainer = document.getElementById('playlist-container');
         this.themeToggle = document.getElementById('theme-toggle');
@@ -100,9 +96,6 @@ function renderContent() {
         if (DOMCache.name) DOMCache.name.textContent = portfolioData.personal.name;
         if (DOMCache.titleStatic) DOMCache.titleStatic.textContent = portfolioData.personal.title;
         if (DOMCache.location) DOMCache.location.textContent = `Based in ${portfolioData.personal.location}`;
-        if (DOMCache.heroMonogramText) {
-            DOMCache.heroMonogramText.textContent = portfolioData.personal.monogram || initialsFromName(portfolioData.personal.name);
-        }
 
         renderExperienceBadge();
         renderHeroChips();
@@ -112,16 +105,12 @@ function renderContent() {
         renderProjects();
         renderAchievements();
         renderContact();
+        renderHeroActions();
         renderEducation();
         renderPlaylist();
     } catch (renderError) {
         console.error('Error rendering content:', renderError);
     }
-}
-
-function initialsFromName(name) {
-    if (!name) return '';
-    return name.split(/\s+/).map(part => part[0] || '').join('').slice(0, 2).toUpperCase();
 }
 
 function renderExperienceBadge() {
@@ -359,14 +348,28 @@ function renderProjects() {
         const projectHeader = document.createElement('div');
         projectHeader.className = 'project-header';
 
+        const titleBlock = document.createElement('div');
+        titleBlock.className = 'project-title-block';
         const titleEl = document.createElement('h3');
         titleEl.textContent = project.title;
+        titleBlock.appendChild(titleEl);
+        if (project.subtitle) {
+            const subtitleEl = document.createElement('p');
+            subtitleEl.className = 'project-subtitle';
+            subtitleEl.textContent = project.subtitle;
+            titleBlock.appendChild(subtitleEl);
+        }
 
         const badge = document.createElement('span');
-        badge.className = project.aiAssisted ? 'ai-badge' : 'independent-badge';
-        badge.textContent = project.aiAssisted ? '🤖 AI-Assisted' : '👨‍💻 Built Independently';
+        if (project.badgeLabel) {
+            badge.className = 'independent-badge';
+            badge.textContent = `${project.badgeIcon ? project.badgeIcon + ' ' : ''}${project.badgeLabel}`;
+        } else {
+            badge.className = project.aiAssisted ? 'ai-badge' : 'independent-badge';
+            badge.textContent = project.aiAssisted ? '🤖 AI-Assisted' : '👨‍💻 Built Independently';
+        }
 
-        projectHeader.appendChild(titleEl);
+        projectHeader.appendChild(titleBlock);
         projectHeader.appendChild(badge);
 
         const description = document.createElement('div');
@@ -408,15 +411,22 @@ function renderProjects() {
             projectDiv.style.height = 'auto';
         });
 
-        const projectLink = document.createElement('a');
-        projectLink.href = project.link;
-        projectLink.target = '_blank';
-        projectLink.rel = 'noopener noreferrer';
-        projectLink.className = 'project-link';
-        projectLink.textContent = 'View Project →';
-
         projectFooter.appendChild(expandBtn);
-        projectFooter.appendChild(projectLink);
+
+        if (project.link) {
+            const projectLink = document.createElement('a');
+            projectLink.href = project.link;
+            projectLink.target = '_blank';
+            projectLink.rel = 'noopener noreferrer';
+            projectLink.className = 'project-link';
+            projectLink.textContent = 'View Project →';
+            projectFooter.appendChild(projectLink);
+        } else if (project.linkNote) {
+            const note = document.createElement('span');
+            note.className = 'project-link-note';
+            note.textContent = project.linkNote;
+            projectFooter.appendChild(note);
+        }
 
         projectDiv.appendChild(projectHeader);
         projectDiv.appendChild(description);
@@ -541,6 +551,42 @@ async function showEmailToast(emailAddress) {
     }
 }
 
+// Persistent hero action row — the money actions (resume / email / socials)
+// one click from the top, so recruiters never have to hunt for them.
+function renderHeroActions() {
+    const container = document.getElementById('hero-actions');
+    if (!container || !portfolioData.contact) return;
+    const contact = portfolioData.contact;
+    container.innerHTML = '';
+
+    const actions = [
+        { label: 'Resume', icon: '📄', href: contact.resume, primary: true },
+        { label: 'Email', icon: '✉️', email: contact.email },
+        { label: 'GitHub', icon: '💻', href: contact.github },
+        { label: 'LinkedIn', icon: '💼', href: contact.linkedin }
+    ];
+
+    actions.forEach(action => {
+        const target = action.email || action.href;
+        if (!target) return;
+        const link = document.createElement('a');
+        link.className = 'hero-action' + (action.primary ? ' hero-action-primary' : '');
+        link.innerHTML = `<span class="hero-action-icon" aria-hidden="true">${action.icon}</span> ${action.label}`;
+        if (action.email) {
+            link.href = `mailto:${action.email}`;
+            link.addEventListener('click', clickEvent => {
+                clickEvent.preventDefault();
+                showEmailToast(action.email);
+            });
+        } else {
+            link.href = action.href;
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+        }
+        container.appendChild(link);
+    });
+}
+
 // Live IST clock for the Contact "Where" card
 function initLiveClock() {
     const liveTime = document.getElementById('contact-live-time');
@@ -659,6 +705,10 @@ function activateSection(sectionId, { updateHash = true } = {}) {
 
     document.body.setAttribute('data-active-section', sectionId);
 
+    // Reset scroll on section change — otherwise switching from a long section
+    // while scrolled down lands you mid-content (or in empty space) in the next.
+    window.scrollTo({ top: 0, behavior: 'auto' });
+
     if (updateHash) {
         const newHash = `#${sectionId}`;
         if (window.location.hash !== newHash) {
@@ -705,11 +755,21 @@ function initTheme() {
     });
 }
 
+function updateMetaThemeColor() {
+    const meta = document.getElementById('meta-theme-color');
+    if (!meta) return;
+    // Match the mobile browser-chrome color to whatever theme is active
+    // (light / warm / dark) instead of guessing from prefers-color-scheme.
+    const bg = getComputedStyle(document.body).backgroundColor;
+    if (bg) meta.setAttribute('content', bg);
+}
+
 function setTheme(theme) {
     const body = document.body;
     const themeButtons = document.querySelectorAll('.theme-btn');
     body.classList.remove('theme-light', 'theme-dark', 'theme-warm');
     body.classList.add(`theme-${theme}`);
+    updateMetaThemeColor();
 
     themeButtons.forEach(button => {
         const buttonTheme = button.getAttribute('data-theme');
@@ -933,9 +993,12 @@ const TERMINAL_HELP = [
     'Available commands:',
     '  help            show this list',
     '  whoami          quick intro',
+    '  neofetch        system-style profile card',
+    '  git log         career history as commits',
     '  cat resume      open the resume PDF',
     '  ls projects     list projects',
     '  ls experience   list roles',
+    '  open <section>  jump to a section',
     '  contact         contact links',
     '  theme [name]    light | warm | dark',
     '  fun [on|off]    toggle fun mode',
@@ -1010,6 +1073,45 @@ function initTerminal() {
                 writeLine(`${portfolioData?.personal?.name || 'Vishnu Sai Jaswanth'} — ${portfolioData?.personal?.title || 'Senior SDE'}`);
                 writeLine(portfolioData?.personal?.shortBio || portfolioData?.personal?.bio || '');
                 break;
+            case 'neofetch': {
+                const person = portfolioData?.personal || {};
+                const currentRole = portfolioData?.experience?.[0];
+                [
+                    `${person.name || 'Vishnu Sai Jaswanth'}`,
+                    '─────────────────────────────',
+                    `Role:     ${person.title || 'Senior Backend & Applied AI Engineer'}`,
+                    `Company:  ${currentRole?.company || '10x Productivity'}`,
+                    `Location: ${person.location || 'Bengaluru, India'} (${person.timezone || 'IST'})`,
+                    `Uptime:   4+ years in production`,
+                    `Stack:    ${(person.stack || []).join(', ')}`,
+                    `Shell:    /bin/curiosity`,
+                    `Fuel:     coffee + pizza`
+                ].forEach(line => writeLine(line));
+                break;
+            }
+            case 'git':
+                if (rest[0] === 'log') {
+                    const hashes = ['a1b2c3d', 'f4e5d6c', '9c8b7a6', '12ab34c'];
+                    (portfolioData?.experience || []).forEach((role, roleIndex) => {
+                        writeLine(`commit ${hashes[roleIndex] || 'e0f1a2b'}  (${role.duration})`, 'terminal-accent');
+                        writeLine(`    ${role.title} @ ${role.company}`);
+                        writeLine('');
+                    });
+                } else {
+                    writeLine('usage: git log');
+                }
+                break;
+            case 'open': {
+                const requested = (rest[0] || '').toLowerCase();
+                if (VALID_SECTIONS.includes(requested)) {
+                    writeLine(`opening ${requested}…`);
+                    activateSection(requested);
+                    close();
+                } else {
+                    writeLine(`open: unknown section. try: ${VALID_SECTIONS.join(', ')}`);
+                }
+                break;
+            }
             case 'cat':
                 if (rest[0] === 'resume') {
                     writeLine('opening resume.pdf…');
@@ -1071,7 +1173,11 @@ function initTerminal() {
                 close();
                 break;
             case 'sudo':
-                writeLine(`${portfolioData?.personal?.name || 'user'} is not in the sudoers file. This incident will be reported. 🍕`);
+                if (argument === 'make coffee') {
+                    writeLine('☕ HTTP 418: I\'m a teapot. (brewing anyway…)');
+                } else {
+                    writeLine(`${portfolioData?.personal?.name || 'user'} is not in the sudoers file. This incident will be reported. 🍕`);
+                }
                 break;
             default:
                 writeLine(`${head}: command not found. type \`help\``);
@@ -1096,6 +1202,134 @@ function initTerminal() {
         const tag = (keyEvent.target.tagName || '').toLowerCase();
         if (tag === 'input' || tag === 'textarea') return;
         if (keyEvent.key === '`') {
+            keyEvent.preventDefault();
+            overlay.hidden ? open() : close();
+        }
+    });
+}
+
+// Command palette (⌘K / Ctrl-K) — jump to any section + run quick actions.
+function initCommandPalette() {
+    const overlay = document.getElementById('cmdk-overlay');
+    const input = document.getElementById('cmdk-input');
+    const list = document.getElementById('cmdk-list');
+    const footerBtn = document.getElementById('footer-cmdk-btn');
+    if (!overlay || !input || !list) return;
+
+    const SECTION_LABELS = {
+        about: 'About', skills: 'Skills', experience: 'Experience', projects: 'Projects',
+        achievements: 'Wins', vibes: 'Vibes', contact: 'Contact', education: 'Education'
+    };
+    const SECTION_ICONS = {
+        about: '👋', skills: '🧰', experience: '💼', projects: '🛠️',
+        achievements: '🏆', vibes: '🎧', contact: '✉️', education: '🎓'
+    };
+
+    function setThemeCommand(theme) {
+        setTheme(theme);
+        try { localStorage.setItem('portfolio-theme', theme); } catch (_) { /* no-op */ }
+    }
+
+    const commands = [
+        ...VALID_SECTIONS.map(sectionId => ({
+            icon: SECTION_ICONS[sectionId] || '→',
+            label: `Go to ${SECTION_LABELS[sectionId] || sectionId}`,
+            keywords: `section ${sectionId}`,
+            run: () => activateSection(sectionId)
+        })),
+        { icon: '📄', label: 'Open resume', keywords: 'cv pdf download', run: () => window.open(portfolioData?.contact?.resume || 'assets/pdf/resume.pdf', '_blank', 'noopener') },
+        { icon: '✉️', label: 'Copy email', keywords: 'contact mail reach', run: () => portfolioData?.contact?.email && showEmailToast(portfolioData.contact.email) },
+        { icon: '💻', label: 'Open GitHub', keywords: 'code repos', run: () => portfolioData?.contact?.github && window.open(portfolioData.contact.github, '_blank', 'noopener') },
+        { icon: '💼', label: 'Open LinkedIn', keywords: 'connect message', run: () => portfolioData?.contact?.linkedin && window.open(portfolioData.contact.linkedin, '_blank', 'noopener') },
+        { icon: '☀️', label: 'Theme: Light', keywords: 'appearance color', run: () => setThemeCommand('light') },
+        { icon: '🌅', label: 'Theme: Warm', keywords: 'appearance color', run: () => setThemeCommand('warm') },
+        { icon: '🌙', label: 'Theme: Dark', keywords: 'appearance color', run: () => setThemeCommand('dark') },
+        { icon: '✨', label: 'Toggle Fun mode', keywords: 'effects pizza sparkles', run: () => document.getElementById('fun-toggle')?.click() },
+        { icon: '❯', label: 'Open terminal', keywords: 'shell console cli', run: () => document.getElementById('footer-terminal-btn')?.click() }
+    ];
+
+    let visible = commands.slice();
+    let selected = 0;
+
+    function renderList() {
+        list.innerHTML = '';
+        visible.forEach((command, index) => {
+            const item = document.createElement('li');
+            item.className = 'cmdk-item' + (index === selected ? ' is-selected' : '');
+            item.setAttribute('role', 'option');
+            item.setAttribute('aria-selected', index === selected ? 'true' : 'false');
+            item.innerHTML = `<span class="cmdk-item-icon" aria-hidden="true">${command.icon}</span><span class="cmdk-item-label">${command.label}</span>`;
+            item.addEventListener('mouseenter', () => { selected = index; updateSelection(); });
+            item.addEventListener('click', () => runSelected(index));
+            list.appendChild(item);
+        });
+        if (visible.length === 0) {
+            const empty = document.createElement('li');
+            empty.className = 'cmdk-empty';
+            empty.textContent = 'No matches';
+            list.appendChild(empty);
+        }
+    }
+
+    function updateSelection() {
+        list.querySelectorAll('.cmdk-item').forEach((item, index) => {
+            const isOn = index === selected;
+            item.classList.toggle('is-selected', isOn);
+            item.setAttribute('aria-selected', isOn ? 'true' : 'false');
+            if (isOn) item.scrollIntoView({ block: 'nearest' });
+        });
+    }
+
+    function filter(query) {
+        const normalized = query.trim().toLowerCase();
+        visible = !normalized
+            ? commands.slice()
+            : commands.filter(command =>
+                (command.label + ' ' + (command.keywords || '')).toLowerCase().includes(normalized));
+        selected = 0;
+        renderList();
+    }
+
+    function open() {
+        overlay.hidden = false;
+        requestAnimationFrame(() => overlay.classList.add('visible'));
+        input.value = '';
+        filter('');
+        setTimeout(() => input.focus(), 40);
+    }
+    function close() {
+        overlay.classList.remove('visible');
+        setTimeout(() => { overlay.hidden = true; }, 180);
+    }
+    function runSelected(index) {
+        const command = visible[index];
+        if (!command) return;
+        close();
+        setTimeout(() => command.run(), 60);
+    }
+
+    input.addEventListener('input', () => filter(input.value));
+    input.addEventListener('keydown', keyEvent => {
+        if (keyEvent.key === 'ArrowDown') {
+            keyEvent.preventDefault();
+            if (visible.length) { selected = (selected + 1) % visible.length; updateSelection(); }
+        } else if (keyEvent.key === 'ArrowUp') {
+            keyEvent.preventDefault();
+            if (visible.length) { selected = (selected - 1 + visible.length) % visible.length; updateSelection(); }
+        } else if (keyEvent.key === 'Enter') {
+            keyEvent.preventDefault();
+            runSelected(selected);
+        } else if (keyEvent.key === 'Escape') {
+            close();
+        }
+    });
+    overlay.addEventListener('click', clickEvent => {
+        if (clickEvent.target === overlay) close();
+    });
+    if (footerBtn) footerBtn.addEventListener('click', open);
+
+    window.addEventListener('keydown', keyEvent => {
+        if ((keyEvent.metaKey || keyEvent.ctrlKey) && keyEvent.key.toLowerCase() === 'k') {
             keyEvent.preventDefault();
             overlay.hidden ? open() : close();
         }
@@ -1136,6 +1370,9 @@ function initEasterEggs() {
         document.addEventListener('keydown', function (keyEvent) {
             const tag = (keyEvent.target.tagName || '').toLowerCase();
             if (tag === 'input' || tag === 'textarea') return;
+            // Single-key effects are opt-in: only fire when Fun mode is on, so a
+            // recruiter tapping a key in the default (professional) view gets nothing.
+            if (!document.body.classList.contains('fun')) return;
 
             if (keyEvent.key.toLowerCase() === 'c' && !keyEvent.repeat) {
                 const cyclingTrack = document.querySelector('.cycling-track');
@@ -1236,7 +1473,7 @@ function initCursorSparkles() {
     let width = canvas.width = window.innerWidth;
     let height = canvas.height = window.innerHeight;
     const particles = [];
-    let lastSpawn = 0;
+    let lastSpawn = 0, running = false;
     let mouseX = -1, mouseY = -1;
 
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -1267,6 +1504,11 @@ function initCursorSparkles() {
                 color: accentRgb
             });
         }
+        // Kick the render loop only when there's something to draw.
+        if (!running) {
+            running = true;
+            requestAnimationFrame(frame);
+        }
     });
 
     function frame() {
@@ -1285,9 +1527,13 @@ function initCursorSparkles() {
             context.arc(particle.x, particle.y, particle.size * particle.life, 0, Math.PI * 2);
             context.fill();
         }
-        requestAnimationFrame(frame);
+        // Idle out when the last particle dies instead of looping forever.
+        if (particles.length > 0) {
+            requestAnimationFrame(frame);
+        } else {
+            running = false;
+        }
     }
-    frame();
 }
 
 function setFooterYear() {
@@ -1324,6 +1570,7 @@ document.addEventListener('DOMContentLoaded', function () {
         initShortcutsOverlay();
         initKonami();
         initTerminal();
+        initCommandPalette();
         initTypewriter();
         initCursorSparkles();
         initLiveClock();

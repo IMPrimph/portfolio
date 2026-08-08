@@ -475,6 +475,7 @@ body:not(.fun) .nav-btn:hover::after {
     margin: 0 auto;
 }
 
+.footer-cmdk-btn,
 .footer-shortcuts-btn,
 .footer-terminal-btn {
     background: transparent;
@@ -488,11 +489,13 @@ body:not(.fun) .nav-btn:hover::after {
     gap: 6px;
 }
 
+.footer-cmdk-btn:hover,
 .footer-shortcuts-btn:hover,
 .footer-terminal-btn:hover {
     color: var(--accent, var(--warm-accent));
 }
 
+.footer-cmdk-btn kbd,
 .footer-shortcuts-btn kbd,
 .footer-terminal-btn kbd {
     font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
@@ -2005,7 +2008,8 @@ body.fun #vibes h2::after {
 /* 17. Shortcuts overlay
    ============================================================ */
 .shortcuts-overlay[hidden],
-.terminal-overlay[hidden] {
+.terminal-overlay[hidden],
+.cmdk-overlay[hidden] {
     display: none !important;
 }
 
@@ -2414,8 +2418,9 @@ body.fun #vibes h2::after {
     }
 
     .nav {
-        flex-wrap: nowrap;
-        overflow-x: auto;
+        flex-wrap: wrap;
+        justify-content: center;
+        overflow-x: visible;
         max-width: 100%;
         border-radius: 12px;
     }
@@ -2423,7 +2428,6 @@ body.fun #vibes h2::after {
     .nav-btn {
         font-size: 0.8rem;
         padding: 7px 12px;
-        flex-shrink: 0;
     }
 
     .section-heading {
@@ -2501,4 +2505,198 @@ body.fun #vibes h2::after {
     .skills-container {
         grid-template-columns: repeat(3, 1fr);
     }
+}
+
+/* ============================================================
+   Hero action row (Resume / Email / GitHub / LinkedIn)
+   ============================================================ */
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 22px;
+}
+
+.hero-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 16px;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid var(--border, var(--warm-border));
+    background: var(--surface, var(--warm-surface));
+    color: var(--text-primary, var(--warm-text-primary));
+    transition: transform 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.hero-action:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent, var(--warm-accent));
+    box-shadow: 0 6px 16px rgba(var(--accent-rgb), 0.14);
+}
+
+.hero-action-primary {
+    background: var(--accent, var(--warm-accent));
+    border-color: var(--accent, var(--warm-accent));
+    color: #fff;
+}
+
+.hero-action-primary:hover {
+    filter: brightness(1.05);
+    color: #fff;
+}
+
+.hero-action-icon {
+    font-size: 0.95rem;
+    line-height: 1;
+}
+
+/* ============================================================
+   Command palette (⌘K)
+   ============================================================ */
+.cmdk-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 6000;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 12vh 20px 20px;
+    opacity: 0;
+    transition: opacity 0.18s ease;
+}
+
+.cmdk-overlay.visible {
+    opacity: 1;
+}
+
+.cmdk-panel {
+    width: 100%;
+    max-width: 520px;
+    background: var(--surface, var(--warm-surface));
+    border: 1px solid var(--border, var(--warm-border));
+    border-radius: 16px;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    transform: translateY(-10px) scale(0.98);
+    transition: transform 0.18s ease;
+}
+
+.cmdk-overlay.visible .cmdk-panel {
+    transform: translateY(0) scale(1);
+}
+
+.cmdk-input-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border, var(--warm-border));
+}
+
+.cmdk-input-icon {
+    color: var(--text-muted, var(--warm-text-muted));
+    font-size: 0.95rem;
+}
+
+.cmdk-input {
+    flex: 1;
+    background: none;
+    border: none;
+    outline: none;
+    color: var(--text-primary, var(--warm-text-primary));
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+.cmdk-input::placeholder {
+    color: var(--text-muted, var(--warm-text-muted));
+}
+
+.cmdk-list {
+    list-style: none;
+    margin: 0;
+    padding: 8px;
+    max-height: 340px;
+    overflow-y: auto;
+}
+
+.cmdk-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--text-primary, var(--warm-text-primary));
+}
+
+.cmdk-item.is-selected {
+    background: rgba(var(--accent-rgb), 0.12);
+    color: var(--accent, var(--warm-accent));
+}
+
+.cmdk-item-icon {
+    width: 20px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.cmdk-empty {
+    padding: 18px 12px;
+    text-align: center;
+    color: var(--text-muted, var(--warm-text-muted));
+    font-size: 0.88rem;
+}
+
+.cmdk-footer {
+    display: flex;
+    gap: 16px;
+    padding: 10px 16px;
+    border-top: 1px solid var(--border, var(--warm-border));
+    color: var(--text-muted, var(--warm-text-muted));
+    font-size: 0.72rem;
+}
+
+.cmdk-footer kbd {
+    font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+    background: var(--bg-alt, var(--warm-bg-alt));
+    border: 1px solid var(--border, var(--warm-border));
+    border-radius: 5px;
+    padding: 1px 5px;
+    margin-right: 3px;
+    font-size: 0.72rem;
+}
+
+/* ============================================================
+   Project case-study extras
+   ============================================================ */
+.project-title-block {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.project-subtitle {
+    font-size: 0.8rem;
+    color: var(--text-muted, var(--warm-text-muted));
+    font-weight: 500;
+}
+
+.project-link-note {
+    font-size: 0.82rem;
+    color: var(--text-muted, var(--warm-text-muted));
+    font-style: italic;
+}
+
+/* Terminal accent line (git log commit hashes) */
+.terminal-line.terminal-accent {
+    color: var(--accent, var(--warm-accent));
 }

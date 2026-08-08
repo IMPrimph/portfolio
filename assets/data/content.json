@@ -2,44 +2,44 @@
   "personal": {
     "name": "Vishnu Sai Jaswanth",
     "monogram": "VJ",
-    "title": "Senior Software Development Engineer",
+    "title": "Senior Backend & Applied AI Engineer",
     "tagline": "Building AI / creative-intelligence platforms end-to-end.",
     "rotatingRoles": [
       "Backend Engineer",
-      "AI Platform Builder",
+      "Applied AI Engineer",
       "LLM Orchestrator",
       "Distributed Systems Engineer",
-      "Senior Software Development Engineer"
+      "Senior Backend & Applied AI Engineer"
     ],
-    "bio": "Senior backend engineer with 4+ years building AI and creative-intelligence platforms. Currently architecting the full backend at 10x Productivity — multi-source data ingestion, multi-model LLM orchestration (Claude / Gemini / OpenAI), LangGraph agents, and PDF report pipelines serving 10+ enterprise customers in pilot. Strong in NestJS, PostgreSQL, distributed job systems, and AI platform engineering.",
-    "shortBio": "Backend engineer architecting the AI / creative-intelligence platform at 10x Productivity — LLM orchestration, LangGraph agents, and PDF report systems for 10+ enterprise pilots.",
+    "bio": "Senior backend and applied-AI engineer with 4+ years building production systems — LLM orchestration, multimodal pipelines, distributed data processing, agent workflows, and AWS infrastructure. Founding-team engineer at 10x Productivity with end-to-end ownership from architecture through enterprise pilots and production operations.",
+    "shortBio": "Founding-team backend & applied-AI engineer at 10x Productivity — LLM orchestration, multimodal pipelines, a versioned knowledge platform, and the AWS infra it all runs on.",
     "location": "Bengaluru, India",
     "timezone": "IST (UTC+5:30)",
     "experienceStart": "2022-01-01",
-    "stack": ["NestJS", "TypeScript", "PostgreSQL", "BullMQ", "LangGraph", "Claude"]
+    "stack": ["NestJS", "TypeScript", "PostgreSQL", "BullMQ", "LangGraph", "AWS"]
   },
   "heroChips": [
     { "icon": "🏢", "label": "10x Productivity" },
     { "icon": "📍", "label": "Bengaluru" },
-    { "icon": "🧠", "label": "AI platform + LLM" },
-    { "icon": "🎯", "label": "End-to-end backend" }
+    { "icon": "🧠", "label": "Applied AI + LLM" },
+    { "icon": "🚀", "label": "Founding team" }
   ],
   "currently": [
-    "Architecting the full backend at 10x Productivity — ~90% of the codebase, from ingestion to AI agents to PDF delivery",
-    "Orchestrating multi-model LLM pipelines (Claude / Gemini / OpenAI) across 90+ structured-output call sites",
-    "Shipping 5 LangGraph chat agents that let marketers self-serve creative strategy in natural language"
+    "Building the backend and applied-AI platform at 10x Productivity — ingestion → multimodal analysis → creative strategy → client reporting",
+    "Orchestrating multi-model LLM pipelines (Claude / Gemini / OpenAI) across 60+ production call sites with tenant-level cost attribution",
+    "Running it all on a Terraform-managed AWS platform — 7 ECS Fargate services, RDS, ElastiCache, and OIDC-based CI/CD"
   ],
   "quickStats": [
     { "value": "10+", "label": "enterprise pilots" },
-    { "value": "90+", "label": "LLM call sites" },
-    { "value": "13+", "label": "PDF report types" },
-    { "value": "300M", "label": "events/month" }
+    { "value": "60+", "label": "LLM call sites" },
+    { "value": "13+", "label": "report types" },
+    { "value": "7", "label": "AWS services" }
   ],
   "openTo": [
     "Senior backend roles",
-    "AI platform engineering",
+    "Applied AI / AI platform engineering",
     "Distributed systems work",
-    "Mentoring",
+    "Founding / early-stage teams",
     "Coffee chats ☕"
   ],
   "contact": {
@@ -48,7 +48,7 @@
     "github": "https://github.com/IMPrimph",
     "portfolio": "https://jaswanth123.netlify.app/",
     "resume": "assets/pdf/resume.pdf",
-    "availability": "Open to senior backend and AI-platform roles & interesting chats",
+    "availability": "Open to senior backend & applied-AI roles and interesting chats",
     "intro": "I read every message — pick whatever channel works for you.",
     "channels": [
       { "key": "resume", "label": "Resume", "icon": "📄", "description": "Latest one-pager (PDF)" },
@@ -59,28 +59,27 @@
   },
   "skills": {
     "Languages": ["TypeScript", "JavaScript", "Python", "SQL"],
-    "Backend": ["NestJS", "Node.js", "Express", "BullMQ", "REST APIs", "WebSockets", "Microservices"],
+    "Backend": ["NestJS", "Node.js", "REST / OpenAPI", "BullMQ", "WebSockets", "Event-Driven Systems", "Microservices"],
     "System/Infra": ["System Design", "Distributed Systems", "Job Orchestration", "Caching", "Scalability"],
-    "Data/Search": ["PostgreSQL", "TypeORM", "MongoDB", "Redis", "Elasticsearch", "Pinecone", "Qdrant"],
-    "AI/LLM": ["Anthropic Claude", "Google Gemini", "OpenAI", "LangChain / LangGraph", "MCP", "Vector Databases", "Prompt Engineering"],
-    "Cloud/DevOps": ["AWS", "GCP", "Docker", "Kubernetes", "CI/CD", "Auth0"],
+    "Data/Search": ["PostgreSQL", "TypeORM", "Redis", "Elasticsearch", "MongoDB", "Pinecone", "Qdrant"],
+    "AI/LLM": ["Claude", "Gemini", "OpenAI", "LangGraph / LangChain", "MCP", "Structured Outputs", "RAG / Embeddings", "Multimodal Pipelines"],
+    "Cloud/DevOps": ["AWS", "ECS / Fargate", "Terraform", "Docker", "CI/CD", "GCP", "Auth0"],
     "Tooling": ["Puppeteer", "Handlebars", "Nx Monorepo", "OpenAPI / Swagger"]
   },
   "experience": [
     {
       "id": 1,
-      "title": "Senior Software Development Engineer",
+      "title": "Senior Software Development Engineer – Founding Team",
       "company": "10x Productivity",
       "duration": "Oct 2025 – Present",
       "location": "Bengaluru",
       "achievements": [
-        "Owned the platform's backend end-to-end since project inception (~90% of backend code), architecting the full pipeline from data ingestion through AI analysis, intelligence aggregation, AI agents, storyboard generation, asset production, and report delivery — the core product the company sells to 10+ enterprise customers in pilot across leading e-commerce, retail, and adtech brands",
-        "Built asynchronous onboarding and continuous-sync pipelines across the Facebook Marketing API, Facebook Ads Library, and AppMagic on BullMQ scheduled crons with Redis leader election, plus the internal Command Center back-office for ad-account and competitor configuration, GTM, and analysis re-triggering — onboarded 10+ enterprise advertisers and 100+ competitor brands with zero per-customer engineering work",
-        "Engineered the asset-level AI analysis pipeline that extracts scene-by-scene video breakdowns, scores every creative across 5 dimensions and 80+ sub-dimensions, and generates psychology + production 'DNA' using Gemini and Claude across 90+ structured-output LLM call sites — replacing hours of manual creative-analyst review per ad with automated insights surfaced to marketers in seconds",
-        "Designed a two-layer Knowledge Base intelligence engine combining pure-SQL computational blocks with LLM-cached strategy blocks (persona profiles, creative formulas, market archetypes, pattern gaps, competitor strategies) stored as versioned JSONB — chose this architecture to keep marketer-facing latency under 500ms while still leveraging multimodal AI, and reused it to power 5 LangGraph chat agents (data, Q&A, reporting, strategist, media buyer) that let marketers self-serve creative strategy in natural language",
-        "Shipped the storyboard and creative production pipeline that turns insights into scene-by-scene ad concepts with Imagen reference grids and produces final assets via Fal AI (Veo 3.1), OpenAI, and Bria — delivering 20 production-grade images per week and 50 videos per month to enterprise customers, built in collaboration with the CEO and creative-strategy team and compressing a multi-week agency cycle into a single in-app workflow",
-        "Delivered 13+ production PDF report types end-to-end (Competitive Intelligence, Creative Playbook, Strategy Summary, Funnel, Persona, Unified Story, Market Entry, and more) via data orchestration, LLM synthesis, Handlebars templates, and Puppeteer two-pass rendering — the platform's primary client-facing deliverable used by sales to close enterprise pilots and by customer success to drive retention and expansion",
-        "Authored the engineering team's backend coding standards, testing rulebook, and shared test infrastructure (mock factories, fixtures, jest preset) adopted across every NestJS library in the monorepo, plus the structured logging migration that cut production incident triage time"
+        "Own the backend and applied-AI platform end-to-end — advertiser and competitor ingestion through multimodal analysis, creative strategy, asset generation, and client reporting — for 10+ enterprise pilots.",
+        "Built asynchronous onboarding and continuous synchronization across the Meta Marketing API, Meta Ad Library, and AppMagic using BullMQ and Redis leader election — supporting 10+ advertisers and 100+ competitor brands with no client-specific pipelines.",
+        "Developed a multimodal analysis system that extracts scene-level video structure and scores creatives across 5 strategic dimensions and 100+ configurable signals via structured Gemini, Claude, and OpenAI workflows.",
+        "Designed a versioned knowledge platform combining deterministic SQL metrics with cached LLM-generated strategy — powering 5+ LangGraph workflows, an OAuth-enabled MCP server, and 13+ client-facing report types.",
+        "Shipped insight-to-production workflows for storyboards, images, and video using OpenAI, Imagen, Veo, and Bria; implemented tenant- and feature-level LLM cost attribution across 60+ production call sites.",
+        "Expanded the Terraform-managed AWS platform to 7 ECS Fargate services across isolated environments — RDS, ElastiCache, ALB, ECR, centralized logging, and OIDC-based CI/CD."
       ]
     },
     {
@@ -90,12 +89,10 @@
       "duration": "Jan 2025 – Oct 2025",
       "location": "Bengaluru",
       "achievements": [
-        "Engineered a generic clustering infrastructure using vector embeddings to group unsatisfactory AI responses and customer feedback, improving chatbot accuracy and reducing repeated unresolved queries by 30%",
-        "Revamped in-house release and deployment tools (ReleaseJet / CodeJet) with automated multi-environment rollouts, versioning, rollback, and pod-level blocks, reducing deployment time by 40% and smoothing the rollout process",
-        "Designed a unified Sync Service to ingest diverse data (Shopify content and third-party CRM content) into vector databases, reducing ingestion complexity and improving sync reliability by 40%",
-        "Implemented a generic CRM integration layer for real-time, bi-directional messaging with Salesforce, Zendesk, and Gorgias, reducing handover latency by 50% and powering live chat for 50+ clients",
-        "Optimized Elasticsearch handling 300M events/month via ILM policies, shard sizing (≤ 50GB), and tiered storage (hot→warm), cutting infra costs by 50%; extended APM to Python pods to improve observability",
-        "Led on-call rotations and proactively monitored error logs; awarded Best Employee of the Quarter (Apr 2025)"
+        "Built an embedding-based clustering system for unsatisfactory AI responses and customer feedback, helping product teams surface recurring chatbot failure patterns.",
+        "Revamped internal release tooling with automated multi-environment rollouts, versioning, rollback, and pod-level controls, reducing deployment time by 40%.",
+        "Designed a reusable CRM integration layer for real-time, bidirectional messaging with Salesforce, Zendesk, and Gorgias, powering live chat and human handover for 50+ clients.",
+        "Optimized Elasticsearch handling 300M events/month via ILM policies, shard sizing, and hot-to-warm storage, cutting infrastructure cost by 50%; awarded Best Employee of the Quarter (Apr 2025)."
       ]
     },
     {
@@ -105,11 +102,9 @@
       "duration": "Aug 2022 – Dec 2024",
       "location": "Remote",
       "achievements": [
-        "Delivered 20+ APIs and features with strong API design and development practices, contributing to 15% revenue growth, while progressing from SDE-1 to SDE-3 and leading architecture decisions",
-        "Integrated AWS Rekognition and ML models for creative intelligence, enabling scene-level video/image analysis and predictive ad performance insights",
-        "Created competitor analytics infrastructure via AppMagic, allowing clients to sync competitor data, track ads, and run performance benchmarks",
-        "Enhanced Postgres analytics queries, improving query latency by 40% and stabilizing platform performance",
-        "Extended observability with Elastic application logging and Sentry monitoring, resolving 50+ production issues and ensuring 90%+ uptime"
+        "Promoted from SDE-1 to SDE-3 while shipping 20+ APIs and product features and contributing to architecture decisions for a creative-intelligence platform.",
+        "Integrated AWS Rekognition and ML models for scene-level image and video analysis, and built AppMagic-based competitor analytics for ad tracking and performance benchmarking.",
+        "Improved PostgreSQL analytics query latency by 40% and expanded Elastic and Sentry observability, helping diagnose and resolve 50+ production issues."
       ]
     },
     {
@@ -119,29 +114,32 @@
       "duration": "Jan 2022 – Jul 2022",
       "location": "Pune",
       "achievements": [
-        "Designed microservices for HP Active Care, improving maintainability and reducing error rates by ~20% through enhanced logging and unit testing"
+        "Developed microservices for HP Active Care and improved service reliability through structured logging and unit testing."
       ]
     }
   ],
   "projects": [
     {
       "id": 1,
-      "title": "YelpCamp",
-      "description": "Comprehensive platform connecting outdoor enthusiasts with global camping destinations. Implemented interactive maps, user-generated content, and personalized recommendations, resulting in a 20% increase in user interaction and retention.",
-      "technologies": ["Node.js", "Express", "MongoDB", "Cloudinary", "Bootstrap"],
-      "link": "https://tranquil-beach-92340.herokuapp.com/",
+      "title": "Archer — AI Creative-Intelligence Platform",
+      "subtitle": "10x Productivity · Founding engineer",
+      "description": "The AI platform I own end-to-end at 10x. It ingests advertiser and competitor ad creatives, runs multimodal LLM analysis (scene-level video breakdowns, 5 strategic dimensions × 100+ signals, persona and funnel classification), aggregates a versioned knowledge base, and turns all of it into storyboards, generated image/video assets, and 13+ client-facing report types. Built on NestJS + BullMQ over a Terraform-managed AWS platform (7 ECS Fargate services), with tenant- and feature-level LLM cost attribution across 60+ production call sites.",
+      "technologies": ["NestJS", "LLM Orchestration", "BullMQ", "PostgreSQL", "LangGraph / MCP", "AWS / Terraform"],
+      "badgeIcon": "🏗️",
+      "badgeLabel": "Production platform",
+      "linkNote": "Private — happy to walk through the architecture",
       "featured": true,
-      "aiAssisted": false,
-      "accent": "#7c9c69"
+      "accent": "#b1561e"
     },
     {
       "id": 2,
       "title": "RapidMock",
-      "description": "API mocking platform that accelerated frontend development workflows by 50%. Enabled developers to simulate diverse API responses without backend dependencies, reducing bottlenecks and decoupling frontend/backend cycles.",
+      "description": "API mocking platform that accelerates frontend development workflows. Lets developers simulate diverse API responses without backend dependencies, removing bottlenecks and decoupling frontend/backend cycles.",
       "technologies": ["React", "Next.js", "Node.js", "MongoDB", "Tailwind CSS"],
       "link": "https://www.rapidmock.com/",
+      "badgeIcon": "🚀",
+      "badgeLabel": "Live product",
       "featured": true,
-      "aiAssisted": false,
       "accent": "#c97a4f"
     }
   ],
@@ -158,12 +156,12 @@
     {
       "id": 1,
       "title": "Best Employee of the Quarter (Apr 2025)",
-      "description": "Awarded at BIK.AI for technical leadership, backend system design, and cross-functional impact in developing clustering infrastructure and deployment tools."
+      "description": "Awarded at BIK.AI for technical leadership, backend system design, and cross-functional impact across clustering infrastructure and deployment tooling."
     },
     {
       "id": 2,
-      "title": "Backend standards adopted org-wide (Oct 2025)",
-      "description": "Authored 10x Productivity's backend coding standards, testing rulebook, and shared test infrastructure (mock factories, fixtures, jest preset) adopted across every NestJS library in the monorepo."
+      "title": "Backend standards for a founding-stage platform (Oct 2025)",
+      "description": "Authored 10x Productivity's backend coding standards, testing rulebook, and shared test infrastructure (mock factories, fixtures, Jest preset) used across the backend libraries in the monorepo."
     }
   ],
   "playlist": {

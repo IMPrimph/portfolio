@@ -1,0 +1,12 @@
+# Netlify applies these response headers site-wide.
+# Ported from the old Apache .htaccess, which Netlify silently ignored — so
+# until now the site shipped with NO security headers despite intending to.
+# Caching + compression are left to Netlify's defaults so that unversioned
+# assets (styles.css, main.js, content.json, resume.pdf) still revalidate and
+# updates go live immediately instead of being frozen by a 1-year immutable cache.
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Cross-Origin-Opener-Policy: same-origin
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload

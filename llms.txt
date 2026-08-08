@@ -1,43 +1,43 @@
 # Vishnu Sai Jaswanth
 
-Senior Backend Engineer (4+ years) based in Bengaluru, India. Builds AI / creative-intelligence platforms. Currently architecting the full backend at 10x Productivity — multi-source data ingestion, multi-model LLM orchestration (Claude / Gemini / OpenAI), LangGraph agents, and PDF report pipelines serving 10+ enterprise customers in pilot.
+Senior Backend & Applied AI Engineer (4+ years) based in Bengaluru, India. Founding-team engineer at 10x Productivity, building AI / creative-intelligence platforms end-to-end — multi-source data ingestion, multi-model LLM orchestration (Claude / Gemini / OpenAI), multimodal pipelines, a versioned knowledge platform, agent workflows, and Terraform-managed AWS infrastructure, serving 10+ enterprise pilots.
 
 ## At a glance
 
-- Role: Senior Software Development Engineer at 10x Productivity (Oct 2025 – present)
+- Role: Senior Software Development Engineer – Founding Team at 10x Productivity (Oct 2025 – present)
 - Previous: Senior SDE at BIK.AI (Jan 2025 – Oct 2025); SDE-1 → SDE-3 at BLKBOX.AI (Aug 2022 – Dec 2024); SE Intern at HP R&D (Jan – Jul 2022)
 - Location: Bengaluru, Karnataka, India (IST, UTC+5:30)
 - Education: B.Tech Computer Science, Pondicherry Engineering College (GPA 8.67/10, 2018–2022)
 
 ## Core stack
 
-NestJS, TypeScript, JavaScript, Python, SQL, BullMQ, PostgreSQL, TypeORM, MongoDB, Redis, Elasticsearch, Pinecone, Qdrant, Anthropic Claude, Google Gemini, OpenAI, LangChain / LangGraph, MCP (Model Context Protocol), AWS, GCP, Docker, Kubernetes, Auth0, Puppeteer, Handlebars, Nx Monorepo, OpenAPI / Swagger.
+NestJS, TypeScript, JavaScript, Python, SQL, BullMQ, PostgreSQL, TypeORM, MongoDB, Redis, Elasticsearch, Pinecone, Qdrant, Anthropic Claude, Google Gemini, OpenAI, structured outputs, RAG / embeddings, multimodal pipelines, LangChain / LangGraph, MCP (Model Context Protocol), AWS, ECS / Fargate, Terraform, Docker, CI/CD, GCP, Auth0, Puppeteer, Handlebars, Nx Monorepo, OpenAPI / Swagger.
 
 ## Currently shipping at 10x Productivity
 
-- Owns ~90% of the backend — full pipeline from data ingestion through AI analysis, intelligence aggregation, AI agents, storyboard generation, asset production, and PDF report delivery
-- Asset-level AI analysis pipeline using Gemini and Claude across 90+ structured-output LLM call sites; scene-by-scene video breakdowns, 5 dimensions × 80+ sub-dimensions per creative
-- Two-layer Knowledge Base intelligence engine (pure-SQL computational blocks + LLM-cached strategy blocks, versioned JSONB) powering 5 LangGraph chat agents — data, Q&A, reporting, strategist, media buyer
-- Storyboard + creative production pipeline (Imagen reference grids, Fal AI / Veo 3.1, OpenAI, Bria) — 20 production-grade images/week, 50 videos/month
-- 13+ production PDF report types via Handlebars templates and Puppeteer two-pass rendering
-- BullMQ scheduled crons with Redis leader election for Facebook Marketing API, Facebook Ads Library, and AppMagic ingestion
-- Authored backend coding standards, testing rulebook, and shared test infrastructure adopted across every NestJS library in the monorepo
+- Owns the backend and applied-AI platform end-to-end — advertiser and competitor ingestion through multimodal analysis, creative strategy, asset generation, and client reporting for 10+ enterprise pilots
+- Multimodal analysis system (Gemini / Claude / OpenAI, structured outputs) across 60+ production LLM call sites — extracts scene-level video structure and scores creatives across 5 strategic dimensions and 100+ configurable signals
+- Two-layer knowledge platform combining deterministic SQL metrics with cached LLM-generated strategy (versioned JSONB) — powering 5+ LangGraph workflows and an OAuth-enabled MCP server
+- Storyboard + creative production pipeline (Imagen reference grids, Fal AI / Veo 3.1, OpenAI, Bria) with tenant- and feature-level LLM cost attribution
+- 13+ client-facing PDF report types via Handlebars templates and Puppeteer two-pass rendering
+- Async onboarding + continuous sync (Meta Marketing API, Meta Ad Library, AppMagic) on BullMQ with Redis leader election — 10+ advertisers, 100+ competitor brands, no client-specific pipelines
+- Terraform-managed AWS platform — 7 ECS Fargate services across isolated environments (RDS, ElastiCache, ALB, ECR, centralized logging, OIDC-based CI/CD)
+- Authored the backend coding standards, testing rulebook, and shared test infrastructure used across the backend libraries in the monorepo
 
 ## Previously at BIK.AI
 
-- Generic clustering infrastructure using vector embeddings, cutting repeat unresolved queries 30%
-- Revamped ReleaseJet / CodeJet release tooling, cutting deploy time 40%
-- Unified Sync Service for Shopify + third-party CRM ingestion into vector DBs (+40% reliability)
-- Generic CRM integration layer (Salesforce, Zendesk, Gorgias), cutting handover latency 50% for 50+ clients
+- Embedding-based clustering system for unsatisfactory AI responses and customer feedback, surfacing recurring chatbot failure patterns
+- Revamped internal release tooling (multi-environment rollouts, versioning, rollback, pod-level controls), cutting deploy time 40%
+- Reusable CRM integration layer (Salesforce, Zendesk, Gorgias) for real-time bidirectional messaging — live chat and human handover for 50+ clients
 - Elasticsearch handling 300M events/month — ILM, shard sizing, hot→warm tiered storage; 50% infra cost cut
 - Best Employee of the Quarter (Apr 2025)
 
 ## Open to
 
 - Senior backend roles
-- AI platform engineering
+- Applied AI / AI platform engineering
 - Distributed systems work
-- Mentoring conversations
+- Founding / early-stage teams
 - Coffee chats
 
 ## Contact
