@@ -5,526 +5,238 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Primary meta -->
-    <title>Vishnu Sai Jaswanth | Senior Backend &amp; Applied AI Engineer</title>
+    <title>Vishnu Sai Jaswanth | Backend &amp; Applied AI Engineer</title>
     <meta name="description"
-        content="Founding-team backend &amp; applied-AI engineer at 10x Productivity. 4+ years building production systems — LLM orchestration, multimodal pipelines, distributed job systems, and AWS infrastructure. Bengaluru, India.">
-    <meta name="keywords"
-        content="Senior Backend Engineer, Applied AI Engineer, Founding Engineer, NestJS, LLM Orchestration, Multimodal AI, LangGraph, Claude, Gemini, OpenAI, MCP, BullMQ, Distributed Systems, AWS, Terraform, PostgreSQL, TypeScript, Python, 10x Productivity, Bengaluru">
+        content="Backend and applied AI engineer in Bengaluru. Founding engineer at 10x Productivity, building tool-using AI agents, MCP servers, multimodal LLM pipelines and the AWS backend behind them.">
     <meta name="author" content="Vishnu Sai Jaswanth">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
-
-    <!-- Canonical -->
     <link rel="canonical" href="https://jaswanth123.netlify.app/">
 
-    <!-- Theme color — kept in sync with the active theme by JS (setTheme) -->
-    <meta name="theme-color" content="#f4ecd6" id="meta-theme-color">
+    <meta name="theme-color" content="#edf0f2" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#12171d" media="(prefers-color-scheme: dark)">
     <meta name="color-scheme" content="light dark">
 
-    <!-- Open Graph -->
     <meta property="og:type" content="profile">
-    <meta property="og:title" content="Vishnu Sai Jaswanth | Senior Backend &amp; Applied AI Engineer">
+    <meta property="og:title" content="Vishnu Sai Jaswanth | Backend &amp; Applied AI Engineer">
     <meta property="og:description"
-        content="Founding-team backend &amp; applied-AI engineer at 10x Productivity — LLM orchestration, multimodal pipelines, a versioned knowledge platform, and the AWS infrastructure it runs on.">
+        content="Founding engineer at 10x Productivity. Tool-using AI agents, MCP servers, multimodal LLM pipelines and the backend underneath them.">
     <meta property="og:url" content="https://jaswanth123.netlify.app/">
-    <meta property="og:site_name" content="Vishnu Sai Jaswanth — Portfolio">
+    <meta property="og:site_name" content="Vishnu Sai Jaswanth">
     <meta property="og:locale" content="en_IN">
     <meta property="og:image" content="https://jaswanth123.netlify.app/og-image.png">
-    <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Vishnu Sai Jaswanth — Senior Backend &amp; Applied AI Engineer">
-    <meta property="profile:first_name" content="Vishnu">
-    <meta property="profile:last_name" content="Sai Jaswanth">
-    <meta property="profile:username" content="IMPrimph">
-
-    <!-- Twitter -->
+    <meta property="og:image:alt" content="Vishnu Sai Jaswanth, Backend and Applied AI Engineer">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Vishnu Sai Jaswanth | Senior Backend &amp; Applied AI Engineer">
+    <meta name="twitter:title" content="Vishnu Sai Jaswanth | Backend &amp; Applied AI Engineer">
     <meta name="twitter:description"
-        content="Founding-team backend &amp; applied-AI engineer at 10x Productivity. LLM orchestration, multimodal pipelines, distributed systems, AWS. Bengaluru, India.">
+        content="Founding engineer at 10x Productivity. Tool-using AI agents, MCP servers, multimodal LLM pipelines and the backend underneath them.">
     <meta name="twitter:image" content="https://jaswanth123.netlify.app/og-image.png">
-    <meta name="twitter:image:alt" content="Vishnu Sai Jaswanth — Senior Backend &amp; Applied AI Engineer">
 
-    <!-- Icons + manifest -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon/favicon-32.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="/assets/img/favicon/favicon-192.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
 
-    <!-- Preconnect to external domains for better performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <!-- Preload critical resources -->
-    <link rel="preload" href="assets/data/content.json" as="fetch" crossorigin>
-    <link rel="preload" href="assets/js/main.js" as="script">
-    <link rel="preload" href="assets/css/styles.css" as="style">
-
-    <link rel="stylesheet" href="assets/css/styles.css" media="all">
-
-    <!-- Loading styles - inline to prevent flash of unstyled content -->
-    <style>
-        .loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--bg, #fefcf3);
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
-
-        .loading-screen.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .loading-spinner {
-            width: 48px;
-            height: 48px;
-            border: 3px solid var(--border, #e8dcc0);
-            border-top: 3px solid var(--accent, #8b4513);
-            border-radius: 50%;
-            animation: spin 0.9s linear infinite;
-        }
-
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        body:not(.loaded) .container {
-            opacity: 0;
-        }
-
-        body.loaded .container {
-            opacity: 1;
-            transition: opacity 0.2s ease;
-        }
-    </style>
-    <!-- Inter for body, Fraunces for display headings -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 
 <body>
-    <!-- Skip Navigation for Screen Readers -->
-    <a href="#main" class="skip-link">Skip to main content</a>
+    <a href="#main" class="skip-link">Skip to content</a>
 
-    <!-- Status announcements for screen readers -->
-    <div id="status" aria-live="polite" class="sr-only"></div>
+    <header class="hero">
+        <h1 class="name">Vishnu Sai<br>Jaswanth</h1>
+        <p class="role">Backend and applied AI engineer, Bengaluru</p>
+        <p class="intro">
+            I build tool-using AI agents, MCP servers and multimodal LLM pipelines, and the backend services and
+            AWS infrastructure they run on. For 4+ years I've owned systems end to end, from the queue to the
+            Terraform. Right now I'm a founding engineer at 10x Productivity.
+        </p>
+        <nav class="actions" aria-label="Contact">
+            <a class="button" href="/assets/pdf/resume.pdf">Download resume</a>
+            <a href="mailto:vishnugajulapalli123@gmail.com">Email</a>
+            <a href="https://www.linkedin.com/in/vishnu-sai-jaswanth-gajulapalli-0670811a7/">LinkedIn</a>
+            <a href="https://github.com/IMPrimph">GitHub</a>
+        </nav>
+    </header>
 
-    <!-- Cursor sparkle layer (fun mode only) -->
-    <canvas id="cursor-sparkles" aria-hidden="true"></canvas>
+    <main id="main">
+        <figure class="run" aria-labelledby="run-caption">
+            <ol class="run-steps">
+                <li><strong>Sources</strong><span>Meta Marketing API, Ad Library, AppMagic</span></li>
+                <li><strong>Ingestion</strong><span>BullMQ workers with Redis leader election</span></li>
+                <li><strong>Analysis</strong><span>Scene-level video structure, 100+ signals, 15k+ ads</span></li>
+                <li><strong>Knowledge</strong><span>SQL analytics plus cached LLM insights</span></li>
+                <li><strong>Agents</strong><span>Charlie, lead-ads and media-buyer agents</span></li>
+                <li><strong>Clients</strong><span>The Archer app, and Claude or Cursor over MCP</span></li>
+            </ol>
+            <figcaption id="run-caption">Archer, the platform I own at 10x Productivity. Every stage runs on ECS
+                Fargate, provisioned with Terraform.</figcaption>
+        </figure>
 
-    <!-- Loading Screen -->
-    <div class="loading-screen" id="loading-screen">
-        <div class="loading-spinner"></div>
-    </div>
-
-    <!-- Floating top-right control cluster (theme + fun) -->
-    <div class="control-cluster" role="toolbar" aria-label="Display controls">
-        <div class="theme-toggle" id="theme-toggle" role="radiogroup" aria-label="Theme selection">
-            <button class="theme-btn" data-theme="light" role="radio" aria-checked="false"
-                aria-label="Light theme">☀️</button>
-            <button class="theme-btn active" data-theme="warm" role="radio" aria-checked="true"
-                aria-label="Warm theme">🌅</button>
-            <button class="theme-btn" data-theme="dark" role="radio" aria-checked="false"
-                aria-label="Dark theme">🌙</button>
-        </div>
-        <button id="fun-toggle" class="fun-btn" aria-pressed="false" aria-label="Toggle fun mode">✨ Fun</button>
-    </div>
-
-    <!-- Progress Indicator -->
-    <div class="cycling-progress" id="cycling-progress" aria-hidden="true">
-        <svg class="progress-ring" width="42" height="42">
-            <circle class="progress-ring-background" cx="21" cy="21" r="17" />
-            <circle class="progress-ring-progress" cx="21" cy="21" r="17" id="progress-circle" />
-        </svg>
-    </div>
-
-    <!-- Bottom Cycling Track -->
-    <div class="cycling-track"></div>
-    <!-- Fun-only extras -->
-    <div class="cloud-layer" aria-hidden="true"></div>
-    <div class="nature-hills" aria-hidden="true"></div>
-    <div class="forest-edge" aria-hidden="true"></div>
-    <div class="pizza-comet" aria-hidden="true"></div>
-    <div class="hiker-walk" aria-hidden="true"></div>
-
-    <!-- Subtle Pizza Corner Slices -->
-    <div class="pizza-corner-tl"></div>
-    <div class="pizza-corner-tr"></div>
-    <div class="pizza-corner-bl"></div>
-    <div class="pizza-corner-br"></div>
-
-    <!-- Gentle Sparkle Effects -->
-    <div class="sparkle-effects">
-        <div class="sparkle">✨</div>
-        <div class="sparkle">⭐</div>
-        <div class="sparkle">✨</div>
-        <div class="sparkle">💫</div>
-        <div class="sparkle">✨</div>
-    </div>
-
-    <!-- Minimal Film Strips -->
-    <div class="film-strip film-strip-left"></div>
-    <div class="film-strip film-strip-right"></div>
-
-    <div class="container">
-        <header class="header">
-            <div class="hero-identity">
-                <svg class="hero-monogram" id="hero-monogram" viewBox="0 0 76 76" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                    <defs>
-                        <linearGradient id="heroMonoGrad" x1="0" y1="0" x2="0.8" y2="1">
-                            <stop offset="0%" stop-color="currentColor" stop-opacity="1"/>
-                            <stop offset="100%" stop-color="#000" stop-opacity="0.35"/>
-                        </linearGradient>
-                        <radialGradient id="heroMonoHighlight" cx="28%" cy="22%" r="65%">
-                            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.32"/>
-                            <stop offset="60%" stop-color="#ffffff" stop-opacity="0.05"/>
-                            <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
-                        </radialGradient>
-                    </defs>
-                    <rect width="76" height="76" rx="20" ry="20" fill="url(#heroMonoGrad)"/>
-                    <rect width="76" height="76" rx="20" ry="20" fill="url(#heroMonoHighlight)"/>
-                    <g transform="scale(0.76)">
-                        <path d="M31 36 L50 66 L69 36" fill="none" stroke="#ffffff" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <circle cx="31" cy="36" r="7.5" fill="#ffffff"/>
-                        <path d="M69 25 Q70.5 34 79 36 Q70.5 38 69 47 Q67.5 38 59 36 Q67.5 34 69 25 Z" fill="#ffffff"/>
-                    </g>
-                </svg>
-                <div class="hero-text">
-                    <h1 class="name" id="name">Vishnu Sai Jaswanth</h1>
-                    <p class="title">
-                        <span class="title-static" id="title-static">Senior Backend &amp; Applied AI Engineer</span>
-                        <span class="title-typewriter" id="title-typewriter" aria-hidden="true"></span>
-                    </p>
-                    <div class="experience-badge" id="experience-badge">4+ Years Experience</div>
-                </div>
-            </div>
-
-            <div class="hero-chips" id="hero-chips" aria-label="Quick facts">
-                <!-- Populated by JS -->
-            </div>
-
-            <div class="hero-actions" id="hero-actions" aria-label="Quick actions">
-                <!-- Populated by JS: Resume / Email / GitHub / LinkedIn -->
-            </div>
-
-            <nav class="nav" role="navigation" aria-label="Main navigation">
-                <button class="nav-btn active" data-section="about" aria-pressed="true"
-                    aria-controls="about">About</button>
-                <button class="nav-btn" data-section="skills" aria-pressed="false"
-                    aria-controls="skills">Skills</button>
-                <button class="nav-btn" data-section="experience" aria-pressed="false"
-                    aria-controls="experience">Experience</button>
-                <button class="nav-btn" data-section="projects" aria-pressed="false"
-                    aria-controls="projects">Projects</button>
-                <button class="nav-btn" data-section="achievements" aria-pressed="false"
-                    aria-controls="achievements">Wins</button>
-                <button class="nav-btn" data-section="vibes" aria-pressed="false"
-                    aria-controls="vibes">🎧 Vibes</button>
-                <button class="nav-btn" data-section="contact" aria-pressed="false"
-                    aria-controls="contact">Contact</button>
-                <button class="nav-btn" data-section="education" aria-pressed="false"
-                    aria-controls="education">Education</button>
-            </nav>
-        </header>
-
-        <main class="main" id="main">
-            <section id="about" class="section active">
-                <h2 class="section-heading">About</h2>
-                <div class="about-bento" id="about-bento">
-                    <article class="bento-card bento-card-bio">
-                        <p class="bento-tagline" id="bento-tagline"></p>
-                        <p class="bento-bio" id="bento-bio"></p>
-                        <div class="bento-stack">
-                            <span class="bento-stack-label">Stack</span>
-                            <div class="bento-stack-chips" id="bento-stack-chips"></div>
-                        </div>
-                    </article>
-
-                    <article class="bento-card bento-card-now">
-                        <h3 class="bento-heading">
-                            <span class="bento-pulse" aria-hidden="true"></span>
-                            Currently
-                        </h3>
-                        <ul class="bento-list" id="bento-currently"></ul>
-                    </article>
-
-                    <article class="bento-card bento-card-stats">
-                        <h3 class="bento-heading">By the numbers</h3>
-                        <div class="bento-stats" id="bento-stats"></div>
-                    </article>
-
-                    <article class="bento-card bento-card-where">
-                        <h3 class="bento-heading">Where</h3>
-                        <p class="bento-where-loc" id="bento-location">Bengaluru, India</p>
-                        <p class="bento-where-tz" id="bento-timezone">IST (UTC+5:30)</p>
-                    </article>
-
-                    <article class="bento-card bento-card-open">
-                        <h3 class="bento-heading">Open to</h3>
-                        <div class="bento-chips" id="bento-open-to"></div>
-                    </article>
-                </div>
-            </section>
-
-            <section id="skills" class="section">
-                <h2 class="section-heading">Skills</h2>
-                <div id="skills-container">
-                    <!-- Skills will be loaded here -->
-                </div>
-            </section>
-
-            <section id="experience" class="section">
-                <h2 class="section-heading">Experience</h2>
-                <div id="experience-container">
-                    <!-- Experience will be loaded here -->
-                </div>
-            </section>
-
-            <section id="projects" class="section">
-                <h2 class="section-heading">Projects</h2>
-                <div id="projects-container">
-                    <!-- Projects will be loaded here -->
-                </div>
-            </section>
-
-            <section id="achievements" class="section">
-                <h2 class="section-heading">Wins</h2>
-                <div id="achievements-container">
-                    <!-- Achievements will be loaded here -->
-                </div>
-            </section>
-
-            <section id="vibes" class="section">
-                <h2 class="section-heading">🎧 Now Playing</h2>
-                <div id="playlist-container">
-                    <!-- Playlist will be loaded here -->
-                </div>
-            </section>
-
-            <section id="contact" class="section">
-                <h2 class="section-heading">Contact</h2>
-                <div class="contact-page">
-                    <article class="contact-intro">
-                        <div class="contact-availability" id="contact-availability">
-                            <span class="availability-dot" aria-hidden="true"></span>
-                            <span id="contact-availability-text">Open to senior backend roles &amp; interesting chats</span>
-                        </div>
-                        <h3 class="contact-heading">Let's talk.</h3>
-                        <p class="contact-intro-text" id="contact-intro-text">I read every message — pick whatever channel works for you.</p>
-                    </article>
-
-                    <div class="contact-channels" id="contact-channels">
-                        <!-- Channel cards rendered by JS -->
+        <section aria-labelledby="experience-heading">
+            <h2 id="experience-heading">Experience</h2>
+            <ol class="timeline">
+                <li>
+                    <p class="when">Oct 2025 – now</p>
+                    <div>
+                        <h3>Senior Software Development Engineer, founding team</h3>
+                        <p class="where">10x Productivity, Bengaluru</p>
+                        <ul>
+                            <li>Designed and own Archer's backend and agent platform, used by our team to deliver
+                                creative strategy for 10+ brand pilots. Async ingestion from the Meta Marketing API,
+                                Ad Library and AppMagic covers 100+ competitor brands without client-specific
+                                pipelines.</li>
+                            <li>Built Charlie, Archer's Claude-based strategy agent (tool use, on-demand skills,
+                                parallel evidence gathering, recall across sessions, prompt caching), and an OAuth 2.1
+                                MCP server that exposes the same tools to Claude and Cursor.</li>
+                            <li>Built guardrailed workflow agents: a Meta lead-ads agent that sizes ad sets from the
+                                budget and drafts on-brand ads with a person approving every launch, and a media-buyer
+                                agent whose recommendations are checked against computed figures and reviewed by a
+                                critic model.</li>
+                            <li>Built multimodal ad analysis run on 15k+ ads, and Creative X-Ray, a pre-launch check
+                                that scores ads against each brand's guidelines and lists what to fix.</li>
+                            <li>Designed the knowledge platform that grounds the agents, 13+ report types and creative
+                                generation (Veo, Imagen, OpenAI, Bria). In a brand pilot, strategists accepted 85% of
+                                the AI-generated creative briefs they reviewed.</li>
+                            <li>Added tenant- and feature-level LLM cost attribution across 60+ call sites, and run the
+                                Terraform AWS platform: 7 ECS Fargate services with OIDC CI/CD.</li>
+                        </ul>
                     </div>
+                </li>
+                <li>
+                    <p class="when">Jan 2025 – Oct 2025</p>
+                    <div>
+                        <h3>SDE-2</h3>
+                        <p class="where">BIK.AI, Bengaluru</p>
+                        <ul>
+                            <li>Built embedding-based clustering of failed chatbot responses and customer feedback to
+                                surface recurring failures.</li>
+                            <li>Built a CRM integration layer (Salesforce, Zendesk, Gorgias) for live chat and human
+                                handover across 50+ clients.</li>
+                            <li>Cut Elasticsearch cost by 50% at 300M events a month (ILM, shard sizing, hot-to-warm
+                                tiers) and deploy time by 40% with new release tooling.</li>
+                            <li>Best Employee of the Quarter, April 2025.</li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <p class="when">Aug 2022 – Dec 2024</p>
+                    <div>
+                        <h3>Software Development Engineer, SDE-1 to SDE-3</h3>
+                        <p class="where">BLKBOX.AI, remote</p>
+                        <ul>
+                            <li>Promoted twice in under 2.5 years, shipping 20+ APIs for a creative-intelligence
+                                platform, including scene-level image and video analysis with AWS Rekognition and ML
+                                models.</li>
+                            <li>Built AppMagic competitor analytics, cut PostgreSQL analytics query latency by 40%,
+                                and expanded Elastic and Sentry observability to resolve 50+ production issues.</li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <p class="when">Jan 2022 – Jul 2022</p>
+                    <div>
+                        <h3>Software Engineering Intern</h3>
+                        <p class="where">HP R&amp;D, Pune</p>
+                        <ul>
+                            <li>Developed microservices for HP Active Care, improving reliability with structured
+                                logging and unit tests.</li>
+                        </ul>
+                    </div>
+                </li>
+            </ol>
+        </section>
 
-                    <article class="contact-where">
-                        <div class="contact-where-row">
-                            <span class="contact-where-icon" aria-hidden="true">📍</span>
-                            <div>
-                                <strong id="contact-where-location">Bengaluru, India</strong>
-                                <span class="contact-where-meta">
-                                    — it's <span id="contact-live-time">--:--</span> here right now
-                                </span>
-                            </div>
-                        </div>
-                        <div class="contact-where-row">
-                            <span class="contact-where-icon" aria-hidden="true">☕</span>
-                            <div>Coffee chats? Always a yes.</div>
-                        </div>
-                    </article>
+        <section aria-labelledby="projects-heading">
+            <h2 id="projects-heading">Side projects</h2>
+            <div class="projects">
+                <article>
+                    <h3><a href="https://trywellread.com/">Wellread</a></h3>
+                    <p class="what">See what ChatGPT and Gemini tell your buyers.</p>
+                    <p>Wellread asks ChatGPT and Gemini, with web search on, the questions a business's buyers ask.
+                        It finds which brands they recommend and drafts the pages that would close the gap. Used by
+                        30+ early users.</p>
+                </article>
+                <article>
+                    <h3><a href="https://letterport.dev/">Letterport</a></h3>
+                    <p class="what">Email inboxes for AI agents.</p>
+                    <p>Inbound mail arrives as clean JSON with header-based threading, a per-recipient delivery
+                        trail, signed webhooks and a hosted MCP server with OAuth. Built with NestJS, AWS SES, SQS
+                        and CDK.</p>
+                </article>
+                <article>
+                    <h3><a href="https://www.rapidmock.com/">RapidMock</a></h3>
+                    <p class="what">API mocking for frontend teams.</p>
+                    <p>Simulate API responses without waiting on the backend. Built with Next.js, Node.js and
+                        MongoDB.</p>
+                </article>
+            </div>
+        </section>
+
+        <section aria-labelledby="skills-heading">
+            <h2 id="skills-heading">Skills</h2>
+            <dl class="skills">
+                <div>
+                    <dt>AI and agents</dt>
+                    <dd>Tool calling, MCP, LangGraph, RAG, embeddings, LLM evals, multimodal pipelines, structured
+                        outputs, the Claude, Gemini and OpenAI APIs</dd>
                 </div>
-                <p class="location sr-only" id="location">Based in Bengaluru, India</p>
-            </section>
-
-            <section id="education" class="section">
-                <h2 class="section-heading">Education</h2>
-                <div id="education-container">
-                    <!-- Education will be loaded here -->
+                <div>
+                    <dt>Languages</dt>
+                    <dd>TypeScript, Python, SQL</dd>
                 </div>
-            </section>
-        </main>
-    </div>
-
-    <!-- Keyboard shortcuts overlay -->
-    <div class="shortcuts-overlay" id="shortcuts-overlay" role="dialog" aria-modal="true" aria-labelledby="shortcuts-title" hidden>
-        <div class="shortcuts-panel">
-            <div class="shortcuts-header">
-                <h2 id="shortcuts-title">Keyboard Shortcuts</h2>
-                <button class="shortcuts-close" id="shortcuts-close" aria-label="Close shortcuts">✕</button>
-            </div>
-            <ul class="shortcuts-list">
-                <li><kbd>⌘K</kbd><span>Command palette</span></li>
-                <li><kbd>?</kbd><span>Show this help</span></li>
-                <li><kbd>`</kbd><span>Open terminal mode</span></li>
-                <li><kbd>Esc</kbd><span>Close overlays</span></li>
-                <li class="shortcuts-hint">✨ turn on Fun mode for the effects below</li>
-                <li><kbd>P</kbd><span>Pizza party</span></li>
-                <li><kbd>A</kbd><span>Sparkle burst</span></li>
-                <li><kbd>M</kbd><span>Movie clap</span></li>
-                <li><kbd>N</kbd><span>Falling leaves</span></li>
-                <li><kbd>C</kbd><span>Cycling boost (hold)</span></li>
-                <li class="shortcuts-hint">…and try the Konami code 🎮</li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- Command palette (⌘K / Ctrl-K) -->
-    <div class="cmdk-overlay" id="cmdk-overlay" role="dialog" aria-modal="true" aria-label="Command palette" hidden>
-        <div class="cmdk-panel">
-            <div class="cmdk-input-row">
-                <span class="cmdk-input-icon" aria-hidden="true">⌘</span>
-                <input type="text" id="cmdk-input" class="cmdk-input" role="combobox" aria-controls="cmdk-list"
-                    aria-expanded="true" aria-autocomplete="list" autocomplete="off" spellcheck="false"
-                    placeholder="Jump to a section or run an action…" aria-label="Command palette search" />
-            </div>
-            <ul class="cmdk-list" id="cmdk-list" role="listbox" aria-label="Commands"></ul>
-            <div class="cmdk-footer">
-                <span><kbd>↑</kbd><kbd>↓</kbd> navigate</span>
-                <span><kbd>↵</kbd> select</span>
-                <span><kbd>esc</kbd> close</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- Terminal mode overlay -->
-    <div class="terminal-overlay" id="terminal-overlay" role="dialog" aria-modal="true" aria-label="Terminal" hidden>
-        <div class="terminal-window">
-            <div class="terminal-titlebar">
-                <span class="terminal-dot terminal-dot-r"></span>
-                <span class="terminal-dot terminal-dot-y"></span>
-                <span class="terminal-dot terminal-dot-g"></span>
-                <span class="terminal-title">vishnu@portfolio: ~</span>
-            </div>
-            <div class="terminal-body" id="terminal-body" tabindex="0">
-                <div class="terminal-output" id="terminal-output"></div>
-                <div class="terminal-input-line">
-                    <span class="terminal-prompt">$</span>
-                    <input type="text" id="terminal-input" class="terminal-input" autocomplete="off" spellcheck="false" aria-label="Terminal input" />
+                <div>
+                    <dt>Backend</dt>
+                    <dd>Node.js, NestJS, BullMQ, REST APIs, WebSockets</dd>
                 </div>
-            </div>
-        </div>
-    </div>
+                <div>
+                    <dt>Data and infrastructure</dt>
+                    <dd>PostgreSQL, Redis, Elasticsearch, AWS (ECS, EC2, RDS, SQS, SES), Terraform, Docker</dd>
+                </div>
+            </dl>
+        </section>
 
-    <!-- Fixed Footer -->
-    <footer class="fixed-footer">
-        <div class="footer-content">
-            <span class="footer-year" id="footer-year">© 2026</span>
-            <button class="footer-cmdk-btn" id="footer-cmdk-btn" aria-label="Open command palette"><kbd>⌘K</kbd> command</button>
-            <button class="footer-shortcuts-btn" id="footer-shortcuts-btn" aria-label="Show keyboard shortcuts"><kbd>?</kbd> shortcuts</button>
-            <button class="footer-terminal-btn" id="footer-terminal-btn" aria-label="Open terminal"><kbd>`</kbd> terminal</button>
-        </div>
+        <section aria-labelledby="education-heading">
+            <h2 id="education-heading">Education</h2>
+            <p class="education"><strong>B.Tech in Computer Science</strong>, Pondicherry Engineering College,
+                2018 to 2022. GPA 8.67 out of 10.</p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p class="footer-lead">Hiring for backend or applied AI work, or just want to talk shop?
+            <a href="mailto:vishnugajulapalli123@gmail.com">vishnugajulapalli123@gmail.com</a>
+        </p>
+        <p class="footer-small">
+            <a href="https://open.spotify.com/playlist/04djUANKNuGBNKCgONlNzS">What I'm listening to</a>
+            <span>© <span id="year">2026</span> Vishnu Sai Jaswanth</span>
+        </p>
     </footer>
 
-    <script src="assets/js/main.js" defer></script>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Person",
-      "@id": "https://jaswanth123.netlify.app/#person",
-      "name": "Vishnu Sai Jaswanth",
-      "givenName": "Vishnu",
-      "familyName": "Sai Jaswanth Gajulapalli",
-      "alternateName": ["Vishnu Gajulapalli", "Vishnu Sai Jaswanth Gajulapalli"],
-      "jobTitle": "Senior Backend & Applied AI Engineer",
-      "description": "Founding-team backend and applied-AI engineer (4+ yrs) at 10x Productivity. Specializes in NestJS, multi-model LLM orchestration (Claude / Gemini / OpenAI), multimodal pipelines, LangGraph workflows, an MCP server, distributed job systems, and Terraform-managed AWS infrastructure.",
-      "url": "https://jaswanth123.netlify.app/",
-      "image": "https://jaswanth123.netlify.app/og-image.png",
-      "email": "vishnugajulapalli123@gmail.com",
-      "nationality": "Indian",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Bengaluru",
-        "addressRegion": "Karnataka",
-        "addressCountry": "IN"
-      },
-      "alumniOf": {
-        "@type": "CollegeOrUniversity",
-        "name": "Pondicherry Engineering College",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Puducherry",
-          "addressCountry": "IN"
-        }
-      },
-      "worksFor": {
-        "@type": "Organization",
-        "name": "10x Productivity"
-      },
-      "knowsAbout": [
-        "Backend Development",
-        "AI Platform Engineering",
-        "LLM Orchestration",
-        "LangChain",
-        "LangGraph",
-        "Anthropic Claude",
-        "Google Gemini",
-        "OpenAI API",
-        "Model Context Protocol",
-        "Distributed Systems",
-        "Job Orchestration",
-        "BullMQ",
-        "NestJS",
-        "Microservices Architecture",
-        "Vector Databases",
-        "Elasticsearch",
-        "Caching Strategies",
-        "Performance Optimization",
-        "Cloud Architecture",
-        "TypeScript",
-        "JavaScript",
-        "Python",
-        "Node.js",
-        "PostgreSQL",
-        "TypeORM",
-        "Redis",
-        "Puppeteer",
-        "Handlebars"
-      ],
-      "knowsLanguage": ["English", "Telugu"],
-      "sameAs": [
-        "https://www.linkedin.com/in/vishnu-sai-jaswanth-gajulapalli-0670811a7/",
-        "https://github.com/IMPrimph"
-      ]
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://jaswanth123.netlify.app/#website",
-      "url": "https://jaswanth123.netlify.app/",
-      "name": "Vishnu Sai Jaswanth — Portfolio",
-      "description": "Personal portfolio of Vishnu Sai Jaswanth, Senior Backend & Applied AI Engineer (founding team) at 10x Productivity.",
-      "inLanguage": "en-IN",
-      "author": { "@id": "https://jaswanth123.netlify.app/#person" },
-      "publisher": { "@id": "https://jaswanth123.netlify.app/#person" }
-    },
-    {
-      "@type": "ProfilePage",
-      "@id": "https://jaswanth123.netlify.app/#webpage",
-      "url": "https://jaswanth123.netlify.app/",
-      "name": "Vishnu Sai Jaswanth | Senior Backend & Applied AI Engineer (10x Productivity)",
-      "isPartOf": { "@id": "https://jaswanth123.netlify.app/#website" },
-      "about": { "@id": "https://jaswanth123.netlify.app/#person" },
-      "mainEntity": { "@id": "https://jaswanth123.netlify.app/#person" },
-      "primaryImageOfPage": "https://jaswanth123.netlify.app/og-image.png",
-      "inLanguage": "en-IN"
-    }
-  ]
+  "@type": "Person",
+  "@id": "https://jaswanth123.netlify.app/#person",
+  "name": "Vishnu Sai Jaswanth",
+  "alternateName": ["Vishnu Gajulapalli", "Vishnu Sai Jaswanth Gajulapalli"],
+  "jobTitle": "Backend & Applied AI Engineer",
+  "description": "Founding engineer at 10x Productivity building tool-using AI agents, MCP servers, multimodal LLM pipelines and the AWS backend behind them.",
+  "url": "https://jaswanth123.netlify.app/",
+  "image": "https://jaswanth123.netlify.app/og-image.png",
+  "email": "vishnugajulapalli123@gmail.com",
+  "address": { "@type": "PostalAddress", "addressLocality": "Bengaluru", "addressRegion": "Karnataka", "addressCountry": "IN" },
+  "alumniOf": { "@type": "CollegeOrUniversity", "name": "Pondicherry Engineering College" },
+  "worksFor": { "@type": "Organization", "name": "10x Productivity" },
+  "knowsAbout": ["AI agents", "Model Context Protocol", "LLM tool calling", "LangGraph", "RAG", "Multimodal LLM pipelines", "NestJS", "Node.js", "TypeScript", "Python", "PostgreSQL", "Redis", "BullMQ", "Elasticsearch", "AWS", "Terraform"],
+  "sameAs": ["https://www.linkedin.com/in/vishnu-sai-jaswanth-gajulapalli-0670811a7/", "https://github.com/IMPrimph"]
 }
-</script>
+    </script>
 </body>
 
 </html>

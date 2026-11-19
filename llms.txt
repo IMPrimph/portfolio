@@ -1,49 +1,38 @@
 # Vishnu Sai Jaswanth
 
-Senior Backend & Applied AI Engineer (4+ years) based in Bengaluru, India. Founding-team engineer at 10x Productivity, building AI / creative-intelligence platforms end-to-end — multi-source data ingestion, multi-model LLM orchestration (Claude / Gemini / OpenAI), multimodal pipelines, a versioned knowledge platform, agent workflows, and Terraform-managed AWS infrastructure, serving 10+ enterprise pilots.
+Backend and applied AI engineer (4+ years) in Bengaluru, India. Founding engineer at 10x Productivity, where he designed and owns the backend and agent platform behind Archer, a creative-strategy product used in 10+ brand pilots.
 
-## At a glance
+## Experience
 
-- Role: Senior Software Development Engineer – Founding Team at 10x Productivity (Oct 2025 – present)
-- Previous: Senior SDE at BIK.AI (Jan 2025 – Oct 2025); SDE-1 → SDE-3 at BLKBOX.AI (Aug 2022 – Dec 2024); SE Intern at HP R&D (Jan – Jul 2022)
-- Location: Bengaluru, Karnataka, India (IST, UTC+5:30)
-- Education: B.Tech Computer Science, Pondicherry Engineering College (GPA 8.67/10, 2018–2022)
+- 10x Productivity, Senior Software Development Engineer, founding team (Oct 2025 – present)
+  - Archer's backend and agent platform: async ingestion from the Meta Marketing API, Ad Library and AppMagic on BullMQ with Redis leader election, covering 100+ competitor brands
+  - Charlie, a Claude-based strategy agent (tool use, on-demand skills, parallel evidence gathering, recall across sessions, prompt caching), plus an OAuth 2.1 MCP server exposing the same tools to Claude and Cursor
+  - Guardrailed workflow agents: a Meta lead-ads agent with a person approving every launch, and a media-buyer agent checked against computed figures and reviewed by a critic model
+  - Multimodal ad analysis run on 15k+ ads, and Creative X-Ray, a pre-launch brand-guideline check
+  - Knowledge platform (SQL analytics plus cached LLM insights) grounding the agents, 13+ report types and creative generation; in a brand pilot, strategists accepted 85% of the AI-generated creative briefs they reviewed
+  - Tenant- and feature-level LLM cost attribution across 60+ call sites; Terraform AWS platform with 7 ECS Fargate services
+- BIK.AI, SDE-2 (Jan 2025 – Oct 2025): embedding-based clustering of failed chatbot responses; CRM integrations (Salesforce, Zendesk, Gorgias) for 50+ clients; cut Elasticsearch cost 50% at 300M events a month; Best Employee of the Quarter (Apr 2025)
+- BLKBOX.AI, SDE-1 to SDE-3 (Aug 2022 – Dec 2024): 20+ APIs, scene-level image and video analysis with AWS Rekognition, AppMagic competitor analytics, 40% faster PostgreSQL analytics queries
+- HP R&D, Software Engineering Intern (Jan 2022 – Jul 2022)
 
-## Core stack
+## Side projects
 
-NestJS, TypeScript, JavaScript, Python, SQL, BullMQ, PostgreSQL, TypeORM, MongoDB, Redis, Elasticsearch, Pinecone, Qdrant, Anthropic Claude, Google Gemini, OpenAI, structured outputs, RAG / embeddings, multimodal pipelines, LangChain / LangGraph, MCP (Model Context Protocol), AWS, ECS / Fargate, Terraform, Docker, CI/CD, GCP, Auth0, Puppeteer, Handlebars, Nx Monorepo, OpenAPI / Swagger.
+- Wellread (https://trywellread.com/): shows what ChatGPT and Gemini tell a business's buyers, and drafts the pages that would close the gap
+- Letterport (https://letterport.dev/): email inboxes for AI agents, with clean JSON mail, signed webhooks and a hosted MCP server
+- RapidMock (https://www.rapidmock.com/): API mocking for frontend teams
 
-## Currently shipping at 10x Productivity
+## Skills
 
-- Owns the backend and applied-AI platform end-to-end — advertiser and competitor ingestion through multimodal analysis, creative strategy, asset generation, and client reporting for 10+ enterprise pilots
-- Multimodal analysis system (Gemini / Claude / OpenAI, structured outputs) across 60+ production LLM call sites — extracts scene-level video structure and scores creatives across 5 strategic dimensions and 100+ configurable signals
-- Two-layer knowledge platform combining deterministic SQL metrics with cached LLM-generated strategy (versioned JSONB) — powering 5+ LangGraph workflows and an OAuth-enabled MCP server
-- Storyboard + creative production pipeline (Imagen reference grids, Fal AI / Veo 3.1, OpenAI, Bria) with tenant- and feature-level LLM cost attribution
-- 13+ client-facing PDF report types via Handlebars templates and Puppeteer two-pass rendering
-- Async onboarding + continuous sync (Meta Marketing API, Meta Ad Library, AppMagic) on BullMQ with Redis leader election — 10+ advertisers, 100+ competitor brands, no client-specific pipelines
-- Terraform-managed AWS platform — 7 ECS Fargate services across isolated environments (RDS, ElastiCache, ALB, ECR, centralized logging, OIDC-based CI/CD)
-- Authored the backend coding standards, testing rulebook, and shared test infrastructure used across the backend libraries in the monorepo
+AI agents, tool calling, MCP, LangGraph, RAG, embeddings, LLM evals, multimodal pipelines, structured outputs, Claude, Gemini and OpenAI APIs; TypeScript, Python, SQL; Node.js, NestJS, BullMQ; PostgreSQL, Redis, Elasticsearch, AWS, Terraform, Docker.
 
-## Previously at BIK.AI
+## Education
 
-- Embedding-based clustering system for unsatisfactory AI responses and customer feedback, surfacing recurring chatbot failure patterns
-- Revamped internal release tooling (multi-environment rollouts, versioning, rollback, pod-level controls), cutting deploy time 40%
-- Reusable CRM integration layer (Salesforce, Zendesk, Gorgias) for real-time bidirectional messaging — live chat and human handover for 50+ clients
-- Elasticsearch handling 300M events/month — ILM, shard sizing, hot→warm tiered storage; 50% infra cost cut
-- Best Employee of the Quarter (Apr 2025)
-
-## Open to
-
-- Senior backend roles
-- Applied AI / AI platform engineering
-- Distributed systems work
-- Founding / early-stage teams
-- Coffee chats
+B.Tech in Computer Science, Pondicherry Engineering College (2018–2022), GPA 8.67/10.
 
 ## Contact
 
 - Portfolio: https://jaswanth123.netlify.app/
-- Resume:   https://jaswanth123.netlify.app/assets/pdf/resume.pdf
-- Email:    vishnugajulapalli123@gmail.com
+- Resume: https://jaswanth123.netlify.app/assets/pdf/resume.pdf
+- Email: vishnugajulapalli123@gmail.com
 - LinkedIn: https://www.linkedin.com/in/vishnu-sai-jaswanth-gajulapalli-0670811a7/
-- GitHub:   https://github.com/IMPrimph
+- GitHub: https://github.com/IMPrimph
