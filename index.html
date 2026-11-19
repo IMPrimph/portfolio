@@ -42,19 +42,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/styles.css">
+    <script>document.documentElement.classList.add('js');</script>
+    <script src="/assets/js/console.js" defer></script>
 </head>
 
 <body>
-    <a href="#main" class="skip-link">Skip to content</a>
+    <a href="#console" class="skip-link">Skip to the console</a>
 
     <header class="hero">
         <h1 class="name">Vishnu Sai<br>Jaswanth</h1>
         <p class="role">Backend and applied AI engineer, Bengaluru</p>
-        <p class="intro">
-            I build tool-using AI agents, MCP servers and multimodal LLM pipelines, and the backend services and
-            AWS infrastructure they run on. For 4+ years I've owned systems end to end, from the queue to the
-            Terraform. Right now I'm a founding engineer at 10x Productivity.
-        </p>
+        <p class="intro">I build tool-using AI agents and the backend they run on. Ask the console anything about my
+            work, or take the resume and go.</p>
         <nav class="actions" aria-label="Contact">
             <a class="button" href="/assets/pdf/resume.pdf">Download resume</a>
             <a href="mailto:vishnugajulapalli123@gmail.com">Email</a>
@@ -63,147 +62,175 @@
         </nav>
     </header>
 
-    <main id="main">
-        <figure class="run" aria-labelledby="run-caption">
-            <ol class="run-steps">
-                <li><strong>Sources</strong><span>Meta Marketing API, Ad Library, AppMagic</span></li>
-                <li><strong>Ingestion</strong><span>BullMQ workers with Redis leader election</span></li>
-                <li><strong>Analysis</strong><span>Scene-level video structure, 100+ signals, 15k+ ads</span></li>
-                <li><strong>Knowledge</strong><span>SQL analytics plus cached LLM insights</span></li>
-                <li><strong>Agents</strong><span>Charlie, lead-ads and media-buyer agents</span></li>
-                <li><strong>Clients</strong><span>The Archer app, and Claude or Cursor over MCP</span></li>
-            </ol>
-            <figcaption id="run-caption">Archer, the platform I own at 10x Productivity. Every stage runs on ECS
-                Fargate, provisioned with Terraform.</figcaption>
-        </figure>
+    <main>
+        <section class="console" id="console" aria-label="Ask about my work">
+            <div class="asks">
+                <p class="asks-title" id="asks-title">Ask about my work</p>
+                <ul class="questions" aria-labelledby="asks-title">
+                    <li><button type="button" data-q="agents">What agents has he built?</button></li>
+                    <li><button type="button" data-q="guardrails">How does he keep agents honest?</button></li>
+                    <li><button type="button" data-q="mcp">What has he done with MCP?</button></li>
+                    <li><button type="button" data-q="backend">What's underneath Archer?</button></li>
+                    <li><button type="button" data-q="results">Did any of it move the business?</button></li>
+                    <li><button type="button" data-q="side">What does he build on the side?</button></li>
+                    <li><button type="button" data-q="career">Where has he worked?</button></li>
+                    <li><button type="button" data-q="offclock">What's he like off the clock?</button></li>
+                </ul>
+                <form class="ask-form" id="ask-form" hidden>
+                    <label for="ask-input">Or type a question</label>
+                    <div class="ask-row">
+                        <input id="ask-input" type="text" autocomplete="off" placeholder="e.g. Terraform">
+                        <button type="submit">Ask</button>
+                    </div>
+                </form>
+            </div>
 
-        <section aria-labelledby="experience-heading">
-            <h2 id="experience-heading">Experience</h2>
-            <ol class="timeline">
-                <li>
-                    <p class="when">Oct 2025 – now</p>
-                    <div>
-                        <h3>Senior Software Development Engineer, founding team</h3>
-                        <p class="where">10x Productivity, Bengaluru</p>
-                        <ul>
-                            <li>Designed and own Archer's backend and agent platform, used by our team to deliver
-                                creative strategy for 10+ brand pilots. Async ingestion from the Meta Marketing API,
-                                Ad Library and AppMagic covers 100+ competitor brands without client-specific
-                                pipelines.</li>
-                            <li>Built Charlie, Archer's Claude-based strategy agent (tool use, on-demand skills,
-                                parallel evidence gathering, recall across sessions, prompt caching), and an OAuth 2.1
-                                MCP server that exposes the same tools to Claude and Cursor.</li>
-                            <li>Built guardrailed workflow agents: a Meta lead-ads agent that sizes ad sets from the
-                                budget and drafts on-brand ads with a person approving every launch, and a media-buyer
-                                agent whose recommendations are checked against computed figures and reviewed by a
-                                critic model.</li>
-                            <li>Built multimodal ad analysis run on 15k+ ads, and Creative X-Ray, a pre-launch check
-                                that scores ads against each brand's guidelines and lists what to fix.</li>
-                            <li>Designed the knowledge platform that grounds the agents, 13+ report types and creative
-                                generation (Veo, Imagen, OpenAI, Bria). In a brand pilot, strategists accepted 85% of
-                                the AI-generated creative briefs they reviewed.</li>
-                            <li>Added tenant- and feature-level LLM cost attribution across 60+ call sites, and run the
-                                Terraform AWS platform: 7 ECS Fargate services with OIDC CI/CD.</li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <p class="when">Jan 2025 – Oct 2025</p>
-                    <div>
-                        <h3>SDE-2</h3>
-                        <p class="where">BIK.AI, Bengaluru</p>
-                        <ul>
-                            <li>Built embedding-based clustering of failed chatbot responses and customer feedback to
-                                surface recurring failures.</li>
-                            <li>Built a CRM integration layer (Salesforce, Zendesk, Gorgias) for live chat and human
-                                handover across 50+ clients.</li>
-                            <li>Cut Elasticsearch cost by 50% at 300M events a month (ILM, shard sizing, hot-to-warm
-                                tiers) and deploy time by 40% with new release tooling.</li>
-                            <li>Best Employee of the Quarter, April 2025.</li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <p class="when">Aug 2022 – Dec 2024</p>
-                    <div>
-                        <h3>Software Development Engineer, SDE-1 to SDE-3</h3>
-                        <p class="where">BLKBOX.AI, remote</p>
-                        <ul>
-                            <li>Promoted twice in under 2.5 years, shipping 20+ APIs for a creative-intelligence
-                                platform, including scene-level image and video analysis with AWS Rekognition and ML
-                                models.</li>
-                            <li>Built AppMagic competitor analytics, cut PostgreSQL analytics query latency by 40%,
-                                and expanded Elastic and Sentry observability to resolve 50+ production issues.</li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <p class="when">Jan 2022 – Jul 2022</p>
-                    <div>
-                        <h3>Software Engineering Intern</h3>
-                        <p class="where">HP R&amp;D, Pune</p>
-                        <ul>
-                            <li>Developed microservices for HP Active Care, improving reliability with structured
-                                logging and unit tests.</li>
-                        </ul>
-                    </div>
-                </li>
-            </ol>
-        </section>
+            <div class="transcript-wrap">
+                <div class="transcript" id="transcript" aria-live="polite"></div>
 
-        <section aria-labelledby="projects-heading">
-            <h2 id="projects-heading">Side projects</h2>
-            <div class="projects">
-                <article>
-                    <h3><a href="https://trywellread.com/">Wellread</a></h3>
-                    <p class="what">See what ChatGPT and Gemini tell your buyers.</p>
-                    <p>Wellread asks ChatGPT and Gemini, with web search on, the questions a business's buyers ask.
-                        It finds which brands they recommend and drafts the pages that would close the gap. Used by
-                        30+ early users.</p>
-                </article>
-                <article>
-                    <h3><a href="https://letterport.dev/">Letterport</a></h3>
-                    <p class="what">Email inboxes for AI agents.</p>
-                    <p>Inbound mail arrives as clean JSON with header-based threading, a per-recipient delivery
-                        trail, signed webhooks and a hosted MCP server with OAuth. Built with NestJS, AWS SES, SQS
-                        and CDK.</p>
-                </article>
-                <article>
-                    <h3><a href="https://www.rapidmock.com/">RapidMock</a></h3>
-                    <p class="what">API mocking for frontend teams.</p>
-                    <p>Simulate API responses without waiting on the backend. Built with Next.js, Node.js and
-                        MongoDB.</p>
-                </article>
+                <div class="answers" id="answers">
+                    <article data-q="agents" data-keys="agent charlie llm claude gemini openai ai langgraph tool"
+                        data-trace='[["search_work","agents","3 matches"],["read_note","charlie","done"]]'>
+                        <h2>What agents has he built?</h2>
+                        <p>Three, all in production at 10x Productivity.</p>
+                        <p>Charlie is Archer's strategy agent, built on Claude. It uses tools, loads skills on demand,
+                            gathers evidence in parallel, recalls earlier sessions and leans on prompt caching to keep
+                            cost down. The same tools sit behind an OAuth 2.1 MCP server, so the team can use them from
+                            Claude or Cursor too.</p>
+                        <p>The other two are workflow agents: a Meta lead-ads agent that sizes ad sets from the budget
+                            and drafts on-brand ads, and a media-buyer agent that recommends what to change in an
+                            account.</p>
+                        <p class="follow"><button type="button" data-q="guardrails">How does he keep them
+                                honest?</button></p>
+                    </article>
+
+                    <article data-q="guardrails" data-keys="guard honest trust safe hallucin human approv critic xray x-ray check eval"
+                        data-trace='[["read_note","guardrails","done"]]'>
+                        <h2>How does he keep agents honest?</h2>
+                        <p>Mostly by not trusting them with the last step.</p>
+                        <p>Nothing the lead-ads agent drafts goes live until a person approves the launch. The
+                            media-buyer agent's recommendations are checked against figures computed in SQL, never
+                            numbers the model made up, and a second critic model reviews them before anyone sees
+                            them.</p>
+                        <p>Before an ad launches, Creative X-Ray scores it against the brand's own guidelines and
+                            lists what to fix.</p>
+                    </article>
+
+                    <article data-q="mcp" data-keys="mcp protocol cursor oauth letterport"
+                        data-trace='[["search_work","mcp","2 matches"]]'>
+                        <h2>What has he done with MCP?</h2>
+                        <p>Two MCP servers, both behind OAuth.</p>
+                        <p>At 10x Productivity, an OAuth 2.1 MCP server exposes the same tools Charlie uses, so Claude
+                            and Cursor can work with Archer's knowledge directly.</p>
+                        <p>On the side, <a href="https://letterport.dev/">Letterport</a> gives AI agents their own
+                            email inboxes and ships a hosted MCP server, so agents can use their inbox as a tool.</p>
+                    </article>
+
+                    <article data-q="backend" data-keys="backend archer architecture infra aws terraform queue bullmq redis ingest scale cost fargate ecs postgres node nestjs"
+                        data-trace='[["read_note","archer-architecture","done"],["get_infra","aws","7 services"]]'>
+                        <h2>What's underneath Archer?</h2>
+                        <ol class="run-steps" aria-label="Archer pipeline">
+                            <li><strong>Sources</strong><span>Meta Marketing API, Ad Library, AppMagic</span></li>
+                            <li><strong>Ingestion</strong><span>BullMQ workers, Redis leader election</span></li>
+                            <li><strong>Analysis</strong><span>Scene-level video structure, 100+ signals</span></li>
+                            <li><strong>Knowledge</strong><span>SQL analytics plus cached LLM insights</span></li>
+                            <li><strong>Agents</strong><span>Charlie and the workflow agents</span></li>
+                            <li><strong>Clients</strong><span>The Archer app, Claude and Cursor over MCP</span></li>
+                        </ol>
+                        <p>Ingestion pulls from the Meta Marketing API, Ad Library and AppMagic for 100+ competitor
+                            brands, without a single client-specific pipeline. Every LLM call, across 60+ call sites, is
+                            attributed to a tenant and a feature, so cost is visible per client.</p>
+                        <p>It all runs on 7 ECS Fargate services, provisioned with Terraform and deployed through OIDC
+                            CI/CD. He designed it and owns it end to end.</p>
+                    </article>
+
+                    <article data-q="results" data-keys="result impact metric number business proud achiev award win outcome"
+                        data-trace='[["get_metrics","all","4 results"]]'>
+                        <h2>Did any of it move the business?</h2>
+                        <ul>
+                            <li>In a brand pilot, strategists accepted 85% of the AI-generated creative briefs they
+                                reviewed.</li>
+                            <li>The multimodal analysis has run on 15k+ ads, breaking video into scenes and scoring
+                                100+ signals.</li>
+                            <li>At BIK.AI he halved the Elasticsearch bill at 300M events a month, cut deploy time by
+                                40%, and was named Best Employee of the Quarter in April 2025.</li>
+                            <li>At BLKBOX.AI he went from SDE-1 to SDE-3 in under 2.5 years.</li>
+                        </ul>
+                    </article>
+
+                    <article data-q="side" data-keys="side project wellread rapidmock startup build indie"
+                        data-trace='[["list_projects","","3 projects"]]'>
+                        <h2>What does he build on the side?</h2>
+                        <p><a href="https://trywellread.com/">Wellread</a> shows a business what ChatGPT and Gemini
+                            tell its buyers. It asks the questions buyers ask, with web search on, finds which brands
+                            get recommended and drafts the pages that would close the gap. 30+ early users so far.</p>
+                        <p><a href="https://letterport.dev/">Letterport</a> is email for AI agents: inbound mail as
+                            clean JSON with header-based threading, a per-recipient delivery trail, signed webhooks and
+                            a hosted MCP server. Built with NestJS, AWS SES, SQS and CDK.</p>
+                        <p><a href="https://www.rapidmock.com/">RapidMock</a> lets frontend teams mock API responses
+                            without waiting on the backend.</p>
+                    </article>
+
+                    <article data-q="career" data-keys="career work job experience company resume cv 10x bik blkbox hp intern education college degree"
+                        data-trace='[["search_work","career","4 roles"]]'>
+                        <h2>Where has he worked?</h2>
+                        <dl class="roles">
+                            <div><dt>Oct 2025 – now</dt><dd><strong>10x Productivity</strong>, Senior Software
+                                    Development Engineer, founding team</dd></div>
+                            <div><dt>Jan – Oct 2025</dt><dd><strong>BIK.AI</strong>, SDE-2</dd></div>
+                            <div><dt>Aug 2022 – Dec 2024</dt><dd><strong>BLKBOX.AI</strong>, SDE-1 to SDE-3</dd></div>
+                            <div><dt>Jan – Jul 2022</dt><dd><strong>HP R&amp;D</strong>, software engineering intern
+                                </dd></div>
+                        </dl>
+                        <p>B.Tech in Computer Science from Pondicherry Engineering College, 2022. The <a
+                                href="/assets/pdf/resume.pdf">resume</a> has the details.</p>
+                    </article>
+
+                    <article data-q="skills" data-keys="skill stack language typescript python sql tech terraform docker elasticsearch rag embedding"
+                        data-trace='[["read_note","skills","done"]]'>
+                        <h2>What's his stack?</h2>
+                        <p>TypeScript, Python and SQL. Node.js and NestJS with BullMQ on the backend; PostgreSQL,
+                            Redis and Elasticsearch for data; AWS, Terraform and Docker for infrastructure.</p>
+                        <p>On the AI side: tool calling, MCP, LangGraph, RAG and embeddings, LLM evals, multimodal
+                            pipelines and structured outputs, across the Claude, Gemini and OpenAI APIs.</p>
+                    </article>
+
+                    <article data-q="offclock" data-keys="hobby hobbies fun free music personal outside life pizza bike cycl movie film weekend"
+                        data-trace='[["read_note","off-the-clock","done"]]'>
+                        <h2>What's he like off the clock?</h2>
+                        <p>Usually on a bike, hunting down a good pizza, or halfway through a film.</p>
+                        <p>And while he codes, <a href="https://open.spotify.com/playlist/04djUANKNuGBNKCgONlNzS">this
+                                playlist</a> is on.</p>
+                    </article>
+
+                    <article data-q="none" class="no-match" data-trace='[["search_work","","0 matches"]]'>
+                        <h2>No match</h2>
+                        <p>Nothing in my notes matches that. Try one of the questions on the left, or ask him directly
+                            at <a href="mailto:vishnugajulapalli123@gmail.com">vishnugajulapalli123@gmail.com</a>.</p>
+                    </article>
+                </div>
+
+                <p class="disclosure">Scripted replay. No model runs on this page; every answer was written by me,
+                    about my own work.</p>
             </div>
         </section>
 
-        <section aria-labelledby="skills-heading">
-            <h2 id="skills-heading">Skills</h2>
-            <dl class="skills">
-                <div>
-                    <dt>AI and agents</dt>
-                    <dd>Tool calling, MCP, LangGraph, RAG, embeddings, LLM evals, multimodal pipelines, structured
-                        outputs, the Claude, Gemini and OpenAI APIs</dd>
-                </div>
-                <div>
-                    <dt>Languages</dt>
-                    <dd>TypeScript, Python, SQL</dd>
-                </div>
-                <div>
-                    <dt>Backend</dt>
-                    <dd>Node.js, NestJS, BullMQ, REST APIs, WebSockets</dd>
-                </div>
-                <div>
-                    <dt>Data and infrastructure</dt>
-                    <dd>PostgreSQL, Redis, Elasticsearch, AWS (ECS, EC2, RDS, SQS, SES), Terraform, Docker</dd>
-                </div>
+        <section class="short" aria-labelledby="short-heading">
+            <h2 id="short-heading">The short version</h2>
+            <dl class="roles">
+                <div><dt>Oct 2025 – now</dt><dd><strong>10x Productivity</strong>, Senior Software Development
+                        Engineer, founding team</dd></div>
+                <div><dt>Jan – Oct 2025</dt><dd><strong>BIK.AI</strong>, SDE-2</dd></div>
+                <div><dt>Aug 2022 – Dec 2024</dt><dd><strong>BLKBOX.AI</strong>, SDE-1 to SDE-3</dd></div>
+                <div><dt>Jan – Jul 2022</dt><dd><strong>HP R&amp;D</strong>, software engineering intern</dd></div>
             </dl>
-        </section>
-
-        <section aria-labelledby="education-heading">
-            <h2 id="education-heading">Education</h2>
-            <p class="education"><strong>B.Tech in Computer Science</strong>, Pondicherry Engineering College,
-                2018 to 2022. GPA 8.67 out of 10.</p>
+            <p class="short-line"><strong>Side projects:</strong> <a href="https://trywellread.com/">Wellread</a>,
+                <a href="https://letterport.dev/">Letterport</a>, <a href="https://www.rapidmock.com/">RapidMock</a>
+            </p>
+            <p class="short-line"><strong>Stack:</strong> TypeScript, Python, NestJS, BullMQ, PostgreSQL, Redis,
+                AWS, Terraform; Claude, Gemini and OpenAI APIs, MCP, LangGraph</p>
+            <p class="short-line"><strong>Education:</strong> B.Tech in Computer Science, Pondicherry Engineering
+                College, GPA 8.67 out of 10</p>
         </section>
     </main>
 
@@ -212,12 +239,11 @@
             <a href="mailto:vishnugajulapalli123@gmail.com">vishnugajulapalli123@gmail.com</a>
         </p>
         <p class="footer-small">
-            <a href="https://open.spotify.com/playlist/04djUANKNuGBNKCgONlNzS">What I'm listening to</a>
+            <a href="/assets/pdf/resume.pdf">Resume (PDF)</a>
             <span>© <span id="year">2026</span> Vishnu Sai Jaswanth</span>
         </p>
     </footer>
 
-    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
