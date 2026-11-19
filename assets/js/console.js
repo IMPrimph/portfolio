@@ -14,6 +14,7 @@
 
     document.getElementById('year').textContent = new Date().getFullYear();
     form.hidden = false;
+    document.getElementById('all-answers').open = false;
 
     // Keyword routing for typed questions: a key matches the start of a word
     // ("agent" matches "agents"), and the topic with the most matching keys wins.
@@ -62,7 +63,7 @@
         transcript.replaceChildren();
         transcript.setAttribute('aria-busy', 'true');
 
-        const heading = askedText || article.querySelector('h2').textContent;
+        const heading = askedText || article.querySelector('h3').textContent;
         transcript.append(element('p', 'asked', heading));
 
         const trace = element('ol', 'trace');
@@ -83,7 +84,7 @@
         if (run !== currentRun) return;
 
         const answer = element('div', 'answer');
-        [...article.children].filter(child => child.tagName !== 'H2').forEach(child => answer.append(child.cloneNode(true)));
+        [...article.children].filter(child => child.tagName !== 'H3').forEach(child => answer.append(child.cloneNode(true)));
         transcript.append(answer);
         await streamInto(answer, run);
         if (run === currentRun) transcript.setAttribute('aria-busy', 'false');
@@ -97,9 +98,11 @@
         revealTranscript();
     });
 
-    // On narrow screens the answer sits below the question list; bring it into view.
+    // Bring the answer into view: on narrow screens it sits below the question list,
+    // and follow-up links in the written-out answers sit below the console.
     function revealTranscript() {
-        if (transcript.getBoundingClientRect().top > window.innerHeight * 0.6) {
+        const top = transcript.getBoundingClientRect().top;
+        if (top < 0 || top > window.innerHeight * 0.6) {
             transcript.scrollIntoView({ block: 'start', behavior: reducedMotion ? 'auto' : 'smooth' });
         }
     }

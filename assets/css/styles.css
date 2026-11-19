@@ -351,28 +351,46 @@ main {
     font-size: 0.85rem;
 }
 
-/* With JS the articles are only a source for the replay. Without it, they're the content. */
-.js .answers {
-    display: none;
-}
-
-html:not(.js) .disclosure,
-html:not(.js) .asks,
+/* Without JS the console can't replay, so only the written-out answers remain. */
+html:not(.js) .console,
 html:not(.js) .follow {
     display: none;
 }
 
-html:not(.js) .console {
-    grid-template-columns: 1fr;
+/* Every answer, written out: the replay's source, kept visible for readers and crawlers. */
+.all {
+    margin-top: clamp(3rem, 8vw, 4.5rem);
+}
+
+.all summary {
+    cursor: pointer;
+    list-style-position: outside;
+}
+
+.all summary h2 {
+    display: inline;
+    font-size: clamp(1.5rem, 3.5vw, 1.9rem);
+    font-weight: 800;
+    font-variation-settings: "wdth" 62;
+}
+
+.all summary:focus-visible {
+    outline: 3px solid var(--spark);
+    outline-offset: 4px;
+}
+
+.answers {
+    max-width: var(--measure);
+    margin-top: 1.5rem;
 }
 
 .answers article + article {
-    margin-top: 2.5rem;
+    margin-top: 2.25rem;
 }
 
-.answers h2 {
-    margin-bottom: 0.75rem;
-    font-size: 1.6rem;
+.answers h3 {
+    margin-bottom: 0.6rem;
+    font-size: 1.3rem;
 }
 
 /* Pipeline inside the "What's underneath Archer?" answer. */

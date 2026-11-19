@@ -57,8 +57,8 @@
         <nav class="actions" aria-label="Contact">
             <a class="button" href="/assets/pdf/resume.pdf">Download resume</a>
             <a href="mailto:vishnugajulapalli123@gmail.com">Email</a>
-            <a href="https://www.linkedin.com/in/vishnu-sai-jaswanth-gajulapalli-0670811a7/">LinkedIn</a>
-            <a href="https://github.com/IMPrimph">GitHub</a>
+            <a rel="me" href="https://www.linkedin.com/in/vishnu-sai-jaswanth-gajulapalli-0670811a7/">LinkedIn</a>
+            <a rel="me" href="https://github.com/IMPrimph">GitHub</a>
         </nav>
     </header>
 
@@ -88,131 +88,136 @@
             <div class="transcript-wrap">
                 <div class="transcript" id="transcript" aria-live="polite"></div>
 
-                <div class="answers" id="answers">
-                    <article data-q="agents" data-keys="agent charlie llm claude gemini openai ai langgraph tool"
-                        data-trace='[["search_work","agents","3 matches"],["read_note","charlie","done"]]'>
-                        <h2>What agents has he built?</h2>
-                        <p>Three, all in production at 10x Productivity.</p>
-                        <p>Charlie is Archer's strategy agent, built on Claude. It uses tools, loads skills on demand,
-                            gathers evidence in parallel, recalls earlier sessions and leans on prompt caching to keep
-                            cost down. The same tools sit behind an OAuth 2.1 MCP server, so the team can use them from
-                            Claude or Cursor too.</p>
-                        <p>The other two are workflow agents: a Meta lead-ads agent that sizes ad sets from the budget
-                            and drafts on-brand ads, and a media-buyer agent that recommends what to change in an
-                            account.</p>
-                        <p class="follow"><button type="button" data-q="guardrails">How does he keep them
-                                honest?</button></p>
-                    </article>
-
-                    <article data-q="guardrails" data-keys="guard honest trust safe hallucin human approv critic xray x-ray check eval"
-                        data-trace='[["read_note","guardrails","done"]]'>
-                        <h2>How does he keep agents honest?</h2>
-                        <p>Mostly by not trusting them with the last step.</p>
-                        <p>Nothing the lead-ads agent drafts goes live until a person approves the launch. The
-                            media-buyer agent's recommendations are checked against figures computed in SQL, never
-                            numbers the model made up, and a second critic model reviews them before anyone sees
-                            them.</p>
-                        <p>Before an ad launches, Creative X-Ray scores it against the brand's own guidelines and
-                            lists what to fix.</p>
-                    </article>
-
-                    <article data-q="mcp" data-keys="mcp protocol cursor oauth letterport"
-                        data-trace='[["search_work","mcp","2 matches"]]'>
-                        <h2>What has he done with MCP?</h2>
-                        <p>Two MCP servers, both behind OAuth.</p>
-                        <p>At 10x Productivity, an OAuth 2.1 MCP server exposes the same tools Charlie uses, so Claude
-                            and Cursor can work with Archer's knowledge directly.</p>
-                        <p>On the side, <a href="https://letterport.dev/">Letterport</a> gives AI agents their own
-                            email inboxes and ships a hosted MCP server, so agents can use their inbox as a tool.</p>
-                    </article>
-
-                    <article data-q="backend" data-keys="backend archer architecture infra aws terraform queue bullmq redis ingest scale cost fargate ecs postgres node nestjs"
-                        data-trace='[["read_note","archer-architecture","done"],["get_infra","aws","7 services"]]'>
-                        <h2>What's underneath Archer?</h2>
-                        <ol class="run-steps" aria-label="Archer pipeline">
-                            <li><strong>Sources</strong><span>Meta Marketing API, Ad Library, AppMagic</span></li>
-                            <li><strong>Ingestion</strong><span>BullMQ workers, Redis leader election</span></li>
-                            <li><strong>Analysis</strong><span>Scene-level video structure, 100+ signals</span></li>
-                            <li><strong>Knowledge</strong><span>SQL analytics plus cached LLM insights</span></li>
-                            <li><strong>Agents</strong><span>Charlie and the workflow agents</span></li>
-                            <li><strong>Clients</strong><span>The Archer app, Claude and Cursor over MCP</span></li>
-                        </ol>
-                        <p>Ingestion pulls from the Meta Marketing API, Ad Library and AppMagic for 100+ competitor
-                            brands, without a single client-specific pipeline. Every LLM call, across 60+ call sites, is
-                            attributed to a tenant and a feature, so cost is visible per client.</p>
-                        <p>It all runs on 7 ECS Fargate services, provisioned with Terraform and deployed through OIDC
-                            CI/CD. He designed it and owns it end to end.</p>
-                    </article>
-
-                    <article data-q="results" data-keys="result impact metric number business proud achiev award win outcome"
-                        data-trace='[["get_metrics","all","4 results"]]'>
-                        <h2>Did any of it move the business?</h2>
-                        <ul>
-                            <li>In a brand pilot, strategists accepted 85% of the AI-generated creative briefs they
-                                reviewed.</li>
-                            <li>The multimodal analysis has run on 15k+ ads, breaking video into scenes and scoring
-                                100+ signals.</li>
-                            <li>At BIK.AI he halved the Elasticsearch bill at 300M events a month, cut deploy time by
-                                40%, and was named Best Employee of the Quarter in April 2025.</li>
-                            <li>At BLKBOX.AI he went from SDE-1 to SDE-3 in under 2.5 years.</li>
-                        </ul>
-                    </article>
-
-                    <article data-q="side" data-keys="side project wellread rapidmock startup build indie"
-                        data-trace='[["list_projects","","3 projects"]]'>
-                        <h2>What does he build on the side?</h2>
-                        <p><a href="https://trywellread.com/">Wellread</a> shows a business what ChatGPT and Gemini
-                            tell its buyers. It asks the questions buyers ask, with web search on, finds which brands
-                            get recommended and drafts the pages that would close the gap. 30+ early users so far.</p>
-                        <p><a href="https://letterport.dev/">Letterport</a> is email for AI agents: inbound mail as
-                            clean JSON with header-based threading, a per-recipient delivery trail, signed webhooks and
-                            a hosted MCP server. Built with NestJS, AWS SES, SQS and CDK.</p>
-                        <p><a href="https://www.rapidmock.com/">RapidMock</a> lets frontend teams mock API responses
-                            without waiting on the backend.</p>
-                    </article>
-
-                    <article data-q="career" data-keys="career work job experience company resume cv 10x bik blkbox hp intern education college degree"
-                        data-trace='[["search_work","career","4 roles"]]'>
-                        <h2>Where has he worked?</h2>
-                        <dl class="roles">
-                            <div><dt>Oct 2025 – now</dt><dd><strong>10x Productivity</strong>, Senior Software
-                                    Development Engineer, founding team</dd></div>
-                            <div><dt>Jan – Oct 2025</dt><dd><strong>BIK.AI</strong>, SDE-2</dd></div>
-                            <div><dt>Aug 2022 – Dec 2024</dt><dd><strong>BLKBOX.AI</strong>, SDE-1 to SDE-3</dd></div>
-                            <div><dt>Jan – Jul 2022</dt><dd><strong>HP R&amp;D</strong>, software engineering intern
-                                </dd></div>
-                        </dl>
-                        <p>B.Tech in Computer Science from Pondicherry Engineering College, 2022. The <a
-                                href="/assets/pdf/resume.pdf">resume</a> has the details.</p>
-                    </article>
-
-                    <article data-q="skills" data-keys="skill stack language typescript python sql tech terraform docker elasticsearch rag embedding"
-                        data-trace='[["read_note","skills","done"]]'>
-                        <h2>What's his stack?</h2>
-                        <p>TypeScript, Python and SQL. Node.js and NestJS with BullMQ on the backend; PostgreSQL,
-                            Redis and Elasticsearch for data; AWS, Terraform and Docker for infrastructure.</p>
-                        <p>On the AI side: tool calling, MCP, LangGraph, RAG and embeddings, LLM evals, multimodal
-                            pipelines and structured outputs, across the Claude, Gemini and OpenAI APIs.</p>
-                    </article>
-
-                    <article data-q="offclock" data-keys="hobby hobbies fun free music personal outside life pizza bike cycl movie film weekend"
-                        data-trace='[["read_note","off-the-clock","done"]]'>
-                        <h2>What's he like off the clock?</h2>
-                        <p>Usually on a bike, hunting down a good pizza, or halfway through a film.</p>
-                        <p>And while he codes, <a href="https://open.spotify.com/playlist/04djUANKNuGBNKCgONlNzS">this
-                                playlist</a> is on.</p>
-                    </article>
-
-                    <article data-q="none" class="no-match" data-trace='[["search_work","","0 matches"]]'>
-                        <h2>No match</h2>
-                        <p>Nothing in my notes matches that. Try one of the questions on the left, or ask him directly
-                            at <a href="mailto:vishnugajulapalli123@gmail.com">vishnugajulapalli123@gmail.com</a>.</p>
-                    </article>
-                </div>
-
                 <p class="disclosure">Scripted replay. No model runs on this page; every answer was written by me,
                     about my own work.</p>
             </div>
+        </section>
+
+        <section class="all" aria-labelledby="all-heading">
+            <details open id="all-answers">
+                <summary><h2 id="all-heading">Every answer, written out</h2></summary>
+        <div class="answers" id="answers">
+            <article data-q="agents" data-keys="agent charlie llm claude gemini openai ai langgraph tool"
+                data-trace='[["search_work","agents","3 matches"],["read_note","charlie","done"]]'>
+                <h3>What agents has he built?</h3>
+                <p>Three, all in production at 10x Productivity.</p>
+                <p>Charlie is Archer's strategy agent, built on Claude. It uses tools, loads skills on demand,
+                    gathers evidence in parallel, recalls earlier sessions and leans on prompt caching to keep
+                    cost down. The same tools sit behind an OAuth 2.1 MCP server, so the team can use them from
+                    Claude or Cursor too.</p>
+                <p>The other two are workflow agents: a Meta lead-ads agent that sizes ad sets from the budget
+                    and drafts on-brand ads, and a media-buyer agent that recommends what to change in an
+                    account.</p>
+                <p class="follow"><button type="button" data-q="guardrails">How does he keep them
+                        honest?</button></p>
+            </article>
+
+            <article data-q="guardrails" data-keys="guard honest trust safe hallucin human approv critic xray x-ray check eval"
+                data-trace='[["read_note","guardrails","done"]]'>
+                <h3>How does he keep agents honest?</h3>
+                <p>Mostly by not trusting them with the last step.</p>
+                <p>Nothing the lead-ads agent drafts goes live until a person approves the launch. The
+                    media-buyer agent's recommendations are checked against figures computed in SQL, never
+                    numbers the model made up, and a second critic model reviews them before anyone sees
+                    them.</p>
+                <p>Before an ad launches, Creative X-Ray scores it against the brand's own guidelines and
+                    lists what to fix.</p>
+            </article>
+
+            <article data-q="mcp" data-keys="mcp protocol cursor oauth letterport"
+                data-trace='[["search_work","mcp","2 matches"]]'>
+                <h3>What has he done with MCP?</h3>
+                <p>Two MCP servers, both behind OAuth.</p>
+                <p>At 10x Productivity, an OAuth 2.1 MCP server exposes the same tools Charlie uses, so Claude
+                    and Cursor can work with Archer's knowledge directly.</p>
+                <p>On the side, <a href="https://letterport.dev/">Letterport</a> gives AI agents their own
+                    email inboxes and ships a hosted MCP server, so agents can use their inbox as a tool.</p>
+            </article>
+
+            <article data-q="backend" data-keys="backend archer architecture infra aws terraform queue bullmq redis ingest scale cost fargate ecs postgres node nestjs"
+                data-trace='[["read_note","archer-architecture","done"],["get_infra","aws","7 services"]]'>
+                <h3>What's underneath Archer?</h3>
+                <ol class="run-steps" aria-label="Archer pipeline">
+                    <li><strong>Sources</strong><span>Meta Marketing API, Ad Library, AppMagic</span></li>
+                    <li><strong>Ingestion</strong><span>BullMQ workers, Redis leader election</span></li>
+                    <li><strong>Analysis</strong><span>Scene-level video structure, 100+ signals</span></li>
+                    <li><strong>Knowledge</strong><span>SQL analytics plus cached LLM insights</span></li>
+                    <li><strong>Agents</strong><span>Charlie and the workflow agents</span></li>
+                    <li><strong>Clients</strong><span>The Archer app, Claude and Cursor over MCP</span></li>
+                </ol>
+                <p>Ingestion pulls from the Meta Marketing API, Ad Library and AppMagic for 100+ competitor
+                    brands, without a single client-specific pipeline. Every LLM call, across 60+ call sites, is
+                    attributed to a tenant and a feature, so cost is visible per client.</p>
+                <p>It all runs on 7 ECS Fargate services, provisioned with Terraform and deployed through OIDC
+                    CI/CD. He designed it and owns it end to end.</p>
+            </article>
+
+            <article data-q="results" data-keys="result impact metric number business proud achiev award win outcome"
+                data-trace='[["get_metrics","all","4 results"]]'>
+                <h3>Did any of it move the business?</h3>
+                <ul>
+                    <li>In a brand pilot, strategists accepted 85% of the AI-generated creative briefs they
+                        reviewed.</li>
+                    <li>The multimodal analysis has run on 15k+ ads, breaking video into scenes and scoring
+                        100+ signals.</li>
+                    <li>At BIK.AI he halved the Elasticsearch bill at 300M events a month, cut deploy time by
+                        40%, and was named Best Employee of the Quarter in April 2025.</li>
+                    <li>At BLKBOX.AI he went from SDE-1 to SDE-3 in under 2.5 years.</li>
+                </ul>
+            </article>
+
+            <article data-q="side" data-keys="side project wellread rapidmock startup build indie"
+                data-trace='[["list_projects","","3 projects"]]'>
+                <h3>What does he build on the side?</h3>
+                <p><a href="https://trywellread.com/">Wellread</a> shows a business what ChatGPT and Gemini
+                    tell its buyers. It asks the questions buyers ask, with web search on, finds which brands
+                    get recommended and drafts the pages that would close the gap. 30+ early users so far.</p>
+                <p><a href="https://letterport.dev/">Letterport</a> is email for AI agents: inbound mail as
+                    clean JSON with header-based threading, a per-recipient delivery trail, signed webhooks and
+                    a hosted MCP server. Built with NestJS, AWS SES, SQS and CDK.</p>
+                <p><a href="https://www.rapidmock.com/">RapidMock</a> lets frontend teams mock API responses
+                    without waiting on the backend.</p>
+            </article>
+
+            <article data-q="career" data-keys="career work job experience company resume cv 10x bik blkbox hp intern education college degree"
+                data-trace='[["search_work","career","4 roles"]]'>
+                <h3>Where has he worked?</h3>
+                <dl class="roles">
+                    <div><dt>Oct 2025 – now</dt><dd><strong>10x Productivity</strong>, Senior Software
+                            Development Engineer, founding team</dd></div>
+                    <div><dt>Jan – Oct 2025</dt><dd><strong>BIK.AI</strong>, SDE-2</dd></div>
+                    <div><dt>Aug 2022 – Dec 2024</dt><dd><strong>BLKBOX.AI</strong>, SDE-1 to SDE-3</dd></div>
+                    <div><dt>Jan – Jul 2022</dt><dd><strong>HP R&amp;D</strong>, software engineering intern
+                        </dd></div>
+                </dl>
+                <p>B.Tech in Computer Science from Pondicherry Engineering College, 2022. The <a
+                        href="/assets/pdf/resume.pdf">resume</a> has the details.</p>
+            </article>
+
+            <article data-q="skills" data-keys="skill stack language typescript python sql tech terraform docker elasticsearch rag embedding"
+                data-trace='[["read_note","skills","done"]]'>
+                <h3>What's his stack?</h3>
+                <p>TypeScript, Python and SQL. Node.js and NestJS with BullMQ on the backend; PostgreSQL,
+                    Redis and Elasticsearch for data; AWS, Terraform and Docker for infrastructure.</p>
+                <p>On the AI side: tool calling, MCP, LangGraph, RAG and embeddings, LLM evals, multimodal
+                    pipelines and structured outputs, across the Claude, Gemini and OpenAI APIs.</p>
+            </article>
+
+            <article data-q="offclock" data-keys="hobby hobbies fun free music personal outside life pizza bike cycl movie film weekend"
+                data-trace='[["read_note","off-the-clock","done"]]'>
+                <h3>What's he like off the clock?</h3>
+                <p>Usually on a bike, hunting down a good pizza, or halfway through a film.</p>
+                <p>And while he codes, <a href="https://open.spotify.com/playlist/04djUANKNuGBNKCgONlNzS">this
+                        playlist</a> is on.</p>
+            </article>
+
+            <article data-q="none" class="no-match" hidden data-trace='[["search_work","","0 matches"]]'>
+                <h3>No match</h3>
+                <p>Nothing in my notes matches that. Try one of the questions on the left, or ask him directly
+                    at <a href="mailto:vishnugajulapalli123@gmail.com">vishnugajulapalli123@gmail.com</a>.</p>
+            </article>
+        </div>
+            </details>
         </section>
 
         <section class="short" aria-labelledby="short-heading">
@@ -240,6 +245,7 @@
         </p>
         <p class="footer-small">
             <a href="/assets/pdf/resume.pdf">Resume (PDF)</a>
+            <span>Updated <time datetime="2026-11-19">19 November 2026</time></span>
             <span>© <span id="year">2026</span> Vishnu Sai Jaswanth</span>
         </p>
     </footer>
@@ -247,20 +253,41 @@
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Person",
-  "@id": "https://jaswanth123.netlify.app/#person",
-  "name": "Vishnu Sai Jaswanth",
-  "alternateName": ["Vishnu Gajulapalli", "Vishnu Sai Jaswanth Gajulapalli"],
-  "jobTitle": "Backend & Applied AI Engineer",
-  "description": "Founding engineer at 10x Productivity building tool-using AI agents, MCP servers, multimodal LLM pipelines and the AWS backend behind them.",
-  "url": "https://jaswanth123.netlify.app/",
-  "image": "https://jaswanth123.netlify.app/og-image.png",
-  "email": "vishnugajulapalli123@gmail.com",
-  "address": { "@type": "PostalAddress", "addressLocality": "Bengaluru", "addressRegion": "Karnataka", "addressCountry": "IN" },
-  "alumniOf": { "@type": "CollegeOrUniversity", "name": "Pondicherry Engineering College" },
-  "worksFor": { "@type": "Organization", "name": "10x Productivity" },
-  "knowsAbout": ["AI agents", "Model Context Protocol", "LLM tool calling", "LangGraph", "RAG", "Multimodal LLM pipelines", "NestJS", "Node.js", "TypeScript", "Python", "PostgreSQL", "Redis", "BullMQ", "Elasticsearch", "AWS", "Terraform"],
-  "sameAs": ["https://www.linkedin.com/in/vishnu-sai-jaswanth-gajulapalli-0670811a7/", "https://github.com/IMPrimph"]
+  "@graph": [
+    {
+      "@type": "ProfilePage",
+      "@id": "https://jaswanth123.netlify.app/#page",
+      "url": "https://jaswanth123.netlify.app/",
+      "name": "Vishnu Sai Jaswanth | Backend & Applied AI Engineer",
+      "dateModified": "2026-11-19",
+      "inLanguage": "en-IN",
+      "isPartOf": { "@id": "https://jaswanth123.netlify.app/#site" },
+      "mainEntity": { "@id": "https://jaswanth123.netlify.app/#person" }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://jaswanth123.netlify.app/#person",
+      "name": "Vishnu Sai Jaswanth",
+      "alternateName": ["Vishnu Gajulapalli", "Vishnu Sai Jaswanth Gajulapalli"],
+      "jobTitle": "Senior Software Development Engineer",
+      "description": "Backend and applied AI engineer. Founding engineer at 10x Productivity, building tool-using AI agents, MCP servers, multimodal LLM pipelines and the AWS backend behind them.",
+      "url": "https://jaswanth123.netlify.app/",
+      "image": "https://jaswanth123.netlify.app/og-image.png",
+      "email": "mailto:vishnugajulapalli123@gmail.com",
+      "address": { "@type": "PostalAddress", "addressLocality": "Bengaluru", "addressRegion": "Karnataka", "addressCountry": "IN" },
+      "worksFor": { "@type": "Organization", "name": "10x Productivity" },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Pondicherry Engineering College" },
+      "knowsAbout": ["AI agents", "Model Context Protocol (MCP)", "LLM tool calling", "LangGraph", "Retrieval-augmented generation", "Multimodal LLM pipelines", "NestJS", "Node.js", "TypeScript", "Python", "PostgreSQL", "Redis", "BullMQ", "Elasticsearch", "AWS", "Terraform"],
+      "sameAs": ["https://www.linkedin.com/in/vishnu-sai-jaswanth-gajulapalli-0670811a7/", "https://github.com/IMPrimph"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://jaswanth123.netlify.app/#site",
+      "url": "https://jaswanth123.netlify.app/",
+      "name": "Vishnu Sai Jaswanth",
+      "publisher": { "@id": "https://jaswanth123.netlify.app/#person" }
+    }
+  ]
 }
     </script>
 </body>

@@ -1,29 +1,21 @@
-# Allow all standard crawlers
+# Everyone, including search engines and AI assistants, may read this site.
 User-agent: *
 Allow: /
 
-# AI / LLM crawlers — explicitly allowed (delete or set Disallow to opt out)
+# Named explicitly so the intent is unambiguous for AI crawlers:
+# training (GPTBot, ClaudeBot, Google-Extended, CCBot, Applebot-Extended),
+# search indexes (OAI-SearchBot, Claude-SearchBot, PerplexityBot)
+# and live fetches made while answering a user (ChatGPT-User, Claude-User, Perplexity-User).
 User-agent: GPTBot
-Allow: /
-
+User-agent: OAI-SearchBot
 User-agent: ChatGPT-User
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
-
 User-agent: ClaudeBot
-Allow: /
-
-User-agent: anthropic-ai
-Allow: /
-
+User-agent: Claude-SearchBot
+User-agent: Claude-User
 User-agent: PerplexityBot
-Allow: /
-
+User-agent: Perplexity-User
+User-agent: Google-Extended
 User-agent: Applebot-Extended
-Allow: /
-
 User-agent: CCBot
 Allow: /
 
