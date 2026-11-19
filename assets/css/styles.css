@@ -141,27 +141,37 @@ main {
     padding-inline: var(--gutter);
 }
 
-.console {
-    display: grid;
-    grid-template-columns: 17rem minmax(0, 1fr);
-    background: var(--paper);
-    border: 1px solid var(--rule);
-    border-radius: 8px;
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
 }
 
+.console {
+    display: grid;
+    grid-template-columns: 16.5rem minmax(0, 1fr);
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+/* Sidebar, laid out like a chat app's conversation list. */
 .asks {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-    padding: 1.5rem;
+    padding: 1.25rem 0.75rem;
+    background: var(--fog);
     border-right: 1px solid var(--rule);
 }
 
 .asks-title {
-    margin: 0;
-    font-size: 1.35rem;
-    font-weight: 800;
-    font-variation-settings: "wdth" 70;
+    margin: 0 0 0.75rem;
+    padding-inline: 0.75rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--slate);
 }
 
 .questions {
@@ -182,94 +192,108 @@ main {
 .questions button {
     display: block;
     width: 100%;
-    padding: 0.55rem 0 0.55rem 0.85rem;
+    padding: 0.55rem 0.75rem;
     text-align: left;
+    font-size: 0.95rem;
     line-height: 1.35;
-    border-left: 3px solid transparent;
+    border-radius: 8px;
 }
 
 .questions button:hover {
-    color: var(--signal);
+    background: var(--paper);
 }
 
 .questions button[aria-pressed="true"] {
-    color: var(--signal);
+    background: var(--signal-soft);
+    color: var(--ink);
     font-weight: 600;
-    border-left-color: var(--signal);
 }
 
 .questions button:focus-visible,
 .follow button:focus-visible,
-.ask-row input:focus-visible,
-.ask-row button:focus-visible {
+.composer input:focus-visible,
+.composer button:focus-visible,
+.tools summary:focus-visible {
     outline: 3px solid var(--spark);
     outline-offset: 2px;
 }
 
-.ask-form {
-    margin-top: auto;
+.chat {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: 0 clamp(1rem, 3vw, 2rem) 1rem;
 }
 
-.ask-form label {
-    display: block;
-    margin-bottom: 0.4rem;
+.thread {
+    position: relative;
+    height: 31rem;
+    overflow-y: auto;
+    padding-top: 1.5rem;
+    overscroll-behavior: contain;
+}
+
+.turn + .turn {
+    margin-top: 2rem;
+}
+
+/* The newest turn fills the thread, so its question can scroll to the top even when the answer is short. */
+.turn:last-child {
+    min-height: calc(100% - 1.5rem);
+}
+
+.user-msg {
+    width: fit-content;
+    max-width: min(80%, 32rem);
+    margin: 0 0 1.1rem auto;
+    padding: 0.6rem 1rem;
+    background: var(--signal-soft);
+    border-radius: 18px 18px 4px 18px;
+}
+
+.reply {
+    max-width: 40rem;
+}
+
+.reply-from {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 0 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* The favicon's three-node mark, as the reply avatar. */
+.mark {
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    background:
+        radial-gradient(circle at 25% 50%, #fff 0 2.5px, transparent 3px),
+        radial-gradient(circle at 50% 50%, #fff 0 2.5px, transparent 3px),
+        radial-gradient(circle at 76% 50%, var(--spark) 0 3px, transparent 3.5px),
+        var(--signal);
+}
+
+.tools {
+    margin: 0 0 0.75rem;
     color: var(--slate);
     font-size: 0.9rem;
 }
 
-.ask-row {
-    display: flex;
-    gap: 0.5rem;
-}
-
-.ask-row input {
-    flex: 1;
-    min-width: 0;
-    padding: 0.55rem 0.7rem;
-    font: inherit;
-    font-size: 0.95rem;
-    color: var(--ink);
-    background: var(--fog);
-    border: 1px solid var(--rule);
-    border-radius: 4px;
-}
-
-.ask-row button {
-    padding: 0.55rem 0.9rem;
-    font: inherit;
-    font-weight: 600;
-    color: var(--fog);
-    background: var(--signal);
-    border: 0;
-    border-radius: 4px;
+.tools summary {
+    width: fit-content;
     cursor: pointer;
 }
 
-.transcript-wrap {
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    padding: 1.5rem clamp(1.25rem, 3vw, 2.25rem);
-}
-
-.js .transcript {
-    min-height: 27rem;
-}
-
-.asked {
-    margin: 0;
-    font-size: clamp(1.6rem, 3.5vw, 2.1rem);
-    font-weight: 800;
-    font-variation-settings: "wdth" 66;
-    line-height: 1.05;
-}
-
 .trace {
-    margin: 1rem 0 0;
-    padding: 0;
+    margin: 0.4rem 0 0;
+    padding: 0.5rem 0 0.5rem 0.9rem;
     list-style: none;
+    border-left: 2px solid var(--rule);
     font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-    font-size: 0.85rem;
+    font-size: 0.82rem;
 }
 
 .trace li {
@@ -277,18 +301,17 @@ main {
     flex-wrap: wrap;
     gap: 0 0.75rem;
     align-items: baseline;
-    padding: 0.2rem 0 0.2rem 1.2rem;
+    padding: 0.15rem 0 0.15rem 1.1rem;
     position: relative;
-    color: var(--slate);
 }
 
 .trace li::before {
     content: "";
     position: absolute;
     left: 0;
-    top: 0.62em;
-    width: 8px;
-    height: 8px;
+    top: 0.6em;
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
     background: var(--spark);
 }
@@ -312,12 +335,6 @@ main {
 
 @keyframes blink {
     to { opacity: 0.25; }
-}
-
-.answer {
-    max-width: 40rem;
-    margin-top: 1.25rem;
-    font-size: 1.075rem;
 }
 
 .answer p,
@@ -344,11 +361,54 @@ main {
     text-underline-offset: 0.2em;
 }
 
+/* Composer, pinned under the thread like every chat app. */
+.composer {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+    padding: 0.35rem 0.35rem 0.35rem 1rem;
+    background: var(--fog);
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+}
+
+.composer:focus-within {
+    border-color: var(--signal);
+}
+
+.composer input {
+    flex: 1;
+    min-width: 0;
+    padding: 0.5rem 0;
+    font: inherit;
+    color: var(--ink);
+    background: none;
+    border: 0;
+}
+
+.composer input:focus-visible {
+    outline: none;
+}
+
+.composer button {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 2.3rem;
+    height: 2.3rem;
+    color: var(--fog);
+    background: var(--signal);
+    border: 0;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
 .disclosure {
-    margin: auto 0 0;
-    padding-top: 1.5rem;
+    margin: 0.6rem 0 0;
+    text-align: center;
     color: var(--slate);
-    font-size: 0.85rem;
+    font-size: 0.8rem;
 }
 
 /* Without JS the console can't replay, so only the written-out answers remain. */
@@ -364,7 +424,7 @@ html:not(.js) .follow {
 
 .all summary {
     cursor: pointer;
-    list-style-position: outside;
+    list-style-position: inside;
 }
 
 .all summary h2 {
@@ -483,36 +543,42 @@ html:not(.js) .follow {
 }
 
 @media (max-width: 52rem) {
+    /* minmax(0, …) stops the chip strip's width from stretching the column. */
     .console {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
     }
 
+    /* Suggestions become a swipeable strip above the thread. */
     .asks {
+        padding: 0.9rem 0 0.9rem;
         border-right: 0;
         border-bottom: 1px solid var(--rule);
     }
 
+    .asks-title {
+        padding-inline: 1rem;
+    }
+
     .questions {
         display: flex;
-        flex-wrap: wrap;
         gap: 0.5rem;
+        overflow-x: auto;
+        padding: 0 1rem 0.25rem;
+        scrollbar-width: none;
     }
 
     .questions button {
-        width: auto;
-        padding: 0.45rem 0.75rem;
-        font-size: 0.95rem;
+        width: max-content;
+        padding: 0.45rem 0.8rem;
+        font-size: 0.9rem;
+        background: var(--paper);
         border: 1px solid var(--rule);
         border-radius: 999px;
+        white-space: nowrap;
     }
 
-    .questions button[aria-pressed="true"] {
-        border-color: var(--signal);
-        background: var(--signal-soft);
-    }
-
-    .js .transcript {
-        min-height: 22rem;
+    .thread {
+        height: 26rem;
     }
 }
 

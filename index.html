@@ -76,20 +76,21 @@
                     <li><button type="button" data-q="career">Where has he worked?</button></li>
                     <li><button type="button" data-q="offclock">What's he like off the clock?</button></li>
                 </ul>
-                <form class="ask-form" id="ask-form" hidden>
-                    <label for="ask-input">Or type a question</label>
-                    <div class="ask-row">
-                        <input id="ask-input" type="text" autocomplete="off" placeholder="e.g. Terraform">
-                        <button type="submit">Ask</button>
-                    </div>
-                </form>
             </div>
 
-            <div class="transcript-wrap">
-                <div class="transcript" id="transcript" aria-live="polite"></div>
-
-                <p class="disclosure">Scripted replay. No model runs on this page; every answer was written by me,
-                    about my own work.</p>
+            <div class="chat">
+                <div class="thread" id="transcript" aria-live="polite"></div>
+                <form class="composer" id="ask-form" hidden>
+                    <label class="sr-only" for="ask-input">Ask about my work</label>
+                    <input id="ask-input" type="text" autocomplete="off" placeholder="Ask anything about my work">
+                    <button type="submit" aria-label="Send">
+                        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+                            <path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.4"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </form>
+                <p class="disclosure">Scripted replay. No model runs here; answers are pre-written from my resume and notes.</p>
             </div>
         </section>
 
@@ -100,14 +101,14 @@
             <article data-q="agents" data-keys="agent charlie llm claude gemini openai ai langgraph tool"
                 data-trace='[["search_work","agents","3 matches"],["read_note","charlie","done"]]'>
                 <h3>What agents has he built?</h3>
-                <p>Three, all in production at 10x Productivity.</p>
+                <p>Three, at 10x Productivity.</p>
                 <p>Charlie is Archer's strategy agent, built on Claude. It uses tools, loads skills on demand,
-                    gathers evidence in parallel, recalls earlier sessions and leans on prompt caching to keep
-                    cost down. The same tools sit behind an OAuth 2.1 MCP server, so the team can use them from
+                    gathers evidence in parallel, recalls earlier sessions and uses prompt
+                        caching. The same tools sit behind an OAuth 2.1 MCP server, so the team can use them from
                     Claude or Cursor too.</p>
                 <p>The other two are workflow agents: a Meta lead-ads agent that sizes ad sets from the budget
-                    and drafts on-brand ads, and a media-buyer agent that recommends what to change in an
-                    account.</p>
+                    and drafts on-brand ads, and a media-buyer agent that makes recommendations on ad
+                        accounts.</p>
                 <p class="follow"><button type="button" data-q="guardrails">How does he keep them
                         honest?</button></p>
             </article>
@@ -115,11 +116,10 @@
             <article data-q="guardrails" data-keys="guard honest trust safe hallucin human approv critic xray x-ray check eval"
                 data-trace='[["read_note","guardrails","done"]]'>
                 <h3>How does he keep agents honest?</h3>
-                <p>Mostly by not trusting them with the last step.</p>
+                <p>By keeping a person and a second check in the loop.</p>
                 <p>Nothing the lead-ads agent drafts goes live until a person approves the launch. The
-                    media-buyer agent's recommendations are checked against figures computed in SQL, never
-                    numbers the model made up, and a second critic model reviews them before anyone sees
-                    them.</p>
+                        media-buyer agent's recommendations are checked against computed figures and reviewed by a
+                        critic model.</p>
                 <p>Before an ad launches, Creative X-Ray scores it against the brand's own guidelines and
                     lists what to fix.</p>
             </article>
@@ -131,7 +131,7 @@
                 <p>At 10x Productivity, an OAuth 2.1 MCP server exposes the same tools Charlie uses, so Claude
                     and Cursor can work with Archer's knowledge directly.</p>
                 <p>On the side, <a href="https://letterport.dev/">Letterport</a> gives AI agents their own
-                    email inboxes and ships a hosted MCP server, so agents can use their inbox as a tool.</p>
+                        email inboxes and ships a hosted MCP server with OAuth.</p>
             </article>
 
             <article data-q="backend" data-keys="backend archer architecture infra aws terraform queue bullmq redis ingest scale cost fargate ecs postgres node nestjs"
@@ -146,8 +146,8 @@
                     <li><strong>Clients</strong><span>The Archer app, Claude and Cursor over MCP</span></li>
                 </ol>
                 <p>Ingestion pulls from the Meta Marketing API, Ad Library and AppMagic for 100+ competitor
-                    brands, without a single client-specific pipeline. Every LLM call, across 60+ call sites, is
-                    attributed to a tenant and a feature, so cost is visible per client.</p>
+                    brands, without a single client-specific pipeline. LLM cost is attributed by tenant and feature
+                        across 60+ call sites.</p>
                 <p>It all runs on 7 ECS Fargate services, provisioned with Terraform and deployed through OIDC
                     CI/CD. He designed it and owns it end to end.</p>
             </article>
@@ -171,7 +171,7 @@
                 <h3>What does he build on the side?</h3>
                 <p><a href="https://trywellread.com/">Wellread</a> shows a business what ChatGPT and Gemini
                     tell its buyers. It asks the questions buyers ask, with web search on, finds which brands
-                    get recommended and drafts the pages that would close the gap. 30+ early users so far.</p>
+                        they name and drafts pages. 30+ early users so far.</p>
                 <p><a href="https://letterport.dev/">Letterport</a> is email for AI agents: inbound mail as
                     clean JSON with header-based threading, a per-recipient delivery trail, signed webhooks and
                     a hosted MCP server. Built with NestJS, AWS SES, SQS and CDK.</p>
